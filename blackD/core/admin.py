@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from blackG.core.models import Product
+from blackD.core.models import Product
 
 
 @admin.register(Product)

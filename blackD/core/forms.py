@@ -1,6 +1,6 @@
 from django import forms
 
-from blackG.core.models import Product
+from blackD.core.models import Product
 
 
 class ProductForm(forms.ModelForm):

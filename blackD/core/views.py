@@ -3,8 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, redirect
 
-from blackG.core.forms import ProductForm
-from blackG.core.models import Product
+from blackD.core.forms import ProductForm
+from blackD.core.models import Product
 
 
 def home(request):

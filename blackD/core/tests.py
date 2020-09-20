@@ -2,7 +2,7 @@ from django.test import TestCase
 
 
 # Create your tests here.
-from blackG.core.forms import ProductForm
+from blackD.core.forms import ProductForm
 
 
 class HomeTest(TestCase):

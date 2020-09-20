@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from blackG.core.views import home, display_products, add_product
+from blackD.core.views import home, display_products, add_product
 
 
 urlpatterns = [
