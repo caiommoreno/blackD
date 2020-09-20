@@ -1,0 +1,1 @@
+web: gunicorn blackD.wsgi --log-file -

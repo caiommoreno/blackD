@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/partials/products.css' %}">
+
+
+<div class="procuracombutton">
+    <div class="pesquisa">
+        <input class="form-control" size="100" id="myInput" type="text" placeholder="Procure por nome ou categoria.">
+    </div>
+        <form class="form-inline">
+        <a class="addprod" type="submit"href="#">Adicionar produto</a>
+    </form>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço custo</th>
+                <th>Preço venda</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            {% for item in items %}
+            <tr>
+                <td>{{ item.pk }}</td>
+                <td>{{ item.nome }}</td>
+                <td>{{ item.categoria }}</td>
+                <td>{{ item.preco_custo }}</td>
+                <td>{{ item.preco_venda }}</td>
+                <td class="td-actions text-right">
+                    <button  rel="tooltip" class="editar" data-original-title="" title="">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button  rel="tooltip" class="lixo" data-original-title="" title="">
+                      <i class="fas fa-trash"></i>
+                    </button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+{% endblock %}
