@@ -46,13 +46,13 @@ class ProductsTest(TestCase):
     #     self.assertContains(self.resp, 'csrfmiddlewaretoken')
 
     # Connection between Django and html template
-    def test_has_form(self):
-        """Context must have products"""
-        form = self.resp.context['form']
-        self.assertIsInstance(form, ProductForm)
-
-    def test_form_has_fields(self):
-        """Form must have 4 fields"""
-        form = self.resp.context['form']
-        self.assertSequenceEqual(['nome', 'categoria', 'preco_custo', 'preco_venda'], list(form.fields))
+    # def test_has_form(self):
+    #     """Context must have products"""
+    #     form = self.resp.context['form']
+    #     self.assertIsInstance(form, ProductForm)
+    #
+    # def test_form_has_fields(self):
+    #     """Form must have 4 fields"""
+    #     form = self.resp.context['form']
+    #     self.assertSequenceEqual(['nome', 'categoria', 'preco_custo', 'preco_venda'], list(form.fields))
 
