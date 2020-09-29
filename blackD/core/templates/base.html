@@ -2,111 +2,25 @@
 <html lang="en">
 {% load static %}
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="{% static 'assets/js/index.js' %}"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="{% static 'assets/js/index.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/index.css' %}"/>
+
+
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
 </head>
 
 <body>
-
-    <script>
-
-      <!-- javascript init -->
-      // General configuration for the charts with Line gradientStroke
-      gradientChartOptionsConfiguration =  {
-        maintainAspectRatio: false,
-        legend: {
-              display: false
-         },
-
-         tooltips: {
-           backgroundColor: '#fff',
-           titleFontColor: '#333',
-           bodyFontColor: '#666',
-           bodySpacing: 4,
-           xPadding: 12,
-           mode: "nearest",
-           intersect: 0,
-           position: "nearest"
-         },
-         responsive: true,
-         scales:{
-           yAxes: [{
-             barPercentage: 1.6,
-                 gridLines: {
-                   drawBorder: false,
-                     color: 'rgba(29,140,248,0.0)',
-                     zeroLineColor: "transparent",
-                 },
-                 ticks: {
-                   suggestedMin:50,
-                   suggestedMax: 110,
-                     padding: 20,
-                     fontColor: "#9a9a9a"
-                 }
-               }],
-
-           xAxes: [{
-             barPercentage: 1.6,
-                 gridLines: {
-                   drawBorder: false,
-                     color: 'rgba(220,53,69,0.1)',
-                     zeroLineColor: "transparent",
-                 },
-                 ticks: {
-                     padding: 20,
-                     fontColor: "#9a9a9a"
-                 }
-               }]
-           }
-      };
-
-      var ctx = document.getElementById("chartBig1").getContext("2d");
-
-      var gradientStroke = ctx.createLinearGradient(0,230,0,50);
-
-      gradientStroke.addColorStop(1, 'rgba(72,72,176,0.2)');
-      gradientStroke.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-      gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
-
-      var data = {
-        labels: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
-        datasets: [{
-          label: "Data",
-          fill: true,
-          backgroundColor: gradientStroke,
-          borderColor: '#d048b6',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          pointBackgroundColor: '#d048b6',
-          pointBorderColor:'rgba(255,255,255,0)',
-          pointHoverBackgroundColor: '#d048b6',
-          pointBorderWidth: 20,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          data: [ 60,110,70,100, 75, 90, 80, 100, 70, 80, 120, 80],
-        }]
-      };
-
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: gradientChartOptionsConfiguration
-      });
-
-    </script>
-
 
     <div class="navbar">
     <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/blackD_logo.svg' %}" alt="logo"></a>
@@ -121,22 +35,47 @@
         </div>
     </div>
 
+
+
     <div class="sidenav">
         <a href="{% url 'home' %}">Visão Geral</a>
         <button class="dropdown-btn">Cadastros
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="/products/">Produtos</a>
+          <a href="{% url 'display_products' %}">Produtos</a>
           <a href="#">Clientes/ <br>Fornecedores</a>
         </div>
-        <a href="#about">Vendas</a>
+        <a href="{% url 'display_sales' %}">Vendas</a>
         <a href="#about">Agenda</a>
     </div>
+
+
+
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content
+        - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+          dropdown[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var dropdownContent = this.nextElementSibling;
+          if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+          } else {
+          dropdownContent.style.display = "block";
+          }
+          });
+        }
+    </script>
 
     {% block body %}
 
     {% endblock %}
+
+
 
 </body>
 </html>

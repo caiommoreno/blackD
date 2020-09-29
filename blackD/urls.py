@@ -15,12 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from blackD.core.views import home, display_products, add_product
+from django.conf.urls import url
 
+from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_product, edit_sales, \
+    delete_product, delete_sales
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('products/', display_products, name='display_products'),
-    path('add_products/', add_product),
+    path('add_products/', add_product, name='add_product'),
+    path('edit_products/<int:pk>/', edit_product, name='edit_product'),
+    path('delete_products/<int:pk>/', delete_product, name='delete_product'),
+    path('sales/', display_sales, name='display_sales'),
+    path('add_sales/', add_sales, name='add_sales'),
+    path('edit_sales/<int:pk>/', edit_sales, name='edit_sales'),
+    path('delete_sales/<int:pk>/', delete_sales, name='delete_sales'),
 ]
+

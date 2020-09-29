@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/addprod.css' %}"/>
+
+<div class="container">
+    <form action="." novalidate method="POST">
+        <fieldset align="center">
+            <legend> {{ header }}</legend>
+
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="input-block">
+                <label for="id_{{ field.name }}">{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+            <div class="saveprod">
+                <input type="submit" value="Editar" class="btnsave">
+                <button class="btncancel">Cancel</button>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+
+<style>
+    .alert{
+        padding: 0 15px;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+    }
+    .alert p {
+        padding: 7px 0 7px;
+    }
+
+    .alert.success {
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d0e9c6
+    }
+
+</style>
+
+{% endblock %}

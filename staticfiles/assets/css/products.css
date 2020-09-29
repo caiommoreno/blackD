@@ -66,9 +66,12 @@
     size: 50;
     }
 .addprod{
-  background-color: var(--primary);
-  border-radius: 0.8rem;
-  color: white;
+    background-color: var(--primary);
+    border-radius: 0.8rem;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 0.4rem;
 }
 
 
@@ -141,29 +144,15 @@
     .sidenav a {font-size: 18px;}
   }
   
-  table{
-    position: absolute;
-    color: var(--white);
-    margin-left: 300px;
-    font-size: 1.5rem;
-    bottom: 250px;
-    display: table;
-    border-radius: 0.8rem;
-    border:none;
-    border-collapse: collapse;
-    border-color: hsla(0,0%,100%,.1);
-    padding: 12px 7px;
-    vertical-align: middle;
-    
+  .table {
+    width: 50%;
+    border: solid;
+    margin-top: 1rem;
     margin-bottom: 1rem;
-    
-    background-color: rgb(7,7,60);
-    border:1px solid white;
-    
-    
-  
+    color: white;
+    background-color: transparent;
+    position: fixed
   }
-  
   
   .table th,
   .table td {
@@ -180,16 +169,356 @@
   .table tbody+tbody {
     border-top: 0.125rem solid #e3e3e3;
   }
-  td,th{
-    border-left:1px solid white;
-    border-right:1px solid white;
-    
+  
+  .table-sm th,
+  .table-sm td {
+    padding: 0.3rem;
   }
-  th:first-child, td:first-child{
-    border-left: none;
+  
+  .table-bordered {
+    border: 0.0625rem solid #e3e3e3;
   }
-  th:last-child,td:last-child{
-    border-right: none;
+  
+  .table-bordered th,
+  .table-bordered td {
+    border: 0.0625rem solid #e3e3e3;
+  }
+  
+  .table-bordered thead th,
+  .table-bordered thead td {
+    border-bottom-width: 0.125rem;
+  }
+  
+  .table-borderless th,
+  .table-borderless td,
+  .table-borderless thead th,
+  .table-borderless tbody+tbody {
+    border: 0;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(34, 42, 66, 0.05);
+  }
+  
+  .table-hover tbody tr:hover {
+    color: #525f7f;
+    background-color: rgba(34, 42, 66, 0.075);
+  }
+  
+  .table-primary,
+  .table-primary>th,
+  .table-primary>td {
+    background-color: #f7cdf0;
+  }
+  
+  .table-primary th,
+  .table-primary td,
+  .table-primary thead th,
+  .table-primary tbody+tbody {
+    border-color: #efa3e3;
+  }
+  
+  .table-hover .table-primary:hover {
+    background-color: #f3b7e9;
+  }
+  
+  .table-hover .table-primary:hover>td,
+  .table-hover .table-primary:hover>th {
+    background-color: #f3b7e9;
+  }
+  
+  .table-secondary,
+  .table-secondary>th,
+  .table-secondary>td {
+    background-color: #fcfcfd;
+  }
+  
+  .table-secondary th,
+  .table-secondary td,
+  .table-secondary thead th,
+  .table-secondary tbody+tbody {
+    border-color: #f9fafb;
+  }
+  
+  .table-hover .table-secondary:hover {
+    background-color: #ededf3;
+  }
+  
+  .table-hover .table-secondary:hover>td,
+  .table-hover .table-secondary:hover>th {
+    background-color: #ededf3;
+  }
+  
+  .table-success,
+  .table-success>th,
+  .table-success>td {
+    background-color: #b8fbee;
+  }
+  
+  .table-success th,
+  .table-success td,
+  .table-success thead th,
+  .table-success tbody+tbody {
+    border-color: #7af8e0;
+  }
+  
+  .table-hover .table-success:hover {
+    background-color: #a0fae8;
+  }
+  
+  .table-hover .table-success:hover>td,
+  .table-hover .table-success:hover>th {
+    background-color: #a0fae8;
+  }
+  
+  .table-info,
+  .table-info>th,
+  .table-info>td {
+    background-color: #c0dffd;
+  }
+  
+  .table-info th,
+  .table-info td,
+  .table-info thead th,
+  .table-info tbody+tbody {
+    border-color: #89c3fb;
+  }
+  
+  .table-hover .table-info:hover {
+    background-color: #a7d2fc;
+  }
+  
+  .table-hover .table-info:hover>td,
+  .table-hover .table-info:hover>th {
+    background-color: #a7d2fc;
+  }
+  
+  .table-warning,
+  .table-warning>th,
+  .table-warning>td {
+    background-color: #ffdfd8;
+  }
+  
+  .table-warning th,
+  .table-warning td,
+  .table-warning thead th,
+  .table-warning tbody+tbody {
+    border-color: #ffc4b6;
+  }
+  
+  .table-hover .table-warning:hover {
+    background-color: #ffcabf;
+  }
+  
+  .table-hover .table-warning:hover>td,
+  .table-hover .table-warning:hover>th {
+    background-color: #ffcabf;
+  }
+  
+  .table-danger,
+  .table-danger>th,
+  .table-danger>td {
+    background-color: #fed2e1;
+  }
+  
+  .table-danger th,
+  .table-danger td,
+  .table-danger thead th,
+  .table-danger tbody+tbody {
+    border-color: #feabc7;
+  }
+  
+  .table-hover .table-danger:hover {
+    background-color: #fdb9d0;
+  }
+  
+  .table-hover .table-danger:hover>td,
+  .table-hover .table-danger:hover>th {
+    background-color: #fdb9d0;
+  }
+  
+  .table-light,
+  .table-light>th,
+  .table-light>td {
+    background-color: #e8eaed;
+  }
+  
+  .table-light th,
+  .table-light td,
+  .table-light thead th,
+  .table-light tbody+tbody {
+    border-color: #d4d9dd;
+  }
+  
+  .table-hover .table-light:hover {
+    background-color: #dadde2;
+  }
+  
+  .table-hover .table-light:hover>td,
+  .table-hover .table-light:hover>th {
+    background-color: #dadde2;
+  }
+  
+  .table-dark,
+  .table-dark>th,
+  .table-dark>td {
+    background-color: #c1c2c3;
+  }
+  
+  .table-dark th,
+  .table-dark td,
+  .table-dark thead th,
+  .table-dark tbody+tbody {
+    border-color: #8c8e90;
+  }
+  
+  .table-hover .table-dark:hover {
+    background-color: #b4b5b6;
+  }
+  
+  .table-hover .table-dark:hover>td,
+  .table-hover .table-dark:hover>th {
+    background-color: #b4b5b6;
+  }
+  
+  .table-default,
+  .table-default>th,
+  .table-default>td {
+    background-color: #c6cbd8;
+  }
+  
+  .table-default th,
+  .table-default td,
+  .table-default thead th,
+  .table-default tbody+tbody {
+    border-color: #959fb7;
+  }
+  
+  .table-hover .table-default:hover {
+    background-color: #b7bdce;
+  }
+  
+  .table-hover .table-default:hover>td,
+  .table-hover .table-default:hover>th {
+    background-color: #b7bdce;
+  }
+  
+  .table-white,
+  .table-white>th,
+  .table-white>td {
+    background-color: white;
+  }
+  
+  .table-white th,
+  .table-white td,
+  .table-white thead th,
+  .table-white tbody+tbody {
+    border-color: white;
+  }
+  
+  .table-hover .table-white:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .table-hover .table-white:hover>td,
+  .table-hover .table-white:hover>th {
+    background-color: #f2f2f2;
+  }
+  
+  .table-neutral,
+  .table-neutral>th,
+  .table-neutral>td {
+    background-color: white;
+  }
+  
+  .table-neutral th,
+  .table-neutral td,
+  .table-neutral thead th,
+  .table-neutral tbody+tbody {
+    border-color: white;
+  }
+  
+  .table-hover .table-neutral:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .table-hover .table-neutral:hover>td,
+  .table-hover .table-neutral:hover>th {
+    background-color: #f2f2f2;
+  }
+  
+  .table-darker,
+  .table-darker>th,
+  .table-darker>td {
+    background-color: #b8b8b8;
+  }
+  
+  .table-darker th,
+  .table-darker td,
+  .table-darker thead th,
+  .table-darker tbody+tbody {
+    border-color: #7a7a7a;
+  }
+  
+  .table-hover .table-darker:hover {
+    background-color: #ababab;
+  }
+  
+  .table-hover .table-darker:hover>td,
+  .table-hover .table-darker:hover>th {
+    background-color: #ababab;
+  }
+  
+  .table-active,
+  .table-active>th,
+  .table-active>td {
+    background-color: rgba(34, 42, 66, 0.075);
+  }
+  
+  .table-hover .table-active:hover {
+    background-color: rgba(25, 31, 49, 0.075);
+  }
+  
+  .table-hover .table-active:hover>td,
+  .table-hover .table-active:hover>th {
+    background-color: rgba(25, 31, 49, 0.075);
+  }
+  
+  .table .thead-dark th {
+    color: #1e1e2f;
+    background-color: #212529;
+    border-color: #32383e;
+  }
+  
+  .table .thead-light th {
+    color: #525f7f;
+    background-color: #e9ecef;
+    border-color: #e3e3e3;
+  }
+  .table
+  .table-dark {
+    color: #1e1e2f;
+    background-color: #212529;
+  }
+  
+  .table-dark th,
+  .table-dark td,
+  .table-dark thead th {
+    border-color: #32383e;
+    position: fixed
+  }
+  
+  -dark.table-bordered {
+    border: 0;
+  }
+  
+  .table-dark.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .table-dark.table-hover tbody tr:hover {
+    color: #1e1e2f;
+    background-color: rgba(255, 255, 255, 0.075);
   }
   
 
@@ -293,20 +622,23 @@
       justify-content: center;
       margin-left: 150px;
       margin-top: 80px;
-      
+
     }
     .procuracombutton .pesquisa .imput{
-        size: 50; 
+        size: 50;
         height: 4.6rem;
         margin-top: 0.8rem;
         border-radius: 0.8rem;
-        
-        
+
+
     }
     .addprod{
       background-color: var(--primary);
       border-radius: 0.8rem;
       color: white;
+      font-size: 14px;
+      text-decoration: none;
+      padding: 0.4rem;
     }
-    
+
   }

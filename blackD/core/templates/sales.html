@@ -8,24 +8,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-
-
 <div>
     <div class="procuracombutton">
         <div class="pesquisa">
             <input class="form-control" size="40" id="myInput" type="text" placeholder="Procure por nome ou categoria.">
         </div>
-            <a href="{% url 'add_product' %}" class="addprod"> Adicionar produto </a>
+            <a href="{% url 'add_sales' %}" class="addprod"> Adicionar venda </a>
     </div>
+    <br>
 
     <table class="table" align="center">
         <thead>
             <tr>
                 <th class="text-center">ID</th>
-                <th>Nome</th>
-                <th>Categoria</th>
-                <th>Preço custo</th>
-                <th>Preço venda</th>
+                <th>Data</th>
+                <th>Cliente</th>
+                <th>Total</th>
+                <th>% Lucro</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -33,15 +32,15 @@
             {% for item in items %}
             <tr>
                 <td>{{ item.pk }}</td>
-                <td>{{ item.nome }}</td>
-                <td>{{ item.categoria }}</td>
-                <td>R$ {{ item.preco_custo }}</td>
-                <td>R$ {{ item.preco_venda }}</td>
+                <td>{{ item.data }}</td>
+                <td>{{ item.cliente }}</td>
+                <td>R$ {{ item.total }}</td>
+                <td></td>
                 <td class="td-actions text-right">
-                    <a href="{% url 'edit_product' item.pk %}"  rel="tooltip" class="editar" data-original-title="" title="">
+                    <a href="{% url 'edit_sales' item.pk %}"  rel="tooltip" class="editar" data-original-title="" title="">
                       <i class="fas fa-edit"></i>
                     </a>
-                    <a href="{% url 'delete_product' item.pk %}"  rel="tooltip" class="lixo" data-original-title="" title="">
+                    <a href="{% url 'delete_sales' item.pk %}"  rel="tooltip" class="lixo" data-original-title="" title="">
                       <i class="fas fa-trash"></i>
                     </a></td>
             </tr>

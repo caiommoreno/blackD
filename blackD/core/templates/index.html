@@ -6,23 +6,23 @@
 <h1>Bom dia, Usuário</h1>
 <h2 class="subtitulo">Aqui estão as informações mais<br>importantes do seu negócio</h2>
 
-<table class="table" size="40">
-    <thead>
-        <tr>
-            <th class="text-center">Faturamentos</th>
-            <th>Nº Vendas</th>
-            <th>Valor medio<br>vendas</th>
-            <th>Novos Clientes</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="text-center">R$ ---</td>
-            <td>---</td>
-            <td>R$ ---</td>
-            <td>R$ ---</td>
-        </tr>
-    </tbody>
+<table class="table1">
+  <thead>
+      <tr>
+          <th class="text-center">Faturamentos</th>
+          <th>Nº Vendas</th>
+          <th>Valor medio<br>vendas</th>
+          <th>Novos Clientes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+  </tbody>
 </table>
 
 
@@ -155,24 +155,7 @@
 </script>
 
 
-<script>
-    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content
-    - This allows the user to have multiple dropdowns without any conflict */
-    var dropdown = document.getElementsByClassName("dropdown-btn");
-    var i;
 
-    for (i = 0; i < dropdown.length; i++) {
-      dropdown[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var dropdownContent = this.nextElementSibling;
-      if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-      } else {
-      dropdownContent.style.display = "block";
-      }
-      });
-    }
-</script>
 
 
 </body>

@@ -140,59 +140,6 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
-  
-  table{
-    position: absolute;
-    color: var(--white);
-    margin-left: 300px;
-    font-size: 1.5rem;
-    bottom: 250px;
-    display: table;
-    border-radius: 0.8rem;
-    border:none;
-    border-collapse: collapse;
-    border-color: hsla(0,0%,100%,.1);
-    padding: 12px 7px;
-    vertical-align: middle;
-    
-    margin-bottom: 1rem;
-    
-    background-color: rgb(7,7,60);
-    border:1px solid white;
-    
-    
-  
-  }
-  
-  
-  .table th,
-  .table td {
-    padding: 1rem;
-    vertical-align: top;
-    border-top: 0.0625rem solid #e3e3e3;
-  }
-  
-  .table thead th {
-    vertical-align: bottom;
-    border-bottom: 0.125rem solid #e3e3e3;
-  }
-  
-  .table tbody+tbody {
-    border-top: 0.125rem solid #e3e3e3;
-  }
-  td,th{
-    border-left:1px solid white;
-    border-right:1px solid white;
-    
-  }
-  th:first-child, td:first-child{
-    border-left: none;
-  }
-  th:last-child,td:last-child{
-    border-right: none;
-  }
-  
-
   .navbar {
     overflow: hidden;
     background-color: var(--background-color);
@@ -202,7 +149,6 @@
     font-weight: 300;
     
   }
-  
   .navbar a {
     
     color: white;
@@ -267,46 +213,62 @@
     display: block;
   }
   
-  
-  .editar,.lixo{
-    background-color: transparent;
-    border: none;
-    color: white;
+  fieldset{
+      border: none;
+      
+      
   }
+  fieldset legend{
+      color: white;
+      font-size: 3.5rem;
+      padding-top: 2.5rem;
+      
+  }
+  .input-block{
+        align-self: left;
+        padding-left: 18rem;
+        border-radius: 0.8rem;
+
+  }
+  .input-block label{
+      color: white;
+      display: flex;
+      justify-content:center;
+      padding-top: 4rem;
+      font-size: 2rem;
+
+  }
+  .saveprod{
+    
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    align-content: center;
+    padding-top: 2rem;
+    
+    
+  }
+  .btnsave{
+      background-color: var(--primary);
+      color: white;
+      border-radius: 0.8rem;
+      font-weight: 400;
+      font-size: 2.5rem;
+      cursor: pointer;
+      border:1px solid;
+  }
+  .btncancel{
+      border-radius: 0.8rem;
+      border: 1px solid;
+  }
+  
   @media (max-width: 1100px) {
     :root {
         font-size:0.5rem; /* modificar as medidas rem */
     }
-    .table{
-      margin-right: 50px;
-      top: 260px;
-      margin-left: 150px;
-      font-size: 1.2rem;
-    }
-    
+
     .sidenav{
-      width: 150px;
+        width: 150px;
     }
-    .procuracombutton{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 150px;
-      margin-top: 80px;
-      
-    }
-    .procuracombutton .pesquisa .imput{
-        size: 50; 
-        height: 4.6rem;
-        margin-top: 0.8rem;
-        border-radius: 0.8rem;
-        
-        
-    }
-    .addprod{
-      background-color: var(--primary);
-      border-radius: 0.8rem;
-      color: white;
-    }
-    
-  }

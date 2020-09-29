@@ -249,7 +249,7 @@ table{
   border-radius: 0.8rem;
   border:none;
   border-collapse: collapse;
-  
+
   
   
 
@@ -339,7 +339,7 @@ th:last-child,td:last-child{
     :root {
         font-size:0.5rem; /* modificar as medidas rem */
     }
-    .table{
+    .table1{
       margin-right: 20px;
       top: 260px;
       margin-left: 200px;
