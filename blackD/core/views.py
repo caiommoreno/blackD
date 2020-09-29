@@ -24,6 +24,7 @@ def display_sales(request):
     }
     return render(request, 'sales.html', context)
 
+
 def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
