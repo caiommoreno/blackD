@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .env
 .idea/
 /venv_app/
@@ -5,4 +6,3 @@
 *pyc
 __pycache__
 /blackD/core/templates/templates_antigos/
-
