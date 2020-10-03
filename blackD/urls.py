@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import url
 
 from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_product, edit_sales, \
@@ -23,6 +23,7 @@ from blackD.core.views import home, display_products, display_sales, add_product
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('', include("blackD.authentication.urls")),
     path('products/', display_products, name='display_products'),
     path('add_products/', add_product, name='add_product'),
     path('edit_products/<int:pk>/', edit_product, name='edit_product'),

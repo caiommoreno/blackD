@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<script src="{% static 'assets/js/index.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/index.css' %}"/>
+{% endblock stylesheets %}
+
+
 {% block body %}
 
 <h1>Bom dia, Usuário</h1>
 <h2 class="subtitulo">Aqui estão as informações mais<br>importantes do seu negócio</h2>
 
-<table class="table1">
+<table class="table">
   <thead>
       <tr>
           <th class="text-center">Faturamentos</th>

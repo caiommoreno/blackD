@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block body %}
-
-
+{% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/products.css' %}"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock stylesheets %}
 
-
+{% block body %}
 <div>
     <div class="procuracombutton">
         <div class="pesquisa">
             <input class="form-control" size="40" id="myInput" type="text" placeholder="Procure pelo nome do cliente ou data.">
         </div>
-            <a href="{% url 'add_sales' %}" class="addprod"> Adicionar venda </a>
+            <button><a href="{% url 'add_sales' %}" class="addprod"> Adicionar venda </a></button>
     </div>
     <br>
 
