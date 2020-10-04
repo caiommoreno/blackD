@@ -323,4 +323,169 @@
       color: white;
     }
 
+
   }
+
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: #00cca4;
+    border-color: #00bf9a;
+    border-top-color: rgb(0, 191, 154);
+    border-right-color: rgb(0, 191, 154);
+    border-bottom-color: rgb(0, 191, 154);
+    border-left-color: rgb(0, 191, 154);
+}
+
+.btn-success:not([data-action]):hover {
+    box-shadow: 2px 2px 6px rgba(0,0,0,.4);
+    transform: translateY(-1px);
+    -webkit-transform: translateY(-1px);
+}
+.btn-success.active, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active, .btn-success:active:focus, .btn-success:active:hover, .btn-success:focus, .btn-success:hover {
+    background-color: #0098f0!important;
+    background-image: linear-gradient(to bottom left,#00f2c3,#0098f0,#00f2c3)!important;
+    background-image: -moz-linear-gradient(to bottom left,#00f2c3,#0098f0,#00f2c3)!important;
+    color: #fff;
+    box-shadow: none;
+}
+.btn-success:hover {
+    color: #fff;
+    background-color: #00cca4;
+    border-color: #00bf9a;
+}
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    /* cursor: pointer; */
+}
+.btn-success {
+    background: #00f2c3;
+    background-image: linear-gradient(to bottom left,#00f2c3,#0098f0,#00f2c3);
+    background-size: 210% 210%;
+    background-position: 100% 0;
+    background-color: #00f2c3;
+    transition: all .15s ease;
+    box-shadow: none;
+    color: #fff;
+}
+.btn-success {
+    border-color: #00f2c3;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+}
+[type=button], [type=reset], [type=submit], button {
+    /* -webkit-appearance: button; */
+}
+button, input, optgroup, select, textarea {
+    font-family: Poppins,sans-serif;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button {
+    border-radius: 0;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+button {
+    appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(buttontext, rgb(170, 170, 170));
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(74, 74, 74));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+    border-image: initial;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    /* cursor: pointer; */
+}
+.btn-danger {
+    background: #fd5d93;
+    background-image: linear-gradient(to bottom left,#fd5d93,#ec250d,#fd5d93);
+    background-size: 210% 210%;
+    background-position: 100% 0;
+    background-color: #fd5d93;
+    transition: all .15s ease;
+    box-shadow: none;
+    color: #fff;
+}
+.btn-danger {
+    border-color: #fd5d93;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+}
+[type=button], [type=reset], [type=submit], button {
+    /* -webkit-appearance: button; */
+}
+button, input, optgroup, select, textarea {
+    font-family: Poppins,sans-serif;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button {
+    border-radius: 0;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+button {
+    appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(buttontext, rgb(170, 170, 170));
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(74, 74, 74));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+    border-image: initial;
+}
+

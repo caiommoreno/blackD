@@ -36,12 +36,13 @@
                 <td>R$ {{ item.total }}</td>
                 <td></td>
                 <td class="td-actions text-right">
-                    <a href="{% url 'edit_sales' item.pk %}"  rel="tooltip" class="editar" data-original-title="" title="">
-                      <i class="fas fa-edit"></i>
-                    </a>
-                    <a href="{% url 'delete_sales' item.pk %}"  rel="tooltip" class="lixo" data-original-title="" title="">
+                    <a href="{% url 'edit_sales' item.pk %}"> <button type="button"  rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                        <i class="fas fa-edit"></i>
+                    </button></a>
+                    <a type="button" href="{% url 'delete_sales' item.pk %}"><button rel="tooltip" class="btn btn-danger btn-sm btn-icon">
                       <i class="fas fa-trash"></i>
-                    </a></td>
+                    </button></a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

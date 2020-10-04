@@ -16,9 +16,8 @@
         <div class="pesquisa">
             <input class="form-control" size="40" id="myInput" type="text" placeholder="Procure por nome ou categoria.">
         </div>
-            <button><a href="{% url 'add_product' %}" class="addprod"> Adicionar produto </a></button>
+            <a href="{% url 'add_product' %}"><button class="addprod">Adicionar produto</button></a>
     </div>
-
 
     <table class="table" align="center">
         <thead>
@@ -40,12 +39,13 @@
                 <td>R$ {{ item.preco_custo }}</td>
                 <td>R$ {{ item.preco_venda }}</td>
                 <td class="td-actions text-right">
-                    <a href="{% url 'edit_product' item.pk %}"  rel="tooltip" class="editar" data-original-title="" title="">
-                      <i class="fas fa-edit"></i>
-                    </a>
-                    <a href="{% url 'delete_product' item.pk %}"  rel="tooltip" class="lixo" data-original-title="" title="">
+                    <a href="{% url 'edit_product' item.pk %}"> <button type="button"  rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                        <i class="fas fa-edit"></i>
+                    </button></a>
+                    <a type="button" href="{% url 'delete_product' item.pk %}"><button rel="tooltip" class="btn btn-danger btn-sm btn-icon">
                       <i class="fas fa-trash"></i>
-                    </a></td>
+                    </button></a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
