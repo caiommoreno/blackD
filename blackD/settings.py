@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'blackD.core',
     'blackD.authentication',
     'blackD.users'
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
