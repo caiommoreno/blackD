@@ -5,7 +5,6 @@ from PIL import Image
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.png', upload_to='profile_pics')
-    jobAs = models.OneToOneField(Job, on_delete=models.SET_NULL, null=True, blank=True)
     balance = models.IntegerField(default=0, blank=True, null=True)
     sex = models.CharField(max_length=6, blank=True, null=True)
     last_logout = models.DateField(default='1970-01-01', blank=True, null=True)
