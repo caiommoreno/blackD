@@ -31,13 +31,13 @@
               <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-              {{if user.is_authenticated}}
+              {%if user.is_authenticated%}
                 <a href="{% url 'profile' %}">Profile</a>
                 <a href="{% url 'logout' %}">Log Out</a>
-              {{else}}
+              {%else%}
                 <a href="{% url 'login' %}">Log In</a>
                 <a href="{% url 'Register' %}">Register</a>
-              {{endif}}
+              {%endif%}
             </div>
           </div>
         </div>
