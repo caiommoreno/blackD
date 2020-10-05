@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'blackD.core',
     'blackD.authentication',
+    'blackD.users'
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,5 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
