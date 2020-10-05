@@ -38,7 +38,7 @@ class UsersV(View):
             if request.method == 'POST':                
                 pform = ProfileUpdateForm(request.POST,
                                         request.FILES,
-                                        instance=request.user)
+                                        instance=request.user.profile)
                 if  pform.is_valid():
                     
                     pform.save()
