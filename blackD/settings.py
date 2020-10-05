@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'blackD.core',
     'blackD.authentication',
-    'blackD.users'
+    'blackD.users',
     'crispy_forms',
 ]
 
