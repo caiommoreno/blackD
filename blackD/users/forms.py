@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
+from .choices import *
 
 
 class UserRegisterForm(UserCreationForm):
@@ -14,14 +15,14 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserUpdateForm(forms.ModelForm):
-    email = forms.EmailField()
-
+    email = forms.EmailField()    
     class Meta:
         model = User
         fields = ['username','first_name','last_name', 'email']
 
 
 class ProfileUpdateForm(forms.ModelForm):
+    sex = forms.ChoiceField(choices = SEX_CHOICES, required=True)
     class Meta:
         model = Profile
-        fields = ['image']
+        fields = ['image', 'sex']
