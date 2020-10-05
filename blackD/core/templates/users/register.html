@@ -1,9 +1,12 @@
-{% extends "base.html" %}
+{% extends "users/base_teste.html" %}
+{% load static %}
 
 {% block title %}<h1>Registro</h1>{% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+<link href="{% static 'assets/css/product.css' %}" rel="stylesheet" />
+{% endblock stylesheets %}
 
 {% block content %}
               <form role="form" method="post" action="">

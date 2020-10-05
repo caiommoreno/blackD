@@ -36,7 +36,7 @@
   <!-- Nucleo Icons -->
   <link href="{% static 'assets/css/nucleo-icons.css' %}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link href="{% static 'assets/css/registration.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/css/addprod.css' %}" rel="stylesheet" />
 
   <!-- Specific Page CSS goes HERE  -->
   {% block stylesheets %}{% endblock stylesheets %}
@@ -45,21 +45,9 @@
 
 <body class="">
 
-    <div class="main-panel">
-
-
     <div class="navbar">
       <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/blackD_logo.svg' %}" alt="logo" width="40"></a>
-      <div class="dropdown-prof">
-        <button class="dropbtn-prof"><i class="fas fa-user-circle" style="font-size:36px;"></i>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">Profile</a>
-          <a href="#">Log Out</a>
-        </div>
       </div>
-    </div>
 
       <div class="content">
 
