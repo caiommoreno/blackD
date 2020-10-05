@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'blackD.core',
-    'blackD.authentication',
     'blackD.users',
     'crispy_forms',
 ]
