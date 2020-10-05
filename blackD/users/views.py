@@ -44,7 +44,7 @@ class UsersV(View):
                     pform.save()
                     username = pform.cleaned_data.get('username')
                     messages.success(request, f'Welcome to our family!')
-                    return redirect('base')
+                    return redirect('home')
             else:                
                 pform = ProfileUpdateForm()
             context={           
