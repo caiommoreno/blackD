@@ -1,93 +1,28 @@
-{% extends "users/base_teste.html" %}
-{% load static %}
-
-{% block title %}<h1>Registro</h1>{% endblock %}
-
-<!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}
-<link href="{% static 'assets/css/product.css' %}" rel="stylesheet" />
-{% endblock stylesheets %}
-
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title> register</title>
+{% endblock title %}
 {% block content %}
-              <form role="form" method="post" action="">
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend><bbr/><br/>
 
-                {% csrf_token %}
+                <h5 class="border-bottom text-primary"> Account Info </h5>
+                               {{ form|crispy }}
+                               <br/>  
 
-                <div class="card-header">
-                  <h5 class="title">Register</h5>
-
-                  <h6 class="card-category">
-                      {% if msg %}
-                        <span class="text-danger">{{ msg }}</span>
-                      {% else %}
-                        Add your credentials or <a href="{% url 'login' %}" >authenticate</a> with an existing account.
-                      {% endif %}
-                  </h6>
-                </div>
-
-              {% if success %}
-
-                <p>
-                  Please <a href="{% url 'login' %}">authenticate</a> using the new account.
-                </p>
-
-              {% else %}
-
-                <div class="card-body">
-
-                    <div class="row">
-                      <div class="col-md-3 px-md-1">
-                        <div class="form-group">
-                          <label>Username</label>
-                          {{ form.username }}
-                        </div>
-                      </div>
-                    </div>
-                    <span class="text-danger">{{ form.username.errors }}</span>
-
-                    <div class="row">
-                      <div class="col-md-3 px-md-1">
-                        <div class="form-group">
-                          <label>Email</label>
-                          {{ form.email }}
-                        </div>
-                      </div>
-                    </div>
-                    <span class="text-danger">{{ form.email.errors }}</span>
-
-                    <div class="row">
-                      <div class="col-md-3 px-md-1">
-                        <div class="form-group">
-                          <label>Password</label>
-                          {{ form.password1 }}
-                        </div>
-                      </div>
-                    </div>
-                    <span class="text-danger">{{ form.password1.errors }}</span>
-
-                    <div class="row">
-                        <div class="col-md-3 px-md-1">
-                            <div class="form-group">
-                            <label>Password Check</label>
-                            {{ form.password2 }}
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-danger">{{ form.password2.errors }}</span>
-
-                </div>
-                <div class="card-footer">
-                  <button type="submit" name="register" class="btn btn-fill btn-primary">Register</button>
-                  &nbsp; &nbsp;
-                  Have an account? <a href="{% url 'login' %}" class="text-primary">Login</a>
-                </div>
-
-              {% endif %}
-              </form>
-
-
-
+                </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit" method='POST'>Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
 {% endblock content %}
-
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}

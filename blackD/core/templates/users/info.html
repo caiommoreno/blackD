@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url}}" width="150px" height="150px">
+        <div class="media-body">
+          <h2 class="account-heading">{{ view.kwargs.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
+        </div>
+      </div>
+      <form method="POST" enctype="multipart/form-data" novalidate="novalidate">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Profile Info</legend>
+              <input type="text" name="username" value="{{ username }}" readonly="readonly" lable="User Name">
+          </fieldset>
+
+      </form>
+    </div>
+{% endblock content %}
