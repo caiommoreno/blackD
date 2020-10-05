@@ -32,7 +32,7 @@ urlpatterns = [
     path('add_sales/', add_sales, name='add_sales'),
     path('edit_sales/<int:pk>/', edit_sales, name='edit_sales'),
     path('delete_sales/<int:pk>/', delete_sales, name='delete_sales'),
-    path('user/', include('users.urls')),
+    path('user/', include('blackD.users.urls')),
     
 ]
 
