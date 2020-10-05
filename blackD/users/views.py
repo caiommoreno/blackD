@@ -22,7 +22,7 @@ class UsersV(View):
                 
                 username = form.cleaned_data.get('username')
                 messages.success(request, f' welcome {username} Your account has been created! You can update your profile')
-                return redirect('users/profile')
+                return redirect('register2')
         else:
             form = UserRegisterForm()
             
