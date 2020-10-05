@@ -10,6 +10,7 @@ def home(request):
 
 @login_required
 def display_products(request):
+    
     items = Product.objects.all()
     context = {
         'items': items,

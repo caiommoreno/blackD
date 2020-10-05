@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!--     Fonts and icons     -->
@@ -31,8 +31,12 @@
               <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-              <a href="#">Profile</a>
-              <a href="#">Log Out</a>
+              {{if user.is_authenticated}}
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'logout' %}">Log Out</a>
+              {{else}}
+                <a href="{% url 'login' %}">Log In</a>
+                <a href="{% url 'Register' %}">Register</a>
             </div>
           </div>
         </div>
