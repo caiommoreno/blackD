@@ -23,7 +23,7 @@ from blackD.core.views import home, display_products, display_sales, add_product
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('', include("blackD.authentication.urls")),
+    #path('', include("blackD.authentication.urls")),
     path('products/', display_products, name='display_products'),
     path('add_products/', add_product, name='add_product'),
     path('edit_products/<int:pk>/', edit_product, name='edit_product'),
@@ -33,6 +33,6 @@ urlpatterns = [
     path('edit_sales/<int:pk>/', edit_sales, name='edit_sales'),
     path('delete_sales/<int:pk>/', delete_sales, name='delete_sales'),
     path('user/', include('blackD.users.urls')),
-    
+
 ]
 
