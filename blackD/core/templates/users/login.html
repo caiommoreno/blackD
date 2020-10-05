@@ -1,14 +1,17 @@
-{% extends "accounts/base_teste.html" %}
+{% extends "users/base_teste.html" %}
+{% load static %}
+
 
 {% block title %} Login {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+
+{% endblock stylesheets %}
 
 {% block content %}
 
-        <div class="row">
-          <div class="col-md-8">
+          <div class="container">
             <div class="card">
 
               <form role="form" method="post" action="">
@@ -53,8 +56,6 @@
               </form>
 
             </div>
-          </div>
-      </div>
 
 
 {% endblock content %}
