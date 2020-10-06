@@ -1,64 +1,23 @@
-{% extends "users/base_teste.html" %}
-{% load static %}
-
-
-{% block title %} Login {% endblock %}
-
-<!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}
-
-{% endblock stylesheets %}
-
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-
-          <div class="container">
-            <div class="card">
-
-              <form role="form" method="post" action="">
-
-                {% csrf_token %}
-
-                <div class="card-header">
-                  <h4 class="title">Login</h4>
-
-                </div>
-
-                <div class="card-body">
-
-                    <div class="row">
-
-                      <div class="col-md-3 px-md-1">
-                        <div class="form-group">
-                          <label>Username</label>
-                          {{ form.username }}
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="row">
-
-                      <div class="col-md-3 px-md-1">
-                        <div class="form-group">
-                          <label>Password</label>
-                          {{ form.password }}
-                        </div>
-                      </div>
-
-                    </div>
-
-                </div>
-                <div class="card-footer">
-                  <button type="submit" name="login" class="btn btn-fill btn-primary">Login</button>
-                  &nbsp; &nbsp;
-                  Don't have an account? <a href="{% url 'register' %}" class="text-primary">Create</a>
-                </div>
-
-              </form>
-
+    <div class="content-section bg-pearl">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Login</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign in</button>
+                <small class="text-muted ml-2">
+                <a href="{% url 'password_reset' %} ">Did you forget your password? </a>
             </div>
-
-
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Don't have an account yet?<a class="ml-2" href="{% url 'register' %}">Join us!</a>
+            </small>
+        </div>
+    </div>
 {% endblock content %}
-
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}

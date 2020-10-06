@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'blackD.core',
-    'blackD.authentication',
-    'blackD.users'
+    'blackD.users',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +123,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+register
+{% endblock title %}
+{% block content %}
+    
+    <div class="content-section">
+        <center>
+            <form method="POST" class="f-pearl">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Almost Done</legend><bbr/><br/>
+
+                    <h5 class="border-bottom text-primary"> Profile Info </h5>
+                                    {{ pform|crispy }} 
+                                   <br/> 
+                    </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit" method='POST'>Finish</button>
+                </div>
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+                </small>
+            </div>
+        </center>        
+    </div>
+{% endblock content %}
