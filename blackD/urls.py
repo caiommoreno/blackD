@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-
+from django.conf import settings
+from django.conf.urls.static import static
 from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_product, edit_sales, \
     delete_product, delete_sales
 
@@ -34,14 +35,4 @@ urlpatterns = [
     path('delete_sales/<int:pk>/', delete_sales, name='delete_sales'),
     path('', include('blackD.users.urls')),
 
-]
-from django.conf import settings
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.STATIC_ROOT,
-        }),
-)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
