@@ -9,17 +9,17 @@
         <fieldset align="center">
             <legend>{{ header }}</legend>
             {% csrf_token %}
-            <input type="text" name="user" value="{{request.user}}" hidden>
-            <input type="text" name="nome">
-            <input type="text" name="categoria">
-            <input type="text" name="preco_custo">
-            <input type="text" name="preco_venda">
-            <!-- {% for field in form %}
             <div class="input-block">
-                <label for="id_{{ field.name }}">{{ field.label }}</label>
-                {{ field }} -->
+                <label>Nome</label>
+                <input type="text" name="nome"><br>
+                <label>Categoria</label>
+                <input type="text" name="categoria"><br>
+                <label>preco_custo</label>
+                <input type="text" name="preco_custo"><br>
+                <label>preco_venda</label>
+                <input type="text" name="preco_venda"><br>
             </div>
-            {% endfor %}
+            
             <div class="saveprod">
                 <input type="submit" value="Salvar" class="btnsave">
                 <button class="btncancel">Cancel</button>
