@@ -3,15 +3,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale
-
+from django.contrib.auth.models import User
 @login_required
 def home(request):
     return render(request, 'index.html')
 
 @login_required
 def display_products(request):
-    
-    items = Product.objects.all()
+    usr = request.user
+    items = Product.objects.filter(user=usr)
     context = {
         'items': items,
     }
@@ -19,7 +19,8 @@ def display_products(request):
 
 @login_required
 def display_sales(request):
-    items = Sale.objects.all()
+    usr = request.user
+    items = Sale.objects.filter(user=usr)
     context = {
         'items': items,
     }
@@ -29,7 +30,7 @@ def display_sales(request):
 def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
-
+        form.user = request.user
         if form.is_valid():
             form.save()
             return redirect('display_products')
@@ -42,6 +43,7 @@ def add_product(request):
 def add_sales(request):
     if request.method == 'POST':
         form = SaleForm(request.POST)
+        form.user = request.user
 
         if form.is_valid():
             form.save()
@@ -81,7 +83,12 @@ def edit_sales(request, pk):
 
 @login_required
 def delete_product(request, pk):
-    Product.objects.filter(id=pk).delete()
+    usr = request.user
+    prod = Product.objects.filter(id=pk)
+    if usr == prod.user:
+        Product.objects.filter(id=pk).delete()
+    else:
+        message(request, f"You are not autharized to delete this item")
 
     items = Product.objects.all()
 
@@ -92,7 +99,13 @@ def delete_product(request, pk):
 
 @login_required
 def delete_sales(request, pk):
-    Sale.objects.filter(id=pk).delete()
+    usr = request.user
+    sl = Sale.objects.filter(id=pk)
+    if usr == sl.user:
+        Sale.objects.filter(id=pk).delete()
+    else:
+        message(request, f"You are not autharized to delete this item")
+    
 
     items = Sale.objects.all()
 
