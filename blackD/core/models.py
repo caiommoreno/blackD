@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Product(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=False) 
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
     nome = models.CharField(max_length=100, blank=False, )
     categoria = models.CharField(max_length=100, blank=False)
     preco_custo = models.CharField(max_length=100)
