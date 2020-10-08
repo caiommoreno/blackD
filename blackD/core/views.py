@@ -56,31 +56,37 @@ def add_sales(request):
 @login_required
 def edit_product(request, pk):
     item = get_object_or_404(Product, pk=pk)
-
-    if request.method == 'POST':
-        form = ProductForm(request.POST, instance = item)
-        if form.is_valid():
-            form.save()
-            return redirect('display_products')
-
+    usr = request.user
+    if item.user == usr:
+        if request.method == 'POST':
+            form = ProductForm(request.POST, instance = item)
+            if form.is_valid():
+                form.save()
+                return redirect('display_products')
+        else:
+            form = ProductForm(instance=item)
+            return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Produtos'})
     else:
-        form = ProductForm(instance=item)
-        return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Produtos'})
+        message(request, f"You are not autharized to edit this item")        
 
 @login_required
 def edit_sales(request, pk):
     item = get_object_or_404(Sale, pk=pk)
+    usr = request.user
+    if item.user == usr:
+        if request.method == 'POST':
+            form = SaleForm(request.POST, instance=item)
+            if form.is_valid():
+                form.save()
+                return redirect('display_sales')
 
-    if request.method == 'POST':
-        form = SaleForm(request.POST, instance=item)
-        if form.is_valid():
-            form.save()
-            return redirect('display_sales')
-
+        else:
+            form = SaleForm(instance=item)
+            return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
     else:
-        form = SaleForm(instance=item)
-        return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
+        message(request, f"You are not autharized to edit this item") 
 
+        
 @login_required
 def delete_product(request, pk):
     usr = request.user
