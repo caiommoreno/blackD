@@ -14,8 +14,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        exclude = ["user"]
-        fields = ('nome', 'categoria', 'preco_custo', 'preco_venda')
+        fields = ('user','nome', 'categoria', 'preco_custo', 'preco_venda')
         verbose_name = 'produto'
         verbose_name_plural = 'produtos'
 
