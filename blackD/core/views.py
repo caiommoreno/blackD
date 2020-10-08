@@ -32,6 +32,7 @@ def add_product(request):
     if request.method == 'POST':
         # form = ProductForm(request.POST)
         user=request.POST.get('user')
+        user=user.id
         nome=request.POST.get('nome')
         categoria=request.POST.get('categoria')
         preco_custo=request.POST.get('preco_custo')
