@@ -3,7 +3,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale
+
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView
 @login_required
 def home(request):
     return render(request, 'index.html')
@@ -26,18 +29,26 @@ def display_sales(request):
     }
     return render(request, 'sales.html', context)
 
-@login_required
-def add_product(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST)
-        form.user = request.user.id
-        if form.is_valid():
-            form.save()
-            return redirect('display_products')
+# @login_required
+# def add_product(request):
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST)
+        
+#         if form.is_valid():
+#             form.save()
+#             return redirect('display_products')
 
-    else:
-        form = ProductForm()
-        return render(request, 'add_item.html', {'form': form, 'header': 'Adicionar Produtos'})
+#     else:
+#         form = ProductForm()
+#         return render(request, 'add_item.html', {'form': form, 'header': 'Adicionar Produtos'})
+
+class ProductCreateView(LoginRequiredMixin, CreateView):
+    model = Product
+    fields = ['nome', 'categoria', 'preco_custo', 'preco_venda']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 @login_required
 def add_sales(request):

@@ -1,5 +1,5 @@
 from django import forms
-
+from django.contrib.auth.models import User
 from blackD.core.models import Product, Sale
 from blackD.core.validator import validate_preco
 
@@ -14,9 +14,11 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
+        exclude = ["user"]
         fields = ('nome', 'categoria', 'preco_custo', 'preco_venda')
         verbose_name = 'produto'
         verbose_name_plural = 'produtos'
+
 
 
 class SaleForm(forms.ModelForm):
