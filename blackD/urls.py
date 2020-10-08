@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
-from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_product, edit_sales, \
+from blackD.core.views import home, display_products, display_sales, ProductCreateView, add_sales, edit_product, edit_sales, \
     delete_product, delete_sales
 
 urlpatterns = [
@@ -34,5 +34,6 @@ urlpatterns = [
     path('edit_sales/<int:pk>/', edit_sales, name='edit_sales'),
     path('delete_sales/<int:pk>/', delete_sales, name='delete_sales'),
     path('', include('blackD.users.urls')),
+    path('product/new/', ProductCreateView.as_view(), name='product-create'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
