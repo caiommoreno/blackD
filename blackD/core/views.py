@@ -37,10 +37,9 @@ def add_product(request):
         categoria=request.POST.get('categoria')
         preco_custo=request.POST.get('preco_custo')
         preco_venda=request.POST.get('preco_venda')
-        form = Product(user=user, nome=nome, categoria=categoria, preco_custo=preco_custo,preco_venda=preco_venda)
-        if form.is_valid():
-            form.save()
-            return redirect('display_products')
+        form = Product(user=user, nome=nome, categoria=categoria, preco_custo=preco_custo,preco_venda=preco_venda)        
+        form.save()
+        return redirect('display_products')
 
     else:
         form = ProductForm()
