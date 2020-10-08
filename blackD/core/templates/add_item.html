@@ -9,6 +9,7 @@
         <fieldset align="center">
             <legend>{{ header }}</legend>
             {% csrf_token %}
+            <input type="text" name="user" value="{{request.user}}" hidden>
             {% for field in form %}
             <div class="input-block">
                 <label for="id_{{ field.name }}">{{ field.label }}</label>

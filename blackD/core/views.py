@@ -31,7 +31,7 @@ def display_sales(request):
 def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
-        form.user=request.user
+        form.user=request.POST.get('user')
         if form.is_valid():
             form.save()
             return redirect('display_products')

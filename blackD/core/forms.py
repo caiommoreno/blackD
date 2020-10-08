@@ -14,7 +14,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('user','nome', 'categoria', 'preco_custo', 'preco_venda')
+        fields = ('nome', 'categoria', 'preco_custo', 'preco_venda')
         verbose_name = 'produto'
         verbose_name_plural = 'produtos'
 
