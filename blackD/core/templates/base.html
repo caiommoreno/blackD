@@ -19,11 +19,11 @@
 
     <!-- Specific Page CSS goes HERE  -->
     {% block stylesheets %}{% endblock stylesheets %}
-
+    <title>{% block title %}Gestao Black{% endblock %}</title>
 </head>
 
 <body>
-    {% block title %}{% endblock %}
+    
         <div class="navbar">
           <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/blackD_logo.svg' %}" alt="logo" width="40"></a>
           <div class="dropdown-prof">
@@ -40,6 +40,17 @@
               {%endif%}
             </div>
           </div>
+        </div>
+        <div class="mt-5">
+          {% if messages %}
+            <center>
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" >
+                  <big>{{ message }}</big>
+                </div>
+              {% endfor %}
+            </center>
+          {% endif %}
         </div>
     {% block content %}
     {% endblock content %}
