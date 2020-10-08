@@ -30,8 +30,13 @@ def display_sales(request):
 @login_required
 def add_product(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
-        form.user_id=request.POST.get('user_id')
+        # form = ProductForm(request.POST)
+        user=request.POST.get('user')
+        nome=request.POST.get('nome')
+        categoria=request.POST.get('categoria')
+        preco_custo=request.POST.get('preco_custo')
+        preco_venda=request.POST.get('preco_venda')
+        form = Product(user=user, nome=nome, categoria=categoria, preco_custo=preco_custo,preco_venda=preco_venda)
         if form.is_valid():
             form.save()
             return redirect('display_products')
