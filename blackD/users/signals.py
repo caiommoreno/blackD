@@ -13,9 +13,9 @@ def create_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
-    instance.Profile.save()
+    instance.profile.save()
 
 @receiver(user_logged_out)
 def save_last_login(sender, user, **kwargs):
-	user.Profile.last_logout = datetime.datetime.now()
-	user.Profile.save()
+	user.profile.last_logout = datetime.datetime.now()
+	user.profile.save()
