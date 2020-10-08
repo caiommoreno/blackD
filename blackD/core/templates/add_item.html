@@ -8,7 +8,6 @@
     <form action="." novalidate method="POST">
         <fieldset align="center">
             <legend>{{ header }}</legend>
-
             {% csrf_token %}
             {% for field in form %}
             <div class="input-block">

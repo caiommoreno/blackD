@@ -30,7 +30,7 @@ def display_sales(request):
 def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
-        form.user = request.user
+        form.user = request.user.id
         if form.is_valid():
             form.save()
             return redirect('display_products')
@@ -86,7 +86,7 @@ def edit_sales(request, pk):
     else:
         message(request, f"You are not autharized to edit this item") 
 
-        
+
 @login_required
 def delete_product(request, pk):
     usr = request.user
