@@ -1,0 +1,13 @@
+form .card .card-header {
+  padding: 0px;
+  position: relative;
+}
+
+form .card .card-header .card-title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 4rem;
+  left: 0.5rem;
+  position: absolute;
+  top: 0.5rem;
+}

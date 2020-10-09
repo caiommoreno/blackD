@@ -63,7 +63,7 @@ def edit_product(request, pk):
 
     else:
         form = ProductForm(instance=item)
-        return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Produtos'})
+        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Produtos'})
 
 @login_required
 def edit_sales(request, pk):
@@ -77,7 +77,7 @@ def edit_sales(request, pk):
 
     else:
         form = SaleForm(instance=item)
-        return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
+        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Vendas'})
 
 @login_required
 def delete_product(request, pk):

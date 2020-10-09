@@ -1,0 +1,26 @@
+main .container {
+  margin-left: 0px !important;
+  max-width: 1200px !important;
+  padding: 0px;
+}
+
+#logo {
+  height: 100%;
+  width: 2.75rem;
+}
+
+.sidebar .nav li > a,
+.off-canvas-sidebar .nav li > a {
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.sidebar .nav .caret,
+.off-canvas-sidebar .nav .caret {
+  top: 18px;
+}
+
+.sidebar #submenu a {
+  margin-top: 0px;
+  padding-left: 1.5rem;
+}
