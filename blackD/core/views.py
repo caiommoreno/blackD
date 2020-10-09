@@ -73,7 +73,12 @@ def edit_product(request, pk):
             form = ProductForm(instance=item)
             return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Produtos'})
     else:
+<<<<<<< HEAD
         message(request, f"You are not autharized to edit this item")        
+=======
+        form = ProductForm(instance=item)
+        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Produtos'})
+>>>>>>> c29346405adee3f10cbad488f9487246f808e944
 
 @login_required
 def edit_sales(request, pk):
@@ -90,8 +95,13 @@ def edit_sales(request, pk):
             form = SaleForm(instance=item)
             return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
     else:
+<<<<<<< HEAD
         message(request, f"You are not autharized to edit this item") 
 
+=======
+        form = SaleForm(instance=item)
+        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Vendas'})
+>>>>>>> c29346405adee3f10cbad488f9487246f808e944
 
 @login_required
 def delete_product(request, pk):

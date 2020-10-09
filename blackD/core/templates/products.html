@@ -1,55 +1,80 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
+<!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/products.css' %}"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 {% endblock stylesheets %}
 
 
-
 {% block body %}
+<div class="wrapper">
+     <main class="main-panel">
+         <div class="content">
+          <div class="container">
+            <h1 class="mt-4 mt-lg-0">Produtos</h1>
 
+            <section class="d-flex flex-column flex-sm-row align-items-sm-center">
 
-<div>
-    <div class="procuracombutton">
-        <div class="pesquisa">
-            <input class="form-control" size="40" id="myInput" type="text" placeholder="Procure por nome ou categoria.">
+              <div class="d-flex align-items-center flex-grow-1 mr-sm-3">
+                <input class="form-control" type="text" id="myInput" placeholder="Procure por nome ou categoria." />
+              </div>
+
+              <a
+                href="{% url 'add_product' %}"
+                class="btn btn-info btn-round mt-3 mt-sm-0 ml-auto"
+              >
+                Adicionar produto
+              </a>
+            </section>
+
+            <section>
+              <div class="table-responsive">
+                <table class="table table-shopping mt-5">
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Categoria</th>
+                      <th>Preço de custo</th>
+                      <th>Preço de venda</th>
+                      <th>Lucro %</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="myTable">
+                      {% for item in items %}
+                    <tr>
+                        <td>{{ item.pk }}</td>
+                        <td>{{ item.nome }}</td>
+                        <td>{{ item.categoria }}</td>
+                        <td>R$ {{ item.preco_custo }}</td>
+                        <td>R$ {{ item.preco_venda }}</td>
+                      <td>
+                        <div class="d-flex align-items center">
+                          <a
+                            href="{% url 'edit_product' item.pk %}"
+                            class="btn btn-info btn-fab btn-icon btn-round"
+                          >
+                            <i class="tim-icons icon-pencil"></i>
+                          </a>
+                          <a
+                            href="{% url 'delete_product' item.pk %}"
+                            class="btn btn-danger btn-fab btn-icon btn-round ml-2"
+                          >
+                            <i class="tim-icons icon-trash-simple"></i>
+                          </a>
+
+                        </div>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
         </div>
-            <a href="{% url 'add_product' %}"><button class="addprod">Adicionar produto</button></a>
-    </div>
-
-    <table class="table" align="center">
-        <thead>
-            <tr>
-                <th class="text-center">ID</th>
-                <th>Nome</th>
-                <th>Categoria</th>
-                <th>Preço custo</th>
-                <th>Preço venda</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="myTable">
-            {% for item in items %}
-            <tr>
-                <td>{{ item.pk }}</td>
-                <td>{{ item.nome }}</td>
-                <td>{{ item.categoria }}</td>
-                <td>R$ {{ item.preco_custo }}</td>
-                <td>R$ {{ item.preco_venda }}</td>
-                <td class="td-actions text-right">
-                    <a href="{% url 'edit_product' item.pk %}"> <button type="button"  rel="tooltip" class="btn btn-success btn-sm btn-icon">
-                        <i class="fas fa-edit"></i>
-                    </button></a>
-                    <a type="button" href="{% url 'delete_product' item.pk %}"><button rel="tooltip" class="btn btn-danger btn-sm btn-icon">
-                      <i class="fas fa-trash"></i>
-                    </button></a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    </main>
 </div>
 
 <script>
@@ -62,6 +87,6 @@
       });
     });
 </script>
-
-
 {% endblock %}
+
+

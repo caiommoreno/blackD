@@ -1,0 +1,12 @@
+.content .table th,
+.content .table td {
+  white-space: nowrap;
+}
+
+#search-form button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  outline: none;
+}

@@ -5,6 +5,7 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.views import View
 from django.contrib.auth import authenticate, login
 
+
 class UsersV(View):
 
 
@@ -22,7 +23,7 @@ class UsersV(View):
                 
                 username = form.cleaned_data.get('username')
                 messages.success(request, f' welcome {username} Your account has been created! You can update your profile')
-                return redirect('register2')
+                return redirect('login')
         else:
             form = UserRegisterForm()
             

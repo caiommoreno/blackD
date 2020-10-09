@@ -2,6 +2,46 @@
 {% load static %}
 
 {% block body %}
+
+<div class="wrapper">
+     <main class="main-panel">
+        <div class="content">
+          <div class="container">
+            <div class="card mt-4 mt-lg-0">
+              <div class="card-header">
+                <h4 class="card-title">Adicionar novo produto</h4>
+              </div>
+              <div class="card-body">
+                <form id="validate-form">
+                {% csrf_token %}
+                  <div class="form-row">
+                    <div class="col-6">
+                      <div class="form-group has-label">
+                        {% for field in form %}
+                        <div class="input-block">
+                            <label for="id_{{ field.name }}">{{ field.label }}</label>
+                            <input class="form-control" {{ field }}
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="saveprod">
+                    <input type="submit" value="Salvar" class="btn btn-info btn-round">
+                    <button class="btn btn-default btn-round btn-simple">Cancel</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+     </main>
+</div>
+
+{% endblock %}
+
+
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/addprod.css' %}"/>
 
 <div class="container ml-5">
@@ -28,7 +68,12 @@
         </fieldset>
     </form>
 </div>
-
+                 <input type="submit" class="btn btn-info btn-round">
+                    Salvar
+                  </input>
+                  <button class="btn btn-default btn-round btn-simple">
+                    Cancelar
+                  </button>
 
 <style>
     .alert{
@@ -48,5 +93,3 @@
     }
 
 </style>
-
-{% endblock %}

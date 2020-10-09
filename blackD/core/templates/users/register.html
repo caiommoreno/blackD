@@ -1,28 +1,142 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
-{% block title %}
-<title> register</title>
-{% endblock title %}
-{% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend><bbr/><br/>
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% load static %}
 
-                <h5 class="border-bottom text-primary"> Account Info </h5>
-                               {{ form|crispy }}
-                               <br/>  
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static './assets/img/logo.svg' %}" />
+    <link rel="icon" type="image/png" href="{% static './assets/img/logo.svg' %}" />
+    <title>Black Dashboard</title>
+    <!--     Fonts and icons     -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
+      rel="stylesheet"
+    />
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+      rel="stylesheet"
+    />
+    <!-- Nucleo Icons -->
+    <link href="{% static 'assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="{% static 'assets/css/black-dashboard.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/my-styles.css' %}" rel="stylesheet" />
 
-                </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit" method='POST'>Sign Up</button>
-            </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
-            </small>
+    <!-- Specific Page CSS goes HERE  -->
+    {% block stylesheets %}{% endblock stylesheets %}
+  </head>
+
+<body>
+
+<div class="wrapper">
+      <main
+        class="main-panel d-flex align-items-center justify-content-center p-3 p-sm-4">
+        <div class="container mx-0">
+          <div class="card">
+            <form
+              role="form"
+              method="post"
+              novalidate
+              id="validate-form">
+
+              {% csrf_token %}
+              {{ form.non_field_errors }}
+              <header class="card-header">
+                <h5 class="title">Cadastro</h5>
+
+                <h6 class="card-category">
+                  {% if msg %}
+                  <span class="text-danger">{{ msg }}</span>
+                  {% else %}
+                  Crie sua conta ou <a href="{% url 'login' %}">entre</a> se já
+                  possuir uma.
+                  {% endif %}
+                </h6>
+              </header>
+              {% if success %}
+                <p>
+                  Registrado! <a href={% url 'login' %}>Clique aqui</a> para entrar na plataforma.
+                </p>
+              {% else %}
+
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="form-group has-label">
+                      <div>
+                        <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                        {{ form.username }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-danger">{{ form.username.errors }}</span>
+
+                <div class="row">
+                  <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="form-group has-label">
+                      <div>
+                        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                        {{ form.email }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-danger">{{ form.email.errors }}</span>
+
+                <div class="row">
+                  <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="form-group has-label">
+                      <div>
+                        <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+                        {{ form.password1 }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-danger">{{ form.password1.errors }}</span>
+
+                <div class="row">
+                  <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="form-group has-label">
+                      <div>
+                        <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+                        {{ form.password2 }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-danger">{{ form.password2.errors }}</span>
+
+              </div>
+
+              <footer class="card-footer">
+                <div
+                  class="d-flex flex-column flex-sm-row align-items-sm-center"
+                >
+                  <button
+                    type="submit"
+                    name="register"
+                    class="btn btn-fill btn-primary"
+                  >
+                    Criar conta
+                  </button>
+
+                  <div class="mt-2 mt-sm-0 ml-sm-2">
+                    Já tem uma conta?
+                    <a href="{% url 'login' %}" class="text-primary">Entrar</a>
+                  </div>
+                </div>
+                {% endif %}
+              </footer>
+            </form>
+          </div>
         </div>
+      </main>
     </div>
-{% endblock content %}
+
+</body>
