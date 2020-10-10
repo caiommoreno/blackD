@@ -17,6 +17,13 @@
 
               <header class="card-header">
                 <h5 class="title">Login</h5>
+                  <div class="card-category">
+                      {% if msg %}
+                        <span class="text-danger">{{ msg }}</span>
+                      {% else %}
+                        Insira seus dados de entrada.
+                      {% endif %}
+                  </div>
               </header>
 
               <div class="card-body">

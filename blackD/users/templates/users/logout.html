@@ -1,9 +1,14 @@
 {% extends "base.html" %}
-{% block content %}
-    <h2>You have been logged out</h2>
+{% load static %}
+
+{% block sidebar %} {% endblock %}
+{% block navbar %} {% endblock %}
+
+{% block body %}
+    <h2>Você desconectou da sua conta. Até breve!</h2>
     <div class="border-top pt-3">
         <small class="text-muted">
-            <a href="{% url 'login' %}">Log In Again</a>
+            <a href="{% url 'login' %}">Clique aqui para entrar novamente.</a>
         </small>
     </div>
-{% endblock content %}
+{% endblock body %}

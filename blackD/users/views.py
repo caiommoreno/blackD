@@ -24,36 +24,36 @@ class UsersV(View):
                     login(request, user)
                     return redirect("home")
                 else:
-                    msg = 'Invalid credentials'
+                    msg = 'Dados de usuário ou senha incorretos.'
             else:
-                msg = 'Error validating the form'
+                msg = 'Erro ao validar o formulário.'
 
         return render(request, "users/login.html", {"form": form, "msg": msg})
 
     @staticmethod
     def register(request):
-        if request.method == 'POST':
+        msg = None
+        success = False
+
+        if request.method == "POST":
             form = UserRegisterForm(request.POST)
-            
-            if form.is_valid() :
-                newUser = form.save()
-                newUser = authenticate(username=form.cleaned_data['username'],
-                                    password=form.cleaned_data['password1'],
-                                    )
-                login(request, newUser)
-                
-                username = form.cleaned_data.get('username')
-                messages.success(request, f' welcome {username} Your account has been created! You can update your profile')
-                return redirect('login')
+            if form.is_valid():
+                form.save()
+                username = form.cleaned_data.get("username")
+                raw_password = form.cleaned_data.get("password1")
+                user = authenticate(username=username, password=raw_password)
+
+                success = True
+
+                # return redirect("/login/")
+
+            else:
+                msg = 'Erro ao registrar-se.'
         else:
             form = UserRegisterForm()
-            
-        context={
-        'form': form,
-        
-        }
-        return render(request, 'users/register.html', context)
-    
+
+        return render(request, "users/register.html", {"form": form, "msg": msg, "success": success})
+
     @staticmethod
     def register2(request, *args, **kwargs):
         if request.user.is_authenticated:

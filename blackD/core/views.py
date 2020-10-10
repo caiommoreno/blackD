@@ -78,8 +78,6 @@ def edit_product(request, pk):
             form = ProductForm(instance=item)
             return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Produtos'})
     else:
-
-
         message(request, f"You are not autharized to edit this item")        
 
         form = ProductForm(instance=item)
