@@ -1,48 +1,92 @@
 {% extends 'base.html' %}
-{% load static %}
 
-{% block body %}
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/addprod.css' %}"/>
 
-<div class="container">
-    <form action="." novalidate method="POST">
-        <fieldset align="center">
-            <legend> {{ header }}</legend>
+{% block content %}
+          <div class="container">
+            <div class="card mt-4 mt-lg-0">
+              <div class="card-header">
+                <h4 class="card-title">Editar venda</h4>
+              </div>
+              <div class="card-body">
+                <form id="validate-form">
+                  <div class="form-row">
+                    <div class="col-6">
+                      <div class="form-group has-label">
+                        <div>
+                          <label for="product">Produto</label>
+                        </div>
+                        <input
+                          id="product"
+                          name="product"
+                          class="form-control"
+                          type="text"
+                          required
+                          minlength="4"
+                          value="Camisa preta da banda Iron Maiden"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group has-label">
+                        <div>
+                          <label for="amount">Quantidade</label>
+                        </div>
+                        <input
+                          id="amount"
+                          name="amount"
+                          class="form-control"
+                          type="number"
+                          required
+                          min="1"
+                          value="2"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group has-label">
+                        <div>
+                          <label for="payment">Pagamento</label>
+                        </div>
+                        <input
+                          id="payment"
+                          name="payment"
+                          class="form-control"
+                          type="text"
+                          required
+                          value="Boleto"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group has-label">
+                        <div>
+                          <label for="tracking">Rastreamento</label>
+                        </div>
+                        <input
+                          id="tracking"
+                          name="tracking"
+                          class="form-control"
+                          type="text"
+                          required
+                          value="Despachado para a transportadora"
+                        />
+                      </div>
+                    </div>
+                  </div>
 
-            {% csrf_token %}
-            {% for field in form %}
-            <div class="input-block">
-                <label for="id_{{ field.name }}">{{ field.label }}</label>
-                {{ field }}
+                  <button type="submit" class="btn btn-info btn-round">
+                    Salvar
+                  </button>
+                  <a
+                    href="./sales.html"
+                    class="btn btn-default btn-round btn-simple"
+                  >
+                    Cancelar
+                  </a>
+                </form>
+              </div>
             </div>
-            {% endfor %}
-            <div class="saveprod">
-                <input type="submit" value="Editar" class="btnsave">
-                <button class="btncancel">Cancel</button>
-            </div>
-
-        </fieldset>
-    </form>
-</div>
-
-
-<style>
-    .alert{
-        padding: 0 15px;
-        margin-bottom: 1rem;
-        border: 1px solid transparent;
-        border-radius: .25rem;
-    }
-    .alert p {
-        padding: 7px 0 7px;
-    }
-
-    .alert.success {
-        color: #3c763d;
-        background-color: #dff0d8;
-        border-color: #d0e9c6
-    }
-
-</style>
+          </div>
+        </div>
 
 {% endblock %}
