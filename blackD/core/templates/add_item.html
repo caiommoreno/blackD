@@ -6,25 +6,25 @@
           <div class="container">
             <div class="card mt-4 mt-lg-0">
               <div class="card-header">
-                <h4 class="card-title">Adicionar novo produto</h4>
+                <h4 class="card-title">Adicionar novo {{ header }}</h4>
               </div>
               <div class="card-body">
                 <form id="validate-form">
                 {% csrf_token %}
                   <div class="form-row">
                     <div class="col-6">
+                    {% for field in form %}
                       <div class="form-group has-label">
-                        {% for field in form %}
-                        <div class="input-block">
+                        <div>
                             <label for="id_{{ field.name }}">{{ field.label }}</label>
-                            <input class="form-control" {{ field }}
+                            {{ field }}
                         </div>
-                        {% endfor %}
                       </div>
+                    {% endfor %}
                     </div>
                   </div>
 
-                <div class="saveprod">
+                <div>
                     <input type="submit" value="Salvar" class="btn btn-info btn-round">
                     <button class="btn btn-default btn-round btn-simple">Cancel</button>
                 </div>

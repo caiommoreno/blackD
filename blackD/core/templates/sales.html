@@ -2,11 +2,74 @@
 {% load static %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/products.css' %}"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 {% endblock stylesheets %}
 
 {% block body %}
+          <div class="container">
+            <h1 class="mt-4 mt-lg-0">Vendas</h1>
+
+            <section class="d-flex flex-column flex-sm-row align-items-sm-center">
+
+              <div class="d-flex align-items-center flex-grow-1 mr-sm-3">
+                <input class="form-control" type="text" id="myInput" placeholder="Procure por nome ou categoria." />
+              </div>
+
+              <a
+                href="{% url 'add_sales' %}"
+                class="btn btn-info btn-round mt-3 mt-sm-0 ml-auto"
+              >
+                Adicionar venda
+              </a>
+            </section>
+
+            <section>
+              <div class="table-responsive">
+                <table class="table table-shopping mt-5">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Data</th>
+                      <th>Cliente</th>
+                      <th>Total</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="myTable">
+                      {% for item in items %}
+                    <tr>
+                        <td>{{ item.pk }}</td>
+                        <td>{{ item.data }}</td>
+                        <td>{{ item.cliente }}</td>
+                        <td>R$ {{ item.total }}</td>
+                      <td>
+                        <div class="d-flex align-items center">
+                          <a
+                            href="{% url 'edit_sales' item.pk %}"
+                            class="btn btn-info btn-fab btn-icon btn-round"
+                          >
+                            <i class="tim-icons icon-pencil"></i>
+                          </a>
+                          <a
+                            href="{% url 'delete_sales' item.pk %}"
+                            class="btn btn-danger btn-fab btn-icon btn-round ml-2"
+                          >
+                            <i class="tim-icons icon-trash-simple"></i>
+                          </a>
+
+                        </div>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+
+{% endblock %}
+
+
 <div>
     <div class="procuracombutton">
         <div class="pesquisa">
@@ -59,6 +122,3 @@
       });
     });
 </script>
-
-
-{% endblock %}
