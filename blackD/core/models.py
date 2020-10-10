@@ -20,7 +20,7 @@ class Product(models.Model):
 
 
 class Sale(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     data = models.CharField(max_length=100, blank=False, )
     cliente = models.CharField(max_length=100, blank=False)
     total = models.CharField(max_length=100)
