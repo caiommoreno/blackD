@@ -1,37 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+{% extends "base.html" %}
 {% load static %}
 
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static './assets/img/logo.svg' %}" />
-    <link rel="icon" type="image/png" href="{% static './assets/img/logo.svg' %}" />
-    <title>Black Dashboard</title>
-    <!--     Fonts and icons     -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
-      rel="stylesheet"
-    />
-    <link
-      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
-      rel="stylesheet"
-    />
-    <!-- Nucleo Icons -->
-    <link href="{% static 'assets/css/nucleo-icons.css' %}" rel="stylesheet" />
-    <!-- CSS Files -->
-    <link href="{% static 'assets/css/black-dashboard.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/my-styles.css' %}" rel="stylesheet" />
+{% block sidebar %} {% endblock %}
+{% block navbar %} {% endblock %}
 
-    <!-- Specific Page CSS goes HERE  -->
-    {% block stylesheets %}{% endblock stylesheets %}
-  </head>
-
-<body>
-
+{% block body %}
 <div class="wrapper">
       <main
         class="main-panel d-flex align-items-center justify-content-center p-3 p-sm-4">
@@ -45,6 +18,7 @@
 
               {% csrf_token %}
               {{ form.non_field_errors }}
+
               <header class="card-header">
                 <h5 class="title">Cadastro</h5>
 
@@ -138,5 +112,4 @@
         </div>
       </main>
     </div>
-
-</body>
+{% endblock %}

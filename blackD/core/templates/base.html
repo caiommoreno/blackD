@@ -30,6 +30,7 @@
     <!-- Specific Page CSS goes HERE  -->
     {% block stylesheets %}{% endblock stylesheets %}
 
+
     <title>{% block title %}Gestao Black{% endblock %}</title>
 </head>
 
@@ -41,9 +42,10 @@
             <button class="dropbtn-prof"><i class="fas fa-user-circle" style="font-size:36px;"></i>
               <i class="fa fa-caret-down"></i>
 
+
   </head>
 
-
+{% block sidebar %}
   <body class="">
     <div class="wrapper">
       <aside class="sidebar">
@@ -86,9 +88,11 @@
           </ul>
         </div>
       </aside>
+    {% endblock %}
 
-      <main class="main-panel">
+        {% block navbar %}
         <!-- Navbar -->
+      <main class="main-panel">
         <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
           <div class="container-fluid">
             <div class="navbar-wrapper">
@@ -162,6 +166,7 @@
             </div>
           </div>
 
+
         </div>
         <div class="mt-5">
           {% if messages %}
@@ -191,8 +196,12 @@
         <a href="{% url 'display_sales' %}">Vendas</a>
         <a href="#about">Agenda</a>
     </div>
+
         </nav>
+      </main>
         <!-- End Navbar -->
+        {% endblock %}
+
     {% block body %}
 
     {% endblock %}

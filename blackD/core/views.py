@@ -74,8 +74,14 @@ def edit_product(request, pk):
             return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Produtos'})
     else:
 
+
         message(request, f"You are not autharized to edit this item")        
 
+        form = ProductForm(instance=item)
+        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Produtos'})
+
+
+        message(request, f"You are not autharized to edit this item")
         form = ProductForm(instance=item)
         return render(request, 'add_item.html', {'form': form, 'header': 'Editando Produtos'})
 
@@ -96,9 +102,15 @@ def edit_sales(request, pk):
             return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
     else:
 
+
         message(request, f"You are not autharized to edit this item") 
 
 
+        form = SaleForm(instance=item)
+        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Vendas'})
+
+
+        message(request, f"You are not autharized to edit this item")
         form = SaleForm(instance=item)
         return render(request, 'add_item.html', {'form': form, 'header': 'Editando Vendas'})
 
