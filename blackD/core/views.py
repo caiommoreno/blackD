@@ -31,12 +31,13 @@ def display_sales(request):
 def add_product(request):
     if request.method == 'POST':
         # form = ProductForm(request.POST)
-        user=request.user
+        user = request.user
         
-        nome=request.POST.get('nome')
-        categoria=request.POST.get('categoria')
-        preco_custo=request.POST.get('preco_custo')
-        preco_venda=request.POST.get('preco_venda')
+        nome = request.POST.get('nome')
+        categoria = request.POST.get('categoria')
+        preco_custo = request.POST.get('preco_custo')
+        preco_venda = request.POST.get('preco_venda')
+
         form = Product(user=user, nome=nome, categoria=categoria, preco_custo=preco_custo,preco_venda=preco_venda)        
         form.save()
         return redirect('display_products')
@@ -48,12 +49,16 @@ def add_product(request):
 @login_required
 def add_sales(request):
     if request.method == 'POST':
-        form = SaleForm(request.POST)
-        form.user = request.user
+        # form = ProductForm(request.POST)
+        user = request.user
 
-        if form.is_valid():
-            form.save()
-            return redirect('display_sales')
+        data = request.POST.get('data')
+        cliente = request.POST.get('cliente')
+        total = request.POST.get('total')
+
+        form = Sale(user=user, data=data, cliente=cliente, total=total)
+        form.save()
+        return redirect('display_sales')
 
     else:
         form = SaleForm()
