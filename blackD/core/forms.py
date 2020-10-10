@@ -5,12 +5,21 @@ from blackD.core.validator import validate_preco
 
 
 class ProductForm(forms.ModelForm):
-    nome = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}), label='Nome')
-    categoria = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}), label='Categoria')
-    preco_custo = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}),
-                                  label='Preço Custo',)
-    preco_venda = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}), label='Preço Venda',
-                                     )
+    nome = forms.CharField(label='Nome',
+                           widget=forms.TextInput(attrs={"placeholder": "Digite aqui",
+                                                         "class": "form-control"}))
+
+    categoria = forms.CharField(label='Categoria',
+                                widget=forms.TextInput(attrs={"placeholder": "Digite aqui",
+                                                              "class": "form-control"}))
+
+    preco_custo = forms.IntegerField(label='Preço de Custo',
+                                     widget=forms.NumberInput(attrs={"placeholder": "Digite aqui",
+                                                                     "class": "form-control"}))
+
+    preco_venda = forms.IntegerField(label='Preço de Venda',
+                                     widget=forms.NumberInput(attrs={"placeholder": "Digite aqui",
+                                                                     "class": "form-control"}))
 
     class Meta:
         model = Product
@@ -19,13 +28,21 @@ class ProductForm(forms.ModelForm):
         verbose_name_plural = 'produtos'
 
 
-
 class SaleForm(forms.ModelForm):
-    data = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}), label='Data')
-    cliente = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}),
-                                  label='Cliente',)
-    total = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}), label='Total',
-                                     )
+    data = forms.DateField(label='Data',
+                           widget=forms.DateInput(attrs={"placeholder": "Digite aqui",
+                                                           "class": "form-control"})
+                           )
+
+    cliente = forms.CharField(label='Cliente',
+                              widget=forms.NumberInput(attrs={"placeholder": "Digite aqui",
+                                                              "class": "form-control"})
+                              )
+
+    total = forms.IntegerField(label='Total',
+                               widget=forms.NumberInput(attrs={"placeholder": "Digite aqui",
+                                                               "class": "form-control"})
+                               )
 
     class Meta:
         model = Sale
