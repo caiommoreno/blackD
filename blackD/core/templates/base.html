@@ -160,7 +160,7 @@
 
 
       
-
+      {% block footjs %}
     <!--   Core JS Files   -->
     <script src="{% static './assets/js/core/jquery.min.js' %}"></script>
     <script src="{% static './assets/js/core/popper.min.js' %}"></script>
@@ -301,6 +301,7 @@
     </script>
 
     <script src="{% static './assets/js/dashboard-chart.js' %}"></script>
+    {% endblock footjs %}
 </body>
 </html>
 
