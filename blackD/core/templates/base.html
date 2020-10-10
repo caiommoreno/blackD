@@ -45,48 +45,21 @@
 
   </head>
 
-{% block sidebar %}
   <body class="">
     <div class="wrapper">
-      <aside class="sidebar">
-        <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-    -->
-        <div class="sidebar-wrapper">
-          <ul class="nav">
-            <li class="active">
-              <a href="{% url 'home' %}">
-                <i class="tim-icons icon-chart-pie-36"></i>
-                <p>Visão Geral</p>
-              </a>
-            </li>
-            <li>
-              <a data-toggle="collapse" href="#submenu" aria-expanded="false">
-                <i class="tim-icons icon-bullet-list-67"></i>
-                <p>Cadastros <b class="caret"></b></p>
-              </a>
 
-              <div id="submenu" class="collapse">
-                <ul class="list-unstyled">
-                  <li><a href="{% url 'display_products' %}">Produtos</a></li>
-                  <li><a href="#">Clientes/Fornecedores</a></li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <a href="{% static './sales.html' %}">
-                <i class="tim-icons icon-wallet-43"></i>
-                <p>Vendas</p>
-              </a>
-            </li>
-            <li>
-              <a href="{% static '#' %}">
-                <i class="tim-icons icon-single-02"></i>
-                <p>Agenda</p>
-              </a>
-            </li>
-          </ul>
+      {% include 'includes/sidebar.html' %}
+
+      <div class="main-panel">
+
+      {% include 'includes/navigation.html' %}
+
+        <div class="content">
+
+        {% block content %}{% endblock content %}
+
         </div>
+
       </aside>
     {% endblock %}
 
@@ -205,6 +178,12 @@
     {% block body %}
 
     {% endblock %}
+
+
+      </div>
+
+    </div>
+
     <!--   Core JS Files   -->
     <script src="{% static './assets/js/core/jquery.min.js' %}"></script>
     <script src="{% static './assets/js/core/popper.min.js' %}"></script>
