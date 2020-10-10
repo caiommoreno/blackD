@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 @login_required
 def home(request):
-    return render(request, 'dashboard.html')
+    return render(request, 'index.html')
 
 @login_required
 def display_products(request):
