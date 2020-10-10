@@ -11,7 +11,8 @@
     />
     <link rel="apple-touch-icon" sizes="76x76" href="{% static './assets/img/logo.svg' %}" />
     <link rel="icon" type="image/png" href="{% static './assets/img/logo.svg' %}" />
-    <title>Black Dashboard</title>
+
+    <title>{% block title %}Black Dashboard{% endblock title %}</title>
     <!--     Fonts and icons     -->
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
@@ -28,161 +29,137 @@
     <link href="{% static 'assets/css/my-styles.css' %}" rel="stylesheet" />
 
     <!-- Specific Page CSS goes HERE  -->
-    {% block stylesheets %}{% endblock stylesheets %}
-
-
-    <title>{% block title %}Gestao Black{% endblock %}</title>
+    {% block stylesheets %}{% endblock stylesheets %}    
 </head>
 
-<body>
-    
-        <div class="navbar">
-          <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/blackD_logo.svg' %}" alt="logo" width="40"></a>
-          <div class="dropdown-prof">
-            <button class="dropbtn-prof"><i class="fas fa-user-circle" style="font-size:36px;"></i>
-              <i class="fa fa-caret-down"></i>
-
-
-  </head>
-
-  <body class="">
-    <div class="wrapper">
-
-      {% include 'includes/sidebar.html' %}
-
-      <div class="main-panel">
-
-      {% include 'includes/navigation.html' %}
-
-        <div class="content">
-
-        {% block content %}{% endblock content %}
-
-        </div>
-
-      </aside>
-    {% endblock %}
-
-        {% block navbar %}
-        <!-- Navbar -->
-      <main class="main-panel">
-        <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
-          <div class="container-fluid">
-            <div class="navbar-wrapper">
-              <div class="navbar-toggle d-inline">
-                <button type="button" class="navbar-toggler">
-                  <span class="navbar-toggler-bar bar1"></span>
-                  <span class="navbar-toggler-bar bar2"></span>
-                  <span class="navbar-toggler-bar bar3"></span>
-                </button>
-              </div>
-              <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static './assets/img/logo.svg' %}" alt="Logomarca" id="logo" />
-              </a>
-            </div>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navigation"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-
-            </button>
-            <div class="collapse navbar-collapse" id="navigation">
-              <ul class="navbar-nav ml-auto">
-                <li class="dropdown nav-item">
-                  <a
-                    href="{% static '#' %}"
-                    class="dropdown-toggle nav-link"
-                    data-toggle="dropdown"
-                  >
-                    <div class="photo">
-                      <i
-                        class="fas fa-user-circle"
-                        style="font-size: 1.75rem"
-                      ></i>
-                    </div>
-                    <b class="caret d-none d-lg-block d-xl-block"></b>
-                  </a>
-                  <ul class="dropdown-menu dropdown-navbar">
-                    <li class="nav-link">
-                      <a
-                        href="{% url 'home' %}"
-                        class="nav-item dropdown-item"
-                      >
-                        Perfil
-                      </a>
-                    </li>
-                    <li class="nav-link">
-                      <a
-                        href="{% static 'javascript:void(0)' %}"
-                        class="nav-item dropdown-item"
-                      >
-                        Configurações
-                      </a>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="nav-link">
-                      <a href="{% static './login.html' %}" class="nav-item dropdown-item">
-                        Sair
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="separator d-lg-none"></li>
-              </ul>
-            </div>
-          </div>
-          {% endblock navbar %}
-
-        </div>
-        <div class="mt-5">
-          {% if messages %}
-            <center>
-              {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}" >
-                  <big>{{ message }}</big>
-                </div>
-              {% endfor %}
-            </center>
-          {% endif %}
-        </div>
-    {% block content %}
-    {% endblock content %}
-     
-
-    {% block sidebar %}
-    <div class="sidenav">
-        <a href="{% url 'home' %}">Visão Geral</a>
-        <button class="dropdown-btn">Cadastros
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-          <a href="{% url 'display_products' %}">Produtos</a>
-          <a href="#">Clientes/ <br>Fornecedores</a>
-        </div>
-        <a href="{% url 'display_sales' %}">Vendas</a>
-        <a href="#about">Agenda</a>
+<body>    
+  <div class="navbar">
+    <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/blackD_logo.svg' %}" alt="logo" width="40"></a>
+    <div class="dropdown-prof">
+      <button class="dropbtn-prof"><i class="fas fa-user-circle" style="font-size:36px;"></i>
+        <i class="fa fa-caret-down"></i>
+      </button>
     </div>
- {% endblock sidebar %}
-        </nav>
-      </main>
+  </div>    
+
+  <div class="wrapper">    
+      <!-- Navbar -->
+    <main class="main-panel">
+      {% block navbar %}
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle d-inline">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="{% url 'home' %}">
+              <img src="{% static './assets/img/logo.svg' %}" alt="Logomarca" id="logo" />
+            </a>
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navigation"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+
+          </button>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto">
+              <li class="dropdown nav-item">
+                <a
+                  href="{% static '#' %}"
+                  class="dropdown-toggle nav-link"
+                  data-toggle="dropdown"
+                >
+                  <div class="photo">
+                    <i
+                      class="fas fa-user-circle"
+                      style="font-size: 1.75rem"
+                    ></i>
+                  </div>
+                  <b class="caret d-none d-lg-block d-xl-block"></b>
+                </a>
+                <ul class="dropdown-menu dropdown-navbar">
+                  <li class="nav-link">
+                    <a
+                      href="{% url 'home' %}"
+                      class="nav-item dropdown-item"
+                    >
+                      Perfil
+                    </a>
+                  </li>
+                  <li class="nav-link">
+                    <a
+                      href="{% static 'javascript:void(0)' %}"
+                      class="nav-item dropdown-item"
+                    >
+                      Configurações
+                    </a>
+                  </li>
+                  <li class="dropdown-divider"></li>
+                  <li class="nav-link">
+                    <a href="{% static './login.html' %}" class="nav-item dropdown-item">
+                      Sair
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="separator d-lg-none"></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      {% endblock navbar %}
+
+        
+      <div class="mt-5">
+        {% if messages %}
+          <center>
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}" >
+                <big>{{ message }}</big>
+              </div>
+            {% endfor %}
+          </center>
+        {% endif %}
+      </div>
+      {% block body %}
+      {% endblock body %}
+       
+
+      {% block sidebar %}
+      <div class="sidenav">
+          <a href="{% url 'home' %}">Visão Geral</a>
+          <button class="dropdown-btn">Cadastros
+              <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="{% url 'display_products' %}">Produtos</a>
+            <a href="#">Clientes/ <br>Fornecedores</a>
+          </div>
+          <a href="{% url 'display_sales' %}">Vendas</a>
+          <a href="#about">Agenda</a>
+      </div>
+      {% endblock sidebar %}          
+    </main>
+  </div>
         <!-- End Navbar -->
        
 
-    {% block body %}
-
-    {% endblock %}
+    
 
 
-      </div>
-
-    </div>
+      
 
     <!--   Core JS Files   -->
     <script src="{% static './assets/js/core/jquery.min.js' %}"></script>
