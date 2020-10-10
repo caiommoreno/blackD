@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 {% load static %}
@@ -32,13 +31,18 @@
   </head>
 
   <body class="">
-    <div class="wrapper">
 
+      {% block sidebar %}
+      <div class="wrapper">
       {% include 'includes/sidebar.html' %}
 
-      <div class="main-panel">
+      {% endblock %}
 
-      {% include 'includes/navigation.html' %}
+        {% block navbar %}
+        <div class="main-panel">
+        {% include 'includes/navigation.html' %}
+
+        {% endblock %}
 
         <div class="content">
 
