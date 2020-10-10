@@ -2,9 +2,6 @@
 {% load static %}
 
 {% block body %}
-
-<div class="wrapper">
-     <main class="main-panel">
         <div class="content">
           <div class="container">
             <div class="card mt-4 mt-lg-0">
@@ -36,30 +33,20 @@
             </div>
           </div>
         </div>
-     </main>
-</div>
-
 {% endblock %}
 
-
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/addprod.css' %}"/>
-
-<div class="container ml-5">
+<div class="container">
     <form action="." novalidate method="POST">
         <fieldset align="center">
             <legend>{{ header }}</legend>
+
             {% csrf_token %}
+            {% for field in form %}
             <div class="input-block">
-                <label>Nome</label>
-                <input type="text" name="nome"><br>
-                <label>Categoria</label>
-                <input type="text" name="categoria"><br>
-                <label>preco_custo</label>
-                <input type="text" name="preco_custo"><br>
-                <label>preco_venda</label>
-                <input type="text" name="preco_venda"><br>
+                <label for="id_{{ field.name }}">{{ field.label }}</label>
+                {{ field }}
             </div>
-            
+            {% endfor %}
             <div class="saveprod">
                 <input type="submit" value="Salvar" class="btnsave">
                 <button class="btncancel">Cancel</button>
@@ -68,28 +55,3 @@
         </fieldset>
     </form>
 </div>
-                 <input type="submit" class="btn btn-info btn-round">
-                    Salvar
-                  </input>
-                  <button class="btn btn-default btn-round btn-simple">
-                    Cancelar
-                  </button>
-
-<style>
-    .alert{
-        padding: 0 15px;
-        margin-bottom: 1rem;
-        border: 1px solid transparent;
-        border-radius: .25rem;
-    }
-    .alert p {
-        padding: 7px 0 7px;
-    }
-
-    .alert.success {
-        color: #3c763d;
-        background-color: #dff0d8;
-        border-color: #d0e9c6
-    }
-
-</style>
