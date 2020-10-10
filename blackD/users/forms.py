@@ -52,3 +52,18 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image', 'sex']
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Usuario', widget=forms.TextInput(
+            attrs={
+                "placeholder" : "Digite aqui",
+                "class": "form-control"
+            }
+        ))
+    password = forms.CharField(label='Senha', widget=forms.PasswordInput(
+            attrs={
+                "placeholder" : "Digite aqui",
+                "class": "form-control"
+            }
+        ))

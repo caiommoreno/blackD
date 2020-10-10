@@ -1,49 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+{% extends "base.html" %}
 {% load static %}
 
-<head>
-  <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-  <link rel="apple-touch-icon" sizes="76x76" href="{% static './assets/img/logo.svg' %}" />
-  <link rel="icon" type="image/png" href="{% static './assets/img/logo.svg' %}" />
-  <title>Black Dashboard</title>
-  <!--     Fonts and icons     -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
-    rel="stylesheet"
-  />
-  <link
-    href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
-    rel="stylesheet"
-  />
-  <!-- Nucleo Icons -->
-  <link href="{% static 'assets/css/nucleo-icons.css' %}" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link href="{% static 'assets/css/black-dashboard.css' %}" rel="stylesheet" />
-  <link href="{% static 'assets/css/my-styles.css' %}" rel="stylesheet" />
+{% load crispy_forms_tags %}
 
-  <!-- Specific Page CSS goes HERE  -->
-  {% block stylesheets %}{% endblock stylesheets %}
-</head>
+{% block sidebar %} {% endblock %}
+{% block navbar %} {% endblock %}
 
-
-
-<body>
+{% block body %}
     <div class="wrapper">
       <main
-        class="main-panel d-flex align-items-center justify-content-center p-3 p-sm-4"
-      >
+        class="main-panel d-flex align-items-center justify-content-center p-3 p-sm-4">
         <div class="container mx-0">
           <div class="card">
-            <form  role="form"
-                   method="post"
-                   novalidate
-                   id="validate-form">
+            <form
+              role="form"
+              method="post"
+              novalidate
+              id="validate-form">
               {% csrf_token %}
+              {{ form.non_field_errors }}
+
               <header class="card-header">
                 <h5 class="title">Login</h5>
               </header>
@@ -59,27 +35,20 @@
                     </div>
                   </div>
                 </div>
-                <span class="text-danger"></span>
+                <span class="text-danger">{{ form.username.errors }}</span>
 
                 <div class="row">
                   <div class="col-md-6 col-lg-5 col-xl-4">
                     <div class="form-group has-label">
                       <div>
-                        <label for="id_password1">Senha</label>
+                        <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                        {{ form.password }}
                       </div>
-                      <input
-                        type="password"
-                        name="password1"
-                        placeholder="Senha"
-                        class="form-control"
-                        required
-                        id="id_password1"
-                      />
                     </div>
                   </div>
                 </div>
-                <span class="text-danger"></span>
-              </div>
+                <span class="text-danger">{{ form.username.errors }}</span>
+
 
               <footer class="card-footer">
                 <div
@@ -106,5 +75,4 @@
         </div>
       </main>
     </div>
-
-</body>
+{% endblock %}
