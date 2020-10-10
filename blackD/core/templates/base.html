@@ -31,133 +31,24 @@
     {% block stylesheets %}{% endblock stylesheets %}
   </head>
 
-{% block sidebar %}
   <body class="">
     <div class="wrapper">
-      <aside class="sidebar">
-        <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-    -->
-        <div class="sidebar-wrapper">
-          <ul class="nav">
-            <li class="active">
-              <a href="{% url 'home' %}">
-                <i class="tim-icons icon-chart-pie-36"></i>
-                <p>Visão Geral</p>
-              </a>
-            </li>
-            <li>
-              <a data-toggle="collapse" href="#submenu" aria-expanded="false">
-                <i class="tim-icons icon-bullet-list-67"></i>
-                <p>Cadastros <b class="caret"></b></p>
-              </a>
 
-              <div id="submenu" class="collapse">
-                <ul class="list-unstyled">
-                  <li><a href="{% url 'display_products' %}">Produtos</a></li>
-                  <li><a href="#">Clientes/Fornecedores</a></li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <a href="{% static './sales.html' %}">
-                <i class="tim-icons icon-wallet-43"></i>
-                <p>Vendas</p>
-              </a>
-            </li>
-            <li>
-              <a href="{% static '#' %}">
-                <i class="tim-icons icon-single-02"></i>
-                <p>Agenda</p>
-              </a>
-            </li>
-          </ul>
+      {% include 'includes/sidebar.html' %}
+
+      <div class="main-panel">
+
+      {% include 'includes/navigation.html' %}
+
+        <div class="content">
+
+        {% block content %}{% endblock content %}
+
         </div>
-      </aside>
-    {% endblock %}
 
-        {% block navbar %}
-        <!-- Navbar -->
-      <main class="main-panel">
-        <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
-          <div class="container-fluid">
-            <div class="navbar-wrapper">
-              <div class="navbar-toggle d-inline">
-                <button type="button" class="navbar-toggler">
-                  <span class="navbar-toggler-bar bar1"></span>
-                  <span class="navbar-toggler-bar bar2"></span>
-                  <span class="navbar-toggler-bar bar3"></span>
-                </button>
-              </div>
-              <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static './assets/img/logo.svg' %}" alt="Logomarca" id="logo" />
-              </a>
-            </div>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navigation"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navigation">
-              <ul class="navbar-nav ml-auto">
-                <li class="dropdown nav-item">
-                  <a
-                    href="{% static '#' %}"
-                    class="dropdown-toggle nav-link"
-                    data-toggle="dropdown"
-                  >
-                    <div class="photo">
-                      <i
-                        class="fas fa-user-circle"
-                        style="font-size: 1.75rem"
-                      ></i>
-                    </div>
-                    <b class="caret d-none d-lg-block d-xl-block"></b>
-                  </a>
-                  <ul class="dropdown-menu dropdown-navbar">
-                    <li class="nav-link">
-                      <a
-                        href="{% url 'home' %}"
-                        class="nav-item dropdown-item"
-                      >
-                        Perfil
-                      </a>
-                    </li>
-                    <li class="nav-link">
-                      <a
-                        href="{% static 'javascript:void(0)' %}"
-                        class="nav-item dropdown-item"
-                      >
-                        Configurações
-                      </a>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="nav-link">
-                      <a href="{% static './login.html' %}" class="nav-item dropdown-item">
-                        Sair
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="separator d-lg-none"></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </main>
-        <!-- End Navbar -->
-        {% endblock %}
+      </div>
 
-    {% block body %}
-
-    {% endblock %}
+    </div>
     <!--   Core JS Files   -->
     <script src="{% static './assets/js/core/jquery.min.js' %}"></script>
     <script src="{% static './assets/js/core/popper.min.js' %}"></script>
