@@ -11,7 +11,7 @@ from django.contrib import messages
 def home(request):
     sales = Sale.objects.all()
     products = product.objects.all()
-    
+
     return render(request, 'index.html')
 
 
@@ -129,7 +129,7 @@ def edit_sales(request, pk):
                     form.save()
                     return redirect('display_sales')
                 except:
-                    pass
+                    messages.warning(request, f'something is wrong')
             else:
                 return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
         else:
