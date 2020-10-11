@@ -35,6 +35,15 @@ def display_products(request):
 def display_sales(request):
     usr = request.user
     items = Sale.objects.filter(user=usr)
+    if request.method == 'POST':
+        if request.POST.get('delete') == '':
+            pk = request.POST.get('pk')
+            sl = Sales.objects.filter(id=pk)
+            slUser = request.POST.get('slUser')
+            if usr.username == slUser:
+                Sales.objects.filter(id=pk).delete()
+            else:
+                messages.warning(request, f"You are not autharized to delete this item")
     context = {
         'items': items,
     }
