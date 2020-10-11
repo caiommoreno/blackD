@@ -145,7 +145,23 @@ def delete_sales(request, pk):
     if usr == sl.user:
         Sale.objects.filter(id=pk).delete()
     else:
-        message(request, f"You are not autharized to delete this item")
+        messages.warning(request, f"You are not autharized to delete this item")
+
+    items = Sale.objects.all()
+
+    context = {
+        'items': items
+    }
+    return render(request, 'sales.html', context)
+
+@login_required
+def delete_product(request, pk):
+    usr = request.user
+    sl = Product.objects.filter(id=pk)
+    if usr == sl.user:
+        Product.objects.filter(id=pk).delete()
+    else:
+        messages.warning(request, f"You are not autharized to delete this item")
 
     items = Sale.objects.all()
 

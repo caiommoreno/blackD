@@ -18,7 +18,8 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
-from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_sales, delete_sales
+from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_sales, delete_sales, \
+    edit_product, delete_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,8 +27,8 @@ urlpatterns = [
     #path('', include("blackD.authentication.urls")),
     path('products/', display_products, name='display_products'),
     path('add_products/', add_product, name='add_product'),
-    # path('edit_products/<int:pk>/', edit_product, name='edit_product'),
-    # path('delete_products/<int:pk>/', delete_product, name='delete_product'),
+    path('edit_products/<int:pk>/', edit_product, name='edit_product'),
+    path('delete_products/<int:pk>/', delete_product, name='delete_product'),
     path('sales/', display_sales, name='display_sales'),
     path('add_sales/', add_sales, name='add_sales'),
     path('edit_sales/<int:pk>/', edit_sales, name='edit_sales'),
