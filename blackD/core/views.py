@@ -5,9 +5,11 @@ from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale
 from django.contrib.auth.models import User
 
+
 @login_required
 def home(request):
     return render(request, 'index.html')
+
 
 @login_required
 def display_products(request):
@@ -18,6 +20,7 @@ def display_products(request):
     }
     return render(request, 'products.html', context)
 
+
 @login_required
 def display_sales(request):
     usr = request.user
@@ -27,24 +30,26 @@ def display_sales(request):
     }
     return render(request, 'sales.html', context)
 
+
 @login_required
 def add_product(request):
     if request.method == 'POST':
         # form = ProductForm(request.POST)
         user = request.user
-        
+
         nome = request.POST.get('nome')
         categoria = request.POST.get('categoria')
         preco_custo = request.POST.get('preco_custo')
         preco_venda = request.POST.get('preco_venda')
 
-        form = Product(user=user, nome=nome, categoria=categoria, preco_custo=preco_custo,preco_venda=preco_venda)        
+        form = Product(user=user, nome=nome, categoria=categoria, preco_custo=preco_custo, preco_venda=preco_venda)
         form.save()
         return redirect('display_products')
 
     else:
         form = ProductForm()
         return render(request, 'add_item.html', {'form': form, 'header': 'Adicionar Produtos'})
+
 
 @login_required
 def add_sales(request):
@@ -64,29 +69,25 @@ def add_sales(request):
         form = SaleForm()
         return render(request, 'add_item.html', {'form': form, 'header': 'Adicionar Vendas'})
 
+
 @login_required
 def edit_product(request, pk):
     item = get_object_or_404(Product, pk=pk)
     usr = request.user
     if item.user == usr:
         if request.method == 'POST':
-            form = ProductForm(request.POST, instance = item)
+            form = ProductForm(request.POST, instance=item)
             if form.is_valid():
-                form.save()
-                return redirect('display_products')
+                try:
+                    form.save()
+                    return redirect('display_products')
+                except:
+                    pass
+            else:
+                return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Produtos'})
         else:
             form = ProductForm(instance=item)
             return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Produtos'})
-    else:
-        message(request, f"You are not autharized to edit this item")        
-
-        form = ProductForm(instance=item)
-        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Produtos'})
-
-
-        message(request, f"You are not autharized to edit this item")
-        form = ProductForm(instance=item)
-        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Produtos'})
 
 
 @login_required
@@ -97,25 +98,16 @@ def edit_sales(request, pk):
         if request.method == 'POST':
             form = SaleForm(request.POST, instance=item)
             if form.is_valid():
-                form.save()
-                return redirect('display_sales')
-
+                try:
+                    form.save()
+                    return redirect('display_sales')
+                except:
+                    pass
+            else:
+                return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
         else:
             form = SaleForm(instance=item)
             return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
-    else:
-
-
-        message(request, f"You are not autharized to edit this item") 
-
-
-        form = SaleForm(instance=item)
-        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Vendas'})
-
-
-        message(request, f"You are not autharized to edit this item")
-        form = SaleForm(instance=item)
-        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Vendas'})
 
 
 @login_required
@@ -134,6 +126,7 @@ def delete_product(request, pk):
     }
     return render(request, 'products.html', context)
 
+
 @login_required
 def delete_sales(request, pk):
     usr = request.user
@@ -142,7 +135,6 @@ def delete_sales(request, pk):
         Sale.objects.filter(id=pk).delete()
     else:
         message(request, f"You are not autharized to delete this item")
-    
 
     items = Sale.objects.all()
 
