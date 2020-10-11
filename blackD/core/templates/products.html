@@ -46,22 +46,24 @@
                         <td>{{ item.categoria }}</td>
                         <td>R$ {{ item.preco_custo }}</td>
                         <td>R$ {{ item.preco_venda }}</td>
+                        <td>{{ item.user }}</td>
+                        <td>{{ user }}</td>
                       <td>
-                        <div class="d-flex align-items center">
-                          <a
-                            href="{% url 'edit_product' item.pk %}"
-                            class="btn btn-info btn-fab btn-icon btn-round"
-                          >
-                            <i class="tim-icons icon-pencil"></i>
-                          </a>
-                          <a
-                            href="{% url 'delete_product' item.pk %}"
-                            class="btn btn-danger btn-fab btn-icon btn-round ml-2"
-                          >
-                            <i class="tim-icons icon-trash-simple"></i>
-                          </a>
+                        <form method="POST">
+                          {% csrf_token %}
+                          <input type="text" name="pk" value="{{ item.pk }}" hidden>
+                          <input type="text" name="prodUser" value="{{ item.user }}" hidden>
+                          <div class="d-flex align-items center">
+                            <button class="btn btn-info btn-fab btn-icon btn-round" name="edit" id="edit" type="submit">
+                              <i class="tim-icons icon-pencil"></i>
+                            </button> 
+                              
+                            <button class="btn btn-danger btn-fab btn-icon btn-round ml-2" name="delete" id="delete" type="submit">
+                              <i class="tim-icons icon-trash-simple"></i>
+                            </button>
 
-                        </div>
+                          </div>
+                        </form>
                       </td>
                     </tr>
                   {% endfor %}
@@ -81,6 +83,6 @@
       });
     });
 </script>
-{% endblock %}
+{% endblock body %}
 
 

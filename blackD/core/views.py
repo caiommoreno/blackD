@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 @login_required
 def home(request):
@@ -13,10 +14,24 @@ def home(request):
 def display_products(request):
     usr = request.user
     items = Product.objects.filter(user=usr)
+    if request.method == 'POST':
+        if request.POST.get('edit') == '':
+            return render(request, 'edit_item.html')
+        elif request.POST.get('delete') == '':
+            pk = request.POST.get('pk')
+            prod = Product.objects.filter(id=pk)
+            prodUser = request.POST.get('prodUser')
+            if usr.username == prodUser:
+                Product.objects.filter(id=pk).delete()
+            else:
+                messages.warning(request, f"You are not autharized to delete this item")
+
     context = {
         'items': items,
     }
     return render(request, 'products.html', context)
+
+
 
 @login_required
 def display_sales(request):
@@ -32,7 +47,6 @@ def add_product(request):
     if request.method == 'POST':
         # form = ProductForm(request.POST)
         user = request.user
-        
         nome = request.POST.get('nome')
         categoria = request.POST.get('categoria')
         preco_custo = request.POST.get('preco_custo')
@@ -78,15 +92,11 @@ def edit_product(request, pk):
             form = ProductForm(instance=item)
             return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Produtos'})
     else:
-        message(request, f"You are not autharized to edit this item")        
+        messages.warning(request, f"You are not autharized to edit this item")        
 
         form = ProductForm(instance=item)
         return render(request, 'add_item.html', {'form': form, 'header': 'Editando Produtos'})
 
-
-        message(request, f"You are not autharized to edit this item")
-        form = ProductForm(instance=item)
-        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Produtos'})
 
 
 @login_required
@@ -106,33 +116,14 @@ def edit_sales(request, pk):
     else:
 
 
-        message(request, f"You are not autharized to edit this item") 
+        messages.warning(request, f"You are not autharized to edit this item") 
 
 
         form = SaleForm(instance=item)
         return render(request, 'add_item.html', {'form': form, 'header': 'Editando Vendas'})
 
 
-        message(request, f"You are not autharized to edit this item")
-        form = SaleForm(instance=item)
-        return render(request, 'add_item.html', {'form': form, 'header': 'Editando Vendas'})
 
-
-@login_required
-def delete_product(request, pk):
-    usr = request.user
-    prod = Product.objects.filter(id=pk)
-    if usr == prod.user:
-        Product.objects.filter(id=pk).delete()
-    else:
-        message(request, f"You are not autharized to delete this item")
-
-    items = Product.objects.all()
-
-    context = {
-        'items': items
-    }
-    return render(request, 'products.html', context)
 
 @login_required
 def delete_sales(request, pk):
@@ -141,7 +132,7 @@ def delete_sales(request, pk):
     if usr == sl.user:
         Sale.objects.filter(id=pk).delete()
     else:
-        message(request, f"You are not autharized to delete this item")
+        messages.warning(request, f"You are not autharized to delete this item")
     
 
     items = Sale.objects.all()
