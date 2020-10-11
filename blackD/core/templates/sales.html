@@ -46,7 +46,7 @@
                          <form method="POST">
                           {% csrf_token %}
                           <input type="text" name="pk" value="{{ item.pk }}" hidden>
-                          <input type="text" name="prodUser" value="{{ item.user }}" hidden>
+                          <input type="text" name="slUser" value="{{ item.user }}" hidden>
                           <div class="d-flex align-items center">
                             <a
                               href="{% url 'edit_sales' item.pk %}"
