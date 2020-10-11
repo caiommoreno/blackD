@@ -1,8 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+
 {% block body %}
-<link rel="stylesheet" type="text/css" href="{% static 'assets/css/addprod.css' %}"/>
+
+       <div class="content">
+          <div class="container">
+            <div class="card mt-4 mt-lg-0">
+              <div class="card-header">
+                <h4 class="card-title">{{ header }}</h4>
+              </div>
+              <div class="card-body">
+                <form id="validate-form" action="." novalidate method="POST">
+                {% csrf_token %}
+                  <div class="form-row">
+                    <div class="col-6">
+                    {% for field in form %}
+                      <div class="form-group has-label">
+                        <div>
+                            <label for="id_{{ field.name }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                      </div>
+                    {% endfor %}
+                    </div>
+                  </div>
+
+                <div>
+                    <input type="submit" value="Salvar" class="btn btn-info btn-round">
+                    <button class="btn btn-default btn-round btn-simple">Cancel</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
+
+
 
 <div class="container">
     <form action="." novalidate method="POST">
@@ -24,6 +61,3 @@
         </fieldset>
     </form>
 </div>
-
-
-{% endblock %}

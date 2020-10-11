@@ -35,7 +35,7 @@ class SaleForm(forms.ModelForm):
                            )
 
     cliente = forms.CharField(label='Cliente',
-                              widget=forms.NumberInput(attrs={"placeholder": "Digite aqui",
+                              widget=forms.TextInput(attrs={"placeholder": "Digite aqui",
                                                               "class": "form-control"})
                               )
 
