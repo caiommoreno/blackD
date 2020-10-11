@@ -38,7 +38,7 @@ def display_sales(request):
     if request.method == 'POST':
         if request.POST.get('delete') == '':
             pk = request.POST.get('pk')
-            sl = Sales.objects.filter(id=pk)
+            sl = Sale.objects.filter(id=pk)
             slUser = request.POST.get('slUser')
             if usr.username == slUser:
                 Sales.objects.filter(id=pk).delete()
