@@ -17,9 +17,9 @@ def display_products(request):
     usr = request.user
     items = Product.objects.filter(user=usr)
     if request.method == 'POST':
-        if request.POST.get('edit') == '':
-            return render(request, 'edit_item.html')
-        elif request.POST.get('delete') == '':
+        # if request.POST.get('edit') == '':
+        #     return render(request, 'edit_item.html')
+        if request.POST.get('delete') == '':
             pk = request.POST.get('pk')
             prod = Product.objects.filter(id=pk)
             prodUser = request.POST.get('prodUser')
