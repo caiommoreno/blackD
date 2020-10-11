@@ -30,14 +30,15 @@ class ProductForm(forms.ModelForm):
 
 class SaleForm(forms.ModelForm):
     data = forms.DateField(label='Data',
-                           widget=forms.DateInput(attrs={"placeholder": "Digite aqui ",
-                                                           "class": "form-control"}),
-                            input_formats='%d/%m/%Y'
+                           widget=forms.DateInput(format='%d/%m/%Y', attrs={"placeholder": "Digite aqui ",
+                                                                            "class": "form-control"}),
+
+                           input_formats=['%d/%m/%Y', ]
                            )
 
     cliente = forms.CharField(label='Cliente',
                               widget=forms.TextInput(attrs={"placeholder": "Digite aqui",
-                                                              "class": "form-control"})
+                                                            "class": "form-control"})
                               )
 
     total = forms.IntegerField(label='Total',
