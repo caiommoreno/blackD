@@ -45,7 +45,17 @@
           {% endblock %}
 
             <div class="content">
-
+              <div class="mt-5">
+                {% if messages %}
+                  <center>
+                    {% for message in messages %}
+                      <div class="alert alert-{{ message.tags }}" >
+                        <big>{{ message }}</big>
+                      </div>
+                    {% endfor %}
+                  </center>
+                {% endif %}
+              </div>
             {% block body %}{% endblock %}
 
             </div>
