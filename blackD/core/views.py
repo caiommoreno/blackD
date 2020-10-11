@@ -9,6 +9,9 @@ from django.contrib import messages
 
 @login_required
 def home(request):
+    sales = Sale.objects.all()
+    products = product.objects.all()
+
     return render(request, 'index.html')
 
 
@@ -122,11 +125,9 @@ def edit_sales(request, pk):
         if request.method == 'POST':
             form = SaleForm(request.POST, instance=item)
             if form.is_valid():
-                try:
-                    form.save()
-                    return redirect('display_sales')
-                except:
-                    pass
+                form.save()
+                return redirect('display_sales')
+               
             else:
                 return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
         else:
