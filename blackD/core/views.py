@@ -18,7 +18,7 @@ def display_products(request):
     items = Product.objects.filter(user=usr)
     if request.method == 'POST':
         if request.POST.get('edit') == '':
-            return render(request, 'edit_item.html')
+            return redirect(request, 'edit_item.html')
         elif request.POST.get('delete') == '':
             pk = request.POST.get('pk')
             prod = Product.objects.filter(id=pk)
