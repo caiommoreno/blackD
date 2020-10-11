@@ -30,8 +30,8 @@ class ProductForm(forms.ModelForm):
 
 class SaleForm(forms.ModelForm):
     data = forms.DateField(label='Data',
-                           widget=forms.DateInput(attrs={"placeholder": "Digite aqui YY-MM-DD",
-                                                           "class": "form-control"})
+                           widget=forms.DateInput(attrs={"placeholder": "Digite aqui ",
+                                                           "class": "form-control"}, input_formats='%d/%m/%Y')
                            )
 
     cliente = forms.CharField(label='Cliente',
