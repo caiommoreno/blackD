@@ -52,9 +52,9 @@
                           <input type="text" name="pk" value="{{ item.pk }}" hidden>
                           <input type="text" name="prodUser" value="{{ item.user }}" hidden>
                           <div class="d-flex align-items center">
-                            <button class="btn btn-info btn-fab btn-icon btn-round" name="edit" id="edit" type="submit"><a href="{% url 'edit_product' item.pk %}"></a>
+                            <a class="btn btn-info btn-fab btn-icon btn-round" name="edit" id="edit" type="submit" href="{% url 'edit_product' item.pk %}">
                               <i class="tim-icons icon-pencil"></i>
-                            </button> 
+                            </a> 
                               
                             <button class="btn btn-danger btn-fab btn-icon btn-round ml-2" name="delete" id="delete" type="submit">
                               <i class="tim-icons icon-trash-simple"></i>
