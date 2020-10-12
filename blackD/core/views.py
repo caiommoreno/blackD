@@ -19,7 +19,7 @@ def home(request):
     context = {
         'sales':sales,
         'products':products,
-        'totals':saleTot,
+        'saleTot':saleTot,
     }
 
     return render(request, 'index.html', context)
