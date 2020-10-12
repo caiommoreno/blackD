@@ -19,7 +19,11 @@ def home(request):
     except:
         pass
 
-    saleAvg = saleTot/sales.count()
+    saleAvg = 0
+    try:    
+        saleAvg = saleTot/sales.count()
+    except:
+        pass
 
     years = []
     try:
