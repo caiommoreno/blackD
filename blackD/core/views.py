@@ -129,7 +129,7 @@ def edit_sales(request, pk):
                     form.save()
                     return redirect('display_sales')
                 except:
-                    messages.warning(request, f'something is wrong')
+                    messages.warning(request, f"something is wrong")
             else:
                 return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
         else:
