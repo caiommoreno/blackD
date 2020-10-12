@@ -116,12 +116,12 @@ USE_L10N = False
 
 USE_TZ = True
 
-DATE_INPUT_FORMATS = (
+DATE_INPUT_FORMATS = [
     '%d.%m.%Y', '%d.%m.%Y', '%d.%m.%y',  # '25.10.2006', '25.10.2006', '25.10.06'
     '%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y',  # '25-10-2006', '25/10/2006', '25/10/06'
     '%d %b %Y',  # '25 Oct 2006', 
     '%d %B %Y',  # '25 October 2006', 
-)
+]
 
 DATE_FORMAT = 'j F Y'
 TIME_FORMAT = 'H:i'
