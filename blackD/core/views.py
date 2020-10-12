@@ -25,7 +25,7 @@ def home(request):
     try:
         for sale in sales:
             date = sale.data
-            year=date.split('/')[2]
+            year=date.split('/')[-1]
             years.append(year)
     except:
         pass
@@ -36,7 +36,7 @@ def home(request):
         'saleTot':saleTot,
         'saleAvg': saleAvg,
         'years':years,
-        
+
     }
 
     return render(request, 'index.html', context)
