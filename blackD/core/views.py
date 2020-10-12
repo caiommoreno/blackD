@@ -18,7 +18,7 @@ def home(request):
             saleTot = saleTot + sale.total 
     except:
         pass
-    saleAvg = saleTot/sales.count()
+    saleAvg = saleTot*sales.count()/100
 
     context = {
         'sales':sales,
