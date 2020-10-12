@@ -29,7 +29,7 @@ def home(request):
     try:
         for sale in sales:
             date = sale.data
-            year=date.split('/')[-1]
+            year=date.year
             years.append(year)
     except:
         pass
@@ -38,7 +38,7 @@ def home(request):
     try:
         for sale in sales:
             date = sale.data
-            month=date.split('-')[1]
+            month=date.month
             months.append(month)
     except:
         pass
