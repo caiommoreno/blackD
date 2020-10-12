@@ -23,7 +23,7 @@ class Sale(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     data = models.CharField(max_length=100, blank=False, )
     cliente = models.CharField(max_length=100, blank=False)
-    total = models.CharField(max_length=100)
+    total = models.IntField(max_length=100)
 
     def __str__(self):
         return self.cliente
