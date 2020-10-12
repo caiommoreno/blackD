@@ -1,10 +1,13 @@
-# from django.test import TestCase
-#
-#
-# # Create your tests here.
-# from blackD.core.forms import ProductForm
-#
-#
+from django.test import TestCase
+from blackD.core.forms import ProductForm, SaleForm
+
+
+class MyTests(TestCase):
+    def test_forms(self):
+        form = SaleForm()
+        expected = ['data', 'cliente', 'total']
+        self.assertSequenceEqual(expected, list(form.fields))
+
 # class HomeTest(TestCase):
 #     def setUp(self):
 #         self.response = self.client.get('/')

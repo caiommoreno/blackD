@@ -125,6 +125,7 @@ def edit_sales(request, pk):
         if request.method == 'POST':
             form = SaleForm(request.POST, instance=item)
             if form.is_valid():
+
                 try:
                     form.save()
                     return redirect('display_sales')
@@ -132,16 +133,16 @@ def edit_sales(request, pk):
                     messages.warning(request, f"something is wrong")
             else:
                 return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
+
+                form.save()
+                return redirect('display_sales')
+
         else:
             form = SaleForm(instance=item)
             return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
 
     else:
-
-
-        messages.warning(request, f"You are not autharized to edit this item") 
-
-
+        messages.warning(request, f"You are not autharized to edit this item")
         form = SaleForm(instance=item)
         return render(request, 'add_item.html', {'form': form, 'header': 'Editando Vendas'})
 

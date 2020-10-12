@@ -34,24 +34,3 @@
           </div>
         </div>
 {% endblock %}
-
-<div class="container">
-    <form action="." novalidate method="POST">
-        <fieldset align="center">
-            <legend>{{ header }}</legend>
-
-            {% csrf_token %}
-            {% for field in form %}
-            <div class="input-block">
-                <label for="id_{{ field.name }}">{{ field.label }}</label>
-                {{ field }}
-            </div>
-            {% endfor %}
-            <div class="saveprod">
-                <input type="submit" value="Salvar" class="btnsave">
-                <button class="btncancel">Cancel</button>
-            </div>
-
-        </fieldset>
-    </form>
-</div>
