@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from blackD.core.models import Product, Sale
 from blackD.core.validator import validate_preco
 from django.conf import settings
-
-
 class ProductForm(forms.ModelForm):
     nome = forms.CharField(label='Nome',
                            widget=forms.TextInput(attrs={"placeholder": "Digite aqui",
@@ -31,9 +29,9 @@ class ProductForm(forms.ModelForm):
 
 class SaleForm(forms.ModelForm):
     data = forms.DateField(label='Data',
+                          input_formats=settings.DATE_INPUT_FORMATS,
                           widget=forms.DateInput(format = '%d/%m/%Y', attrs={"placeholder": "D/M/Y",
-                                                                     s       "class": "form-control"}),
-                            input_format=settings.DATE_INPUT_FORMATS,
+                                                                            "class": "form-control"}),
                            )
 
     cliente = forms.CharField(label='Cliente',
