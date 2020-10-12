@@ -24,7 +24,7 @@ def home(request):
         'sales':sales,
         'products':products,
         'saleTot':saleTot,
-        'saleAvg': saleAvg;
+        'saleAvg': saleAvg,
     }
 
     return render(request, 'index.html', context)
