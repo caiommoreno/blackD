@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.conf import settings
+
 # Create your models here.
 
 
@@ -21,7 +21,7 @@ class Product(models.Model):
 
 class Sale(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    data = models.DateField(auto_now=False, auto_now_add=False, input_formats=settings.DATE_INPUT_FORMATS)
+    data = models.CharField(max_length=100, blank=False, )
     cliente = models.CharField(max_length=100, blank=False)
     total = models.IntegerField()
 
