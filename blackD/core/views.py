@@ -122,7 +122,7 @@ def add_sales(request):
         user = request.user
 
         data = request.POST.get('data')
-        data = datetime.strptime(data)
+        data = datetime.strptime('%d/%m/%y',data)
         cliente = request.POST.get('cliente')
         total = request.POST.get('total')
 
