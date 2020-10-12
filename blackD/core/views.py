@@ -9,11 +9,16 @@ from django.contrib import messages
 
 @login_required
 def home(request):
-    sales = Sale.objects.all()
-    products = Product.objects.all()
+    usr = request.user
+    sales = Sale.objects.filter(user=usr)
+    products = Product.objects.filter(user=usr)
+    saleTot = 0
+    for sale in sales:
+        saleTot += sale.total 
     context = {
         'sales':sales,
         'products':products,
+        'totals':saleTot,
     }
 
     return render(request, 'index.html', context)
