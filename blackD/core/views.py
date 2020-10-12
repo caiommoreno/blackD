@@ -29,7 +29,6 @@ def home(request):
     try:
         for sale in sales:
             date = sale.data
-            date = datetime.strptime(date)
             year=date.split('/')[-1]
             years.append(year)
     except:
@@ -122,7 +121,6 @@ def add_sales(request):
         user = request.user
 
         data = request.POST.get('data')
-        data = datetime.strptime(data,'%d/%m/%y')
         cliente = request.POST.get('cliente')
         total = request.POST.get('total')
 
