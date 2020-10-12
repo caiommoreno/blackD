@@ -18,10 +18,13 @@ def home(request):
             saleTot = saleTot + sale.total 
     except:
         pass
+    saleAvg = saleTot/sales.count()
+
     context = {
         'sales':sales,
         'products':products,
         'saleTot':saleTot,
+        'saleAvg': saleAvg;
     }
 
     return render(request, 'index.html', context)
