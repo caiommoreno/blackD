@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from blackD.core.models import Product, Sale
 from blackD.core.validator import validate_preco
-from django.config import settings
+from django.conf import settings
 
 class ProductForm(forms.ModelForm):
     nome = forms.CharField(label='Nome',
