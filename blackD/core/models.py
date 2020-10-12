@@ -21,7 +21,7 @@ class Product(models.Model):
 
 class Sale(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    data = models.CharField(max_length=100, blank=False, )
+    data = models.DateField(auto_now=False, auto_now_add=False)
     cliente = models.CharField(max_length=100, blank=False)
     total = models.IntegerField()
 
