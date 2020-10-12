@@ -59,24 +59,14 @@
   gradientStroke.addColorStop(0.2, 'rgba(72,72,176,0.0)');
   gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
 
-  var data = {
-    labels: [
-      'JAN',
-      'FEB',
-      'MAR',
-      'APR',
-      'MAY',
-      'JUN',
-      'JUL',
-      'AUG',
-      'SEP',
-      'OCT',
-      'NOV',
-      'DEC',
-    ],
-    datasets: [
-      {
-        label: 'Data',
+  var period = document.getElementByName("period")
+
+  switch(period.value) {
+  case 'anual':
+    var data = {
+      labels: ['2005','2006','2007'],
+      datasets: [{
+        label: "Data",
         fill: true,
         backgroundColor: gradientStroke,
         borderColor: '#d048b6',
@@ -84,16 +74,41 @@
         borderDash: [],
         borderDashOffset: 0.0,
         pointBackgroundColor: '#d048b6',
-        pointBorderColor: 'rgba(255,255,255,0)',
+        pointBorderColor:'rgba(255,255,255,0)',
         pointHoverBackgroundColor: '#d048b6',
         pointBorderWidth: 20,
         pointHoverRadius: 4,
         pointHoverBorderWidth: 15,
         pointRadius: 4,
-        data: [20, 90, 50, 35, 90, 30, 80, 100, 70, 80, 120, 80],
-      },
-    ],
-  };
+        data: [ 60,110,70,100, 75, 90, 80, 100, 70, 80, 120, 80],
+      }]
+    };
+    // code block
+    break;
+  case 'mensal':
+    var data = {
+      labels: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
+      datasets: [{
+        label: "Data",
+        fill: true,
+        backgroundColor: gradientStroke,
+        borderColor: '#d048b6',
+        borderWidth: 2,
+        borderDash: [],
+        borderDashOffset: 0.0,
+        pointBackgroundColor: '#d048b6',
+        pointBorderColor:'rgba(255,255,255,0)',
+        pointHoverBackgroundColor: '#d048b6',
+        pointBorderWidth: 20,
+        pointHoverRadius: 4,
+        pointHoverBorderWidth: 15,
+        pointRadius: 4,
+        data: [ 60,110,70,100, 75, 90, 80, 100, 70, 80, 120, 80],
+      }]
+    };
+    break;
+  }  
+
 
   var myChart = new Chart(ctx, {
     type: 'line',
