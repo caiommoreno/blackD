@@ -59,7 +59,7 @@
   gradientStroke.addColorStop(0.2, 'rgba(72,72,176,0.0)');
   gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
 
-  var period = document.getElementByName("period")
+  var period = document.getElementsByName("period")
 
   switch(period.value) {
   case 'anual':
