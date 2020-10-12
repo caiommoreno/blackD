@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from blackD.core.models import Product, Sale
 from blackD.core.validator import validate_preco
-
+from django.config import settings
 
 class ProductForm(forms.ModelForm):
     nome = forms.CharField(label='Nome',
@@ -30,7 +30,7 @@ class ProductForm(forms.ModelForm):
 
 class SaleForm(forms.ModelForm):
     data = forms.DateField(label='Data',
-                           widget=forms.DateInput(format='%d/%m/%Y', attrs={"placeholder": "D/M/Y",
+                           widget=forms.DateInput(input_formats=settings.DATE_INPUT_FORMATS,attrs={"placeholder": "D/M/Y",
                                                                             "class": "form-control"}),
                            )
 
