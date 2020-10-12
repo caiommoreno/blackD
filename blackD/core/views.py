@@ -30,12 +30,22 @@ def home(request):
     except:
         pass
 
+    months = []
+    try:
+        for sale in sales:
+            date = sale.data
+            month=date.split('-')[1]
+            months.append(month)
+    except:
+        pass
+
     context = {
         'sales':sales,
         'products':products,
         'saleTot':saleTot,
         'saleAvg': saleAvg,
         'years':years,
+        'months':months,
 
     }
 
