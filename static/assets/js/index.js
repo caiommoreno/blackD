@@ -57,7 +57,7 @@ gradientChartOptionsConfiguration =  {
   
   var period = document.getElementByName("period")
 
-  switch(period) {
+  switch(period.value) {
   case 'anual':
     var data = {
       labels: ['2005','2006','2007'],
