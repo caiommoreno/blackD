@@ -10,9 +10,13 @@ from django.contrib import messages
 @login_required
 def home(request):
     sales = Sale.objects.all()
-    products = product.objects.all()
+    products = Product.objects.all()
+    context = {
+        'sales':sales,
+        'products':products,
+    }
 
-    return render(request, 'index.html')
+    return render(request, 'index.html', context)
 
 
 @login_required
