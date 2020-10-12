@@ -34,7 +34,7 @@ def home(request):
     try:
         for sale in sales:
             date = sale.data
-            month=date.split('-')[0]
+            month=date.split('-')[1]
             months.append(month)
     except:
         pass
