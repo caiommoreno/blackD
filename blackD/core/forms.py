@@ -30,7 +30,7 @@ class ProductForm(forms.ModelForm):
 
 class SaleForm(forms.ModelForm):
     data = forms.DateField(label='Data',
-                           widget=forms.DateInput(format='%d/%m/%Y', attrs={"placeholder": "D/M/Y",
+                           widget=forms.DateInput(format='%m/%d/%Y', attrs={"placeholder": "D/M/Y",
                                                                             "class": "form-control"}),
                            )
 
