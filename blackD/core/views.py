@@ -18,13 +18,25 @@ def home(request):
             saleTot = saleTot + sale.total 
     except:
         pass
+
     saleAvg = saleTot/sales.count()
+
+    years = []
+    try:
+        for sale in sales:
+            date = sale.data
+            year=date.split('/')[2]
+            years.append(year)
+    except:
+        pass
 
     context = {
         'sales':sales,
         'products':products,
         'saleTot':saleTot,
         'saleAvg': saleAvg,
+        'years':years,
+        
     }
 
     return render(request, 'index.html', context)
