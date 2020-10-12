@@ -13,9 +13,11 @@ def home(request):
     sales = Sale.objects.filter(user=usr)
     products = Product.objects.filter(user=usr)
     saleTot = 0
-    if sales.count > 0:
+    try:
         for sale in sales:
             saleTot = saleTot + sale.total 
+    except:
+        pass
     context = {
         'sales':sales,
         'products':products,
