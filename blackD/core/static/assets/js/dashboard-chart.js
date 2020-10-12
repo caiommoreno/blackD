@@ -69,53 +69,57 @@
 })();
 
 function dataChoose(){
-  var period = document.getElementsByName("period")
-
-  switch(period.value) {
-  case 'anual':
-    var data = {
-      labels: ['2005','2006','2007'],
-      datasets: [{
-        label: "Data",
-        fill: true,
-        backgroundColor: gradientStroke,
-        borderColor: '#d048b6',
-        borderWidth: 2,
-        borderDash: [],
-        borderDashOffset: 0.0,
-        pointBackgroundColor: '#d048b6',
-        pointBorderColor:'rgba(255,255,255,0)',
-        pointHoverBackgroundColor: '#d048b6',
-        pointBorderWidth: 20,
-        pointHoverRadius: 4,
-        pointHoverBorderWidth: 15,
-        pointRadius: 4,
-        data: [ 60,110,70,100, 75, 90, 80, 100, 70, 80, 120, 80],
-      }]
-    };
-    // code block
-    break;
-  case 'mensal':
-    var data = {
-      labels: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
-      datasets: [{
-        label: "Data",
-        fill: true,
-        backgroundColor: gradientStroke,
-        borderColor: '#d048b6',
-        borderWidth: 2,
-        borderDash: [],
-        borderDashOffset: 0.0,
-        pointBackgroundColor: '#d048b6',
-        pointBorderColor:'rgba(255,255,255,0)',
-        pointHoverBackgroundColor: '#d048b6',
-        pointBorderWidth: 20,
-        pointHoverRadius: 4,
-        pointHoverBorderWidth: 15,
-        pointRadius: 4,
-        data: [ 60,110,70,100, 75, 90, 80, 100, 70, 80, 120, 80],
-      }]
-    };
-    break;
-  }
+  var periods = document.getElementsByName("period");
+  var period;
+  for (period of periods){
+    if (period.checked == true){
+      switch(period.value) {
+        case 'anual':
+          var data = {
+            labels: ['2005','2006','2007'],
+            datasets: [{
+              label: "Data",
+              fill: true,
+              backgroundColor: gradientStroke,
+              borderColor: '#d048b6',
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: '#d048b6',
+              pointBorderColor:'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: '#d048b6',
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: [ 60,110,70,100, 75, 90, 80, 100, 70, 80, 120, 80],
+            }]
+          };
+          // code block
+          break;
+        case 'mensal':
+          var data = {
+            labels: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
+            datasets: [{
+              label: "Data",
+              fill: true,
+              backgroundColor: gradientStroke,
+              borderColor: '#d048b6',
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: '#d048b6',
+              pointBorderColor:'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: '#d048b6',
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: [ 60,110,70,100, 75, 90, 80, 100, 70, 80, 120, 80],
+            }]
+          };
+          break;
+      }
+    }  
+  }  
 }
