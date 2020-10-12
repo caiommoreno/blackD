@@ -5,7 +5,7 @@ from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale
 from django.contrib.auth.models import User
 from django.contrib import messages
-
+from datetime import datetime
 
 @login_required
 def home(request):
@@ -29,7 +29,8 @@ def home(request):
     try:
         for sale in sales:
             date = sale.data
-            year=date.split('-')[0]
+            date = datetime.strptime(date)
+            year=date.split('/')[-1]
             years.append(year)
     except:
         pass
