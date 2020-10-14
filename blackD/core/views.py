@@ -36,10 +36,10 @@ def home(request):
         pass
     mxyear = max(Years)
     years = [mxyear]
-    for x in range(12):
-        year = mxyear
-        year = year - 1
-        years.append(year)
+    y = mxyear
+    for x in range(12):        
+        y = y - 1
+        years.append(y)
     if sales.count() > 0:
         if sales.count() > 1:
             ms = Sale.objects.get(user=usr, year=mxyear)
