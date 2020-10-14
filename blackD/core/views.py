@@ -46,7 +46,7 @@ def home(request):
             months=[]
             for m in ms:
                 month = m.month
-                months.appeend(month)
+                months.append(month)
             mxmonth = max(months)
             days =[]
             ds = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth)
