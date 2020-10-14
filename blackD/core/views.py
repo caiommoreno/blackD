@@ -104,7 +104,7 @@ def add_sales(request):
         user = request.user
 
         data = request.POST.get('data')
-        data = datetime.datetime.strptime(data, "%Y-%m-%d").date()
+        data = datetime.strptime(data, "%Y-%m-%d").date()
         form.year = data.year
         form.month = data.month
         form.day = data.day
