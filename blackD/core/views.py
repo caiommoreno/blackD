@@ -57,7 +57,7 @@ def home(request):
             ms = Sale.objects.get(user=usr, year=mxyear)
             ms = ms.month
             months=[ms]
-            ds = Sale.objects.get(user=usr, year=mxyear, month=months)
+            ds = Sale.objects.get(user=usr, year=mxyear, month=ms)
             ds = ds.day
             days=[ds]            
     else:
