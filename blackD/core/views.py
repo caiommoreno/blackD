@@ -37,16 +37,16 @@ def home(request):
     mxyear = max(Years)
     years = [mxyear]
     for x in range(12):
-        year = mxyear - 1
+        mxyear = mxyear - 1
         years.append(year)
     if sales.count() > 0:
-        if sales.count()>1:
-            months = Sale.objects.get(user=usr, year=mxyear)
-            mxmonth = max(months)
-            days = Sale.objects.get(user=usr, year=mxyear, month=mxmonth)
-        else:
-            months = Sale.objects.get(user=usr, year=mxyear)
-            days = Sale.objects.get(user=usr, year=mxyear, month=months)
+        ms = Sale.objects.get(user=usr, year=mxyear)
+        months=[]
+        for m in ms:
+            month = m.month
+            months.appeend(month)
+        mxmonth = max(months)
+        days = Sale.objects.get(user=usr, year=mxyear, month=mxmonth)
     else:
         months = 0
         days= 0
