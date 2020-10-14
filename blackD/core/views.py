@@ -71,9 +71,10 @@ def home(request):
         'years':years,
         'months':months,
         'days':days,
+        'h':h,
     }
 
-    return render(,request, 'index.html', context)
+    return render(request, 'index.html', context)
 
 
 @login_required
