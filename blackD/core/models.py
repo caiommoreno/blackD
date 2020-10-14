@@ -24,6 +24,9 @@ class Sale(models.Model):
     data = models.CharField(max_length=100, blank=False, )
     cliente = models.CharField(max_length=100, blank=False)
     total = models.IntegerField()
+    year = models.IntegerField()
+    month = models.CharField(max_length=100)
+    day = models.IntegerField()
 
     def __str__(self):
         return self.cliente
