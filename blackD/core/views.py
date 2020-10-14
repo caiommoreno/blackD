@@ -46,7 +46,11 @@ def home(request):
             month = m.month
             months.appeend(month)
         mxmonth = max(months)
-        days = Sale.objects.get(user=usr, year=mxyear, month=mxmonth)
+        days =[]
+        ds = Sale.objects.get(user=usr, year=mxyear, month=mxmonth)
+        for d in ds:
+            day = d.day
+            days.append(day)
     else:
         months = 0
         days= 0
