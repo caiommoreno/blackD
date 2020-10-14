@@ -105,13 +105,13 @@ def add_sales(request):
 
         data = request.POST.get('data')
         data = datetime.strptime(data, "%Y-%m-%d").date()
-        form.year = data.year
-        form.month = data.month
-        form.day = data.day
+        year = data.year
+        month = data.month
+        day = data.day
         cliente = request.POST.get('cliente')
         total = request.POST.get('total')
 
-        form = Sale(user=user, data=data, cliente=cliente, total=total)
+        form = Sale(user=user, data=data, cliente=cliente, total=total, year=year, month=month, day=day)
         form.save()
         return redirect('display_sales')
 
