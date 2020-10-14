@@ -73,7 +73,6 @@ def home(request):
         'years':years,
         'months':months,
         'days':days,
-        'h':h,
     }
 
     return render(request, 'index.html', context)
