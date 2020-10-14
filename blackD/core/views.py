@@ -36,7 +36,7 @@ def home(request):
         pass
     mxyear = max(Years)
     years = [mxyear]
-    for x in range[12]:
+    for x in range(12):
         year = mxyear - 1
         years.append(year)
     if sales > 0:
