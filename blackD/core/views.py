@@ -42,22 +42,22 @@ def home(request):
         years.append(y)
     if sales.count() > 0:
         if sales.count() > 1:
-            ms = Sale.objects.get(user=usr, year=mxyear)
+            ms = Sale.objects.filter(user=usr, year=mxyear)
             months=[]
             for m in ms:
                 month = m.month
                 months.appeend(month)
             mxmonth = max(months)
             days =[]
-            ds = Sale.objects.get(user=usr, year=mxyear, month=mxmonth)
+            ds = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth)
             for d in ds:
                 day = d.day
                 days.append(day)
         else:
-            ms = Sale.objects.get(user=usr, year=mxyear)
+            ms = Sale.objects.filter(user=usr, year=mxyear)
             ms = ms.month
             months=[ms]
-            ds = Sale.objects.get(user=usr, year=mxyear, month=ms)
+            ds = Sale.objects.filter(user=usr, year=mxyear, month=ms)
             ds = ds.day
             days=[ds]            
     else:
