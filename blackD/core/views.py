@@ -25,31 +25,14 @@ def home(request):
     except:
         pass
 
-    years = []
-    try:
-        for sale in sales:
-            date = sale.data
-            year=date.year
-            years.append(year)
-    except:
-        pass
-
-    months = []
-    try:
-        for sale in sales:
-            date = sale.data
-            month=date.month
-            months.append(month)
-    except:
-        pass
+   
 
     context = {
         'sales':sales,
         'products':products,
         'saleTot':saleTot,
         'saleAvg': saleAvg,
-        'years':years,
-        'months':months,
+        
 
     }
 
@@ -121,6 +104,9 @@ def add_sales(request):
         user = request.user
 
         data = request.POST.get('data')
+        form.year = data.year
+        form.month = date.month
+        form.day = data.day
         cliente = request.POST.get('cliente')
         total = request.POST.get('total')
 
