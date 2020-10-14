@@ -34,13 +34,14 @@ def home(request):
             Years.append(year)
     except:
         pass
-    mxyear = max(Years)
-    years = [mxyear]
-    y = mxyear
-    for x in range(11):        
-        y = y - 1
-        years.append(y)
+    
     if sales.count() > 0:
+        mxyear = max(Years)
+        years = [mxyear]
+        y = mxyear
+        for x in range(11):        
+            y = y - 1
+            years.append(y)
         if sales.count() > 1:
             ms = Sale.objects.filter(user=usr, year=mxyear)
             months=[]
@@ -61,6 +62,7 @@ def home(request):
             ds = ds.day
             days=[ds]            
     else:
+        years = 0
         months = 0
         days= 0
     context = {
