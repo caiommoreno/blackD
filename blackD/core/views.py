@@ -25,15 +25,27 @@ def home(request):
     except:
         pass
 
-   
-
+    years = []
+    months = []
+    days = []
+    try:
+        for sale in sales:
+            year = sale.year
+            month = sale.month
+            day = sale.day
+            years.append(year)
+            months.append(month)
+            days.append(day)
+    except:
+        pass
     context = {
         'sales':sales,
         'products':products,
         'saleTot':saleTot,
         'saleAvg': saleAvg,
-        
-
+        'years':years,
+        'months':months,
+        'days':days,
     }
 
     return render(request, 'index.html', context)
