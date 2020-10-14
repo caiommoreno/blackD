@@ -51,10 +51,4 @@ class SaleForm(forms.ModelForm):
         fields = ('data', 'cliente', 'total')
         verbose_name = 'produto'
         verbose_name_plural = 'produtos'
-    def save(self, commit=True):
-        date = self.data
-        self.year = date.year
-        self.month = date.month
-        self.day = date.day
-
-        return(year, month, day)
+    
