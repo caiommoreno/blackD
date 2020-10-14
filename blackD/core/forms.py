@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from blackD.core.models import Product, Sale
 from blackD.core.validator import validate_preco
 from django.conf import settings
+from datetime import datetime
 class ProductForm(forms.ModelForm):
     nome = forms.CharField(label='Nome',
                            widget=forms.TextInput(attrs={"placeholder": "Digite aqui",
@@ -50,3 +51,10 @@ class SaleForm(forms.ModelForm):
         fields = ('data', 'cliente', 'total')
         verbose_name = 'produto'
         verbose_name_plural = 'produtos'
+    def save(self, commit=True):
+        date = self.data
+        self.year = date.year
+        self.month = date.month
+        self.day = date.day
+
+        return(year, month, day)
