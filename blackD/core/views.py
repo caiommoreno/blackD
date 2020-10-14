@@ -73,7 +73,7 @@ def home(request):
         'days':days,
     }
 
-    return render(request, 'index.html', context)
+    return render(,request, 'index.html', context)
 
 
 @login_required
