@@ -45,7 +45,7 @@ def home(request):
             mxmonth = max(months)
             days = Sale.objects.get(user=usr, year=mxyear, month=mxmonth)
         else:
-            months = months = Sale.objects.get(user=usr, year=mxyear)
+            months = Sale.objects.get(user=usr, year=mxyear)
             days = Sale.objects.get(user=usr, year=mxyear, month=months)
     else:
         months = 0
