@@ -25,19 +25,27 @@ def home(request):
     except:
         pass
 
-    years = []
-    months = []
-    days = []
+    Years = []
+    
+
     try:
         for sale in sales:
-            year = sale.year
-            month = sale.month
-            day = sale.day
-            years.append(year)
-            months.append(month)
-            days.append(day)
+            year = sale.year           
+            Years.append(year)
     except:
         pass
+    mxyear = max(Years)
+    years = [mxyear]
+    for x in range[12]:
+        year = mxyear - 1
+        years.append(year)
+    if sales > 0:
+        months = Sale.objects.get(user=usr, year=mxyear)
+        mxmonth = max(months)
+        days = Sale.objects.get(user=usr, year=mxyear, month=mxmonth)
+    else:
+        months = 0
+        days= 0
     context = {
         'sales':sales,
         'products':products,
