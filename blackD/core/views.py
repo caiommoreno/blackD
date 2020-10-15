@@ -55,10 +55,10 @@ def home(request):
                 day = d.day
                 days.append(day)
         else:
-            ms = Sale.objects.filter(user=usr, year=y)
+            ms = Sale.objects.get(user=usr)
             ms = ms.month
             months=[ms]
-            ds = Sale.objects.filter(user=usr, year=y, month=ms)
+            ds = Sale.objects.get(user=usr)
             ds = ds.day
             days=[ds]            
     else:
