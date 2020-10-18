@@ -91,11 +91,13 @@
 {% endblock %}
 {% block corejs %}
   <script type="text/javascript">
-    var years = {{years|safe}};
-    var yTotals = {{yTotals|safe}};
-    var mTotals = {{mTotals|safe}};
-    var dTotals = {{dTotals|safe}};
-
+    var years = {{year|safe}};
+    {% for d in data %}
+      var year = {{d[0]}};
+      var month = {{d[1]}};
+      var day = {{d[2]}};
+      var total = {{d[3]}};
+    {% endfor %}
   </script>
 {% endblock corejs %}
 
