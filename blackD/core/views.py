@@ -114,7 +114,7 @@ def home(request):
             for m in ms:
                 month = m.month
                 months.append(month)            
-                x = Sale.objects.filter(user=usr, month=m)
+                x = Sale.objects.filter(user=usr, month=m.month)
                 mTotal = 0
                 for i in x:
                     dt = dict(month= i.month, total=i.total)
@@ -127,7 +127,7 @@ def home(request):
                 day = d.day
                 days.append(day)
                 dTotal =0
-                x = Sale.objects.filter(user=usr, day=d)
+                x = Sale.objects.filter(user=usr, day=d.day)
                 dTotal = 0
                 for i in x:
                     dt = dict(day= i.day, total=i.total)
