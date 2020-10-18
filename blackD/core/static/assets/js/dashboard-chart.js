@@ -29,7 +29,7 @@
       labels: [
         {years}
       ],
-      data: {yTotals},
+      data: {yTotals}
     });
   }
 
