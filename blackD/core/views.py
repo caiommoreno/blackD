@@ -100,9 +100,13 @@ def home(request):
             years.append(y)
         yData = []        
         for y in years:
-                x = Sale.objects.filter(user=usr, year=y)
-                dt = dict(year= x.year, total=x.total)
-                yData.append(dt)
+                try:
+                    x = Sale.objects.filter(user=usr, year=y)
+                    for i in x:
+                        dt = dict(year= i.year, total=i.total)
+                        yData.append(dt)
+                except:
+                    pass
         if sales.count() > 1:
             ms = Sale.objects.filter(user=usr, year=mxyear)
             months=[]
