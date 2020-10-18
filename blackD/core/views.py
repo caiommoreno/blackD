@@ -113,52 +113,57 @@ def home(request):
         Months = []
         mData = []
         for m in ms:
-            if m.month == 1:
-                month = "JAN"
-            elif m.month == 2:
-                month = "FEB"
-            elif m.month == 3:
-                month = "MAR"
-            elif m.month == 4:
-                month = "APR"
-            elif m.month == 5:
-                month = "MAY"
-            elif m.month == 6:
-                month = "JUN"
-            elif m.month == 7:
-                month = "JUL"
-            elif m.month == 8:
-                month = "AUG"
-            elif m.month == 9:
-                month = "SEP"
-            elif m.month == 10:
-                month = "OCT"
-            elif m.month == 11:
-                month = "NOV"
-            elif m.month == 12:
-                month = "DEC"
-            sr = month
-            months.append(month)
-            Months.append(m.month)           
-            x = Sale.objects.filter(user=usr, month=m.month)
-            mTotal = 0
-            for i in x:
-                dr = dict(month=sr, total=i.total)
-                mData.append(dr)
+            try:
+                if m.month == 1:
+                    month = "JAN"
+                elif m.month == 2:
+                    month = "FEB"
+                elif m.month == 3:
+                    month = "MAR"
+                elif m.month == 4:
+                    month = "APR"
+                elif m.month == 5:
+                    month = "MAY"
+                elif m.month == 6:
+                    month = "JUN"
+                elif m.month == 7:
+                    month = "JUL"
+                elif m.month == 8:
+                    month = "AUG"
+                elif m.month == 9:
+                    month = "SEP"
+                elif m.month == 10:
+                    month = "OCT"
+                elif m.month == 11:
+                    month = "NOV"
+                elif m.month == 12:
+                    month = "DEC"
+                sr = month
+                months.append(month)
+                Months.append(m.month)           
+                x = Sale.objects.filter(user=usr, month=m.month)
+                mTotal = 0
+                for i in x:
+                    dr = dict(month=sr, total=i.total)
+                    mData.append(dr)
+            except:
+                pass
         mxmonth = max(Months)
         days =[]
         dData = []
         ds = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth)
         for d in ds:
-            day = d.day
-            days.append(day)
-            dTotal =0
-            x = Sale.objects.filter(user=usr, day=d.day)
-            dTotal = 0
-            for i in x:
-                dl = dict(day= i.day, total=i.total)
-                dData.append(dl)                    
-                       
+            try:
+                day = d.day
+                days.append(day)
+                dTotal =0
+                x = Sale.objects.filter(user=usr, day=d.day)
+                dTotal = 0
+                for i in x:
+                    dl = dict(day= i.day, total=i.total)
+                    dData.append(dl)
+            except:
+                pass
     else:
         messages.warning(request, f"You didn't add any sales yet, please add sales to access the dashboard")
         return redirect('display_sales')
