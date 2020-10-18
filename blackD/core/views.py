@@ -30,13 +30,12 @@ def home(request):
     years=[]
     data=[]
     try:  
-        for sale in sales:
-            dt={}
+        for sale in sales:            
             y = sale.year
             m = sale.month
             d = sale.day
             t = sale.total
-            dt.dict(year=y,month=m,day=d,total=t)
+            dt=dict(year=y,month=m,day=d,total=t)
             years.append(y)
             data.append(dt)
     except:
