@@ -158,15 +158,15 @@ def home(request):
                     dt = dict(day= i.day, total=i.total)
                     dData.append(dt)                    
         else:
-            ms = Sale.objects.filter(user=usr)
-            ms = ms.month
-            months=[ms]
-            ds = Sale.objects.filter(user=usr)
-            ds = ds.day
-            days=[ds]  
-            yData = [{'year': ms.year, 'total':ms.total}]
-            mData = [{'month': ms.month, 'total':ms.total}]
-            dData = [{'day': ms.day, 'total':ms.total}]                 
+            mss = Sale.objects.filter(user=usr)
+            for ms in mss:
+                ms = ms.month
+                months=[ms]           
+                ds = ms.day
+                days=[ds]  
+                yData = [{'year': ms.year, 'total':ms.total}]
+                mData = [{'month': ms.month, 'total':ms.total}]
+                dData = [{'day': ms.day, 'total':ms.total}]                 
     else:
         years = 0
         months = 0
