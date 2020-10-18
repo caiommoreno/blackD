@@ -90,33 +90,13 @@
     </div>
 {% endblock %}
 {% block corejs %}
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-  <script>
-
-    var config = {
-        type: 'linear',
-        data: {
-          datasets: [{
-            data: {{ yTotals }},
-            backgroundColor: [
-              '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
-            ],
-            label: 'Anual'
-          }],
-        labels: {{ years }}
-      },
-      options: {
-        responsive: true
-      }
-    };
-
-    window.onload = function() {
-      var ctx = document.getElementById('chartLinePurple').getContext('2d');
-      window.myPie = new Chart(ctx, config);
-    };
+  <script type="text/javascript">
+    var years = {{years}};
+    var yTotals = {{yTotals}};
+    var mTotals = {{mTotals}};
+    var dTotals = {{dTotals}};
 
   </script>
-
 {% endblock corejs %}
 
 
