@@ -9,7 +9,7 @@
         <h4 class="mb-4">
           Aqui estão as informações mais <br />importantes do seu negócio
         </h4>
-        {{mData}}
+
         <table class="table">
           <thead>
             <tr>
@@ -92,7 +92,7 @@
 
 {% block corejs %}
   <script type="text/javascript">
-    var years = {{year|safe}};
+    var years = {{years|safe}};
     var yData = {{yData|safe}};
     var mData = {{mData|safe}};
     var dData = {{dData|safe}};
