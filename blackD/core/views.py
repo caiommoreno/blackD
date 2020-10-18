@@ -158,9 +158,7 @@ def home(request):
         'yData': yData,
         'mData': mData,
         'dData': dData,
-        'yTotals': yTotals,
-        'mTotals': mTotals,
-        'dTotals': dTotals, 
+         
     }
 
     return render(request, 'index.html', context)
