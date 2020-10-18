@@ -142,7 +142,7 @@ def home(request):
                 x = Sale.objects.filter(user=usr, month=m.month)
                 mTotal = 0
                 for i in x:
-                    dt = dict(month= i.month, total=i.total)
+                    dt = dict(month= month, total=i.total)
                     mData.append(dt)
             mxmonth = max(Months)
             days =[]
