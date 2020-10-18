@@ -158,7 +158,7 @@ def home(request):
                     dt = dict(day= i.day, total=i.total)
                     dData.append(dt)                    
         else:
-            mss = Sale.objects.filter(user=usr)            
+            mss = Sale.objects.get(user=usr)            
             ms = mss.month
             months=[ms]           
             ds = mss.day
