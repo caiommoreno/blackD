@@ -101,7 +101,7 @@ def home(request):
         yData = []        
         for y in years:
                 x = Sale.objects.filter(user=usr, year=y)
-                dt = dict('year': i.year, 'total':i.total)
+                dt = dict(year= i.year, total=i.total)
                 yData.append(dt)
         if sales.count() > 1:
             ms = Sale.objects.filter(user=usr, year=mxyear)
@@ -113,7 +113,7 @@ def home(request):
                 x = Sale.objects.filter(user=usr, month=m)
                 mTotal = 0
                 for i in x:
-                    dt = dict('month': i.month, 'total':i.total)
+                    dt = dict(month= i.month, total=i.total)
                     mData.append(dt)                    
             mxmonth = max(months)
             days =[]
@@ -126,7 +126,7 @@ def home(request):
                 x = Sale.objects.filter(user=usr, day=d)
                 dTotal = 0
                 for i in x:
-                    dt = dict('day': i.day, 'total':i.total)
+                    dt = dict(day= i.day, total=i.total)
                     dData.append(dt)                    
         else:
             ms = Sale.objects.get(user=usr)
