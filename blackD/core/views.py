@@ -112,39 +112,36 @@ def home(request):
             months=[]
             mData = []
             for m in ms:
-                month = m.month
+                if m.month == 1:
+                    month = "JAN"
+                elif m.month == 2:
+                    month = "FEB"
+                elif m.month == 3:
+                    month = "MAR"
+                elif m.month == 4:
+                    month = "APR"
+                elif m.month == 5:
+                    month = "MAY"
+                elif m.month == 6:
+                    month = "JUN"
+                elif m.month == 7:
+                    month = "JUL"
+                elif m.month == 8:
+                    month = "AUG"
+                elif m.month == 9:
+                    month = "SEP"
+                elif m.month == 10:
+                    month = "OCT"
+                elif m.month == 11:
+                    month = "NOV"
+                elif m.month == 12:
+                    month = "DEC"
                 months.append(month)            
                 x = Sale.objects.filter(user=usr, month=m.month)
                 mTotal = 0
                 for i in x:
                     dt = dict(month= i.month, total=i.total)
                     mData.append(dt)
-            for k, v in mData.iteritems():
-                if k == 1:
-                    k = "JAN"
-                elif k == 2:
-                    k = "FEB"
-                elif k == 3:
-                    k = "MAR"
-                elif k == 4:
-                    k = "APR"
-                elif k == 5:
-                    k = "MAY"
-                elif k == 6:
-                    k = "JUN"
-                elif k == 7:
-                    k = "JUL"
-                elif k == 8:
-                    k = "AUG"
-                elif k == 9:
-                    k = "SEP"
-                elif k == 10:
-                    k = "OCT"
-                elif k == 11:
-                    k = "NOV"
-                elif k == 12:
-                    k = "DEC"
-
             mxmonth = max(months)
             days =[]
             dData = []
