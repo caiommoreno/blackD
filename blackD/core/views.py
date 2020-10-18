@@ -43,10 +43,16 @@ def home(request):
             y = y - 1
             years.append(y)
         yData = []
+        yTotals = []
         for y in years:
                 x = Sale.objects.filter(user=usr, year=y)
+                yTotal = 0
                 for i in x:
                     yData.append(i)
+                    total = i.total
+                    yTotal = yTotal+total
+                yTotals.append(yTotal)
+
         if sales.count() > 1:
             ms = Sale.objects.filter(user=usr, year=mxyear)
             months=[]
@@ -54,10 +60,15 @@ def home(request):
                 month = m.month
                 months.append(month)
             mData = []
+            mTotals = []
             for m in months:
                 x = Sale.objects.filter(user=usr, month=x)
+                mTotal = 0
                 for i in x:
                     mData.append(i)
+                    total = i.total
+                    mTotal = mTotal+total
+                mTotals.append(mTotal)
 
             mxmonth = max(months)
             days =[]
@@ -66,10 +77,16 @@ def home(request):
                 day = d.day
                 days.append(day)
             dData = []
+            dTotals = []
             for d in days:
+                dTotal =0
                 x = Sale.objects.filter(user=usr, day=x)
+                dTotal = 0
                 for i in x:
                     dData.append(i)
+                    total = i.total
+                    dTotal = dTotal+total
+                dTotals.append(dTotal)
         else:
             ms = Sale.objects.get(user=usr)
             ms = ms.month
@@ -79,14 +96,16 @@ def home(request):
             days=[ds]  
             yData = ms
             mData = ms
-            dData = ms          
+            dData = ms
+            yTotals = mTotals = dTotals = ms.total         
     else:
         years = 0
         months = 0
         days= 0
         yData = 0
         mData = 0
-        dData = 0   
+        dData = 0
+        yTotals = mTotals = dTotals = 0
     context = {
         'sales':sales,
         'products':products,
@@ -97,7 +116,10 @@ def home(request):
         'days':days,
         'yData': yData,
         'mData': mData,
-        'dData': dData,  
+        'dData': dData,
+        'yTotals': yTotals,
+        'mTotals': mTotals,
+        'dTotals': dTotals, 
     }
 
     return render(request, 'index.html', context)
