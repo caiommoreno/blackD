@@ -62,9 +62,9 @@ def home(request):
             mData = []
             mTotals = []
             for m in months:
-                x = Sale.objects.filter(user=usr, month=x)
+                Sale.objects.filter(user=usr, month=x)
                 mTotal = 0
-                for i in x:
+                for i in Sale.objects.filter(user=usr, month=x):
                     mData.append(i)
                     total = i.total
                     mTotal = mTotal+total
