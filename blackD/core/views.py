@@ -101,7 +101,7 @@ def home(request):
         yData = []        
         for y in years:
                 x = Sale.objects.filter(user=usr, year=y)
-                dt = dict(year= y.year, total=y.total)
+                dt = dict(year= x.year, total=x.total)
                 yData.append(dt)
         if sales.count() > 1:
             ms = Sale.objects.filter(user=usr, year=mxyear)
