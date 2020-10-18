@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 @login_required
-def home(request):
+def home1(request):
     usr = request.user
     sales = Sale.objects.filter(user=usr)
     # counting total sales
@@ -25,6 +25,7 @@ def home(request):
         saleAvg = saleTot/sales.count()
     except:
         pass
+
     # create year labels list
     # create Data Matrix
     years=[]
@@ -42,6 +43,16 @@ def home(request):
         pass
 
     data =dict(data)
+    try:
+        mxyear = max(Years)
+        years = [mxyear]
+        y = mxyear
+        for x in range(11):        
+            y = y - 1
+            years.append(y)
+    except:
+        mxyear=Years[0]
+
     context = {
         'sales': sales,
         'saleTot':saleTot,
@@ -53,7 +64,7 @@ def home(request):
     return render(request, 'index.html', context)
 
 @login_required
-def home1(request):
+def home(request):
     usr = request.user
     sales = Sale.objects.filter(user=usr)
     products = Product.objects.filter(user=usr)
@@ -87,51 +98,36 @@ def home1(request):
         for x in range(11):        
             y = y - 1
             years.append(y)
-        yData = []
-        yTotals = []
+        yData = []        
         for y in years:
                 x = Sale.objects.filter(user=usr, year=y)
-                yTotal = 0
-                for i in x:
-                    yData.append(i)
-                    total = i.total
-                    yTotal = yTotal+total
-                yTotals.append(yTotal)
-
+                dt = dict('year': i.year, 'total':i.total)
+                yData.append(dt)
         if sales.count() > 1:
             ms = Sale.objects.filter(user=usr, year=mxyear)
             months=[]
+            mData = []
             for m in ms:
                 month = m.month
-                months.append(month)
-            mData = []
-            mTotals = []
-            for m in months:
+                months.append(month)            
                 x = Sale.objects.filter(user=usr, month=m)
                 mTotal = 0
                 for i in x:
-                    mData.append(i)
-                    total = i.total
-                    mTotal = mTotal+total
-                mTotals.append(mTotal)
-
+                    dt = dict('month': i.month, 'total':i.total)
+                    mData.append(dt)                    
             mxmonth = max(months)
             days =[]
+            dData = []
             ds = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth)
             for d in ds:
                 day = d.day
                 days.append(day)
-            dData = []
-            dTotals = []
-            for d in days:
                 dTotal =0
                 x = Sale.objects.filter(user=usr, day=d)
                 dTotal = 0
                 for i in x:
-                    dData.append(i)
-                    total = i.total
-                    dTotal = dTotal+total
-                dTotals.append(dTotal)
+                    dt = dict('day': i.day, 'total':i.total)
+                    dData.append(dt)                    
         else:
             ms = Sale.objects.get(user=usr)
             ms = ms.month
@@ -139,10 +135,9 @@ def home1(request):
             ds = Sale.objects.get(user=usr)
             ds = ds.day
             days=[ds]  
-            yData = ms
-            mData = ms
-            dData = ms
-            yTotals = mTotals = dTotals = ms.total         
+            yData = [{'year': ms.year, 'total':ms.total}]
+            mData = [{'month': ms.month, 'total':ms.total}]
+            dData = [{'day': ms.day, 'total':ms.total}]                 
     else:
         years = 0
         months = 0
@@ -150,7 +145,7 @@ def home1(request):
         yData = 0
         mData = 0
         dData = 0
-        yTotals = mTotals = dTotals = 0
+        
 
     context = {
         'sales':sales,
