@@ -88,7 +88,7 @@
         '30',
       ],
       data: (dData.total),
-      console.log(data)
+      console.log(data);
     });
   }
 
