@@ -31,16 +31,18 @@ def home(request):
     data=[]
     try:  
         for sale in sales:
-            dt=[]
+            dt={}
             y = sale.year
             m = sale.month
             d = sale.day
             t = sale.total
-            dt.append(y,m,d,t)
+            dt.dict(year=y,month=m,day=d,total=t)
             years.append(y)
-            data.extend(dt)
+            data.append(dt)
     except:
         pass
+
+    data =dict(data)
     context = {
         'sales': sales,
         'saleTot':saleTot,
