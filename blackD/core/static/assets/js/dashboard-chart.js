@@ -29,7 +29,7 @@
       labels: [
         (years)
       ],
-      data: (yTotals)
+      data: (yData.total)
     });
   }
 
@@ -49,7 +49,7 @@
         'NOV',
         'DEC',
       ],
-      data: (mTotals),
+      data: (mData.total),
     });
   }
 
@@ -87,7 +87,7 @@
         '29',
         '30',
       ],
-      data: (dTotals),
+      data: (dData.total),
     });
   }
 
