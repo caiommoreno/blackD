@@ -29,7 +29,7 @@
       labels: [
         (years)
       ],
-      data: (yData.total)
+      data: ('5', '200', '50')
     });
   }
 
