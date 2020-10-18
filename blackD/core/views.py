@@ -137,12 +137,13 @@ def home(request):
                     month = "NOV"
                 elif m.month == 12:
                     month = "DEC"
+                sr = month
                 months.append(month)
                 Months.append(m.month)           
                 x = Sale.objects.filter(user=usr, month=m.month)
                 mTotal = 0
                 for i in x:
-                    dt = dict(month= month, total=i.total)
+                    dt = dict(month=sr, total=i.total)
                     mData.append(dt)
             mxmonth = max(Months)
             days =[]
