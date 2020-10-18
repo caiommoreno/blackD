@@ -89,9 +89,7 @@
       ],
       data: object.total(dData),      
     });
-    Object.entries(dData).forEach(([key, value]) => {
-   console.log(key, value);
-});
+  };
   }
 
   var gradientChartOptionsConfigurationWithTooltipPurple = {
