@@ -143,8 +143,8 @@ def home(request):
             x = Sale.objects.filter(user=usr, month=m.month)
             mTotal = 0
             for i in x:
-                dt = dict(month=sr, total=i.total)
-                mData.append(dt)
+                dr = dict(month=sr, total=i.total)
+                mData.append(dr)
         mxmonth = max(Months)
         days =[]
         dData = []
@@ -156,8 +156,8 @@ def home(request):
             x = Sale.objects.filter(user=usr, day=d.day)
             dTotal = 0
             for i in x:
-                dt = dict(day= i.day, total=i.total)
-                dData.append(dt)                    
+                dl = dict(day= i.day, total=i.total)
+                dData.append(dl)                    
                        
     else:
         messages.warning(request, f"You didn't add any sales yet, please add sales to access the dashboard")
