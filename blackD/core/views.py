@@ -137,7 +137,7 @@ def home(request):
                 elif m.month == 12:
                     month = "DEC"
                 months.append(month)            
-                x = Sale.objects.filter(user=usr, month=month)
+                x = Sale.objects.filter(user=usr, month=m.month)
                 mTotal = 0
                 for i in x:
                     dt = dict(month= i.month, total=i.total)
