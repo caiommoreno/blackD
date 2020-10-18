@@ -118,7 +118,33 @@ def home(request):
                 mTotal = 0
                 for i in x:
                     dt = dict(month= i.month, total=i.total)
-                    mData.append(dt)                    
+                    mData.append(dt)
+            for k, v in mData.iteritems():
+                if k == 1:
+                    k = "JAN"
+                elif k == 2:
+                    k = "FEB"
+                elif k == 3:
+                    k = "MAR"
+                elif k == 4:
+                    k = "APR"
+                elif k == 5:
+                    k = "MAY"
+                elif k == 6:
+                    k = "JUN"
+                elif k == 7:
+                    k = "JUL"
+                elif k == 8:
+                    k = "AUG"
+                elif k == 9:
+                    k = "SEP"
+                elif k == 10:
+                    k = "OCT"
+                elif k == 11:
+                    k = "NOV"
+                elif k == 12:
+                    k = "DEC"
+
             mxmonth = max(months)
             days =[]
             dData = []
