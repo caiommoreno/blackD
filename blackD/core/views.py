@@ -110,6 +110,7 @@ def home(request):
         if sales.count() > 1:
             ms = Sale.objects.filter(user=usr, year=mxyear)
             months=[]
+            Months = []
             mData = []
             for m in ms:
                 if m.month == 1:
@@ -136,13 +137,14 @@ def home(request):
                     month = "NOV"
                 elif m.month == 12:
                     month = "DEC"
-                months.append(month)            
+                months.append(month)
+                Months.append(m.month)           
                 x = Sale.objects.filter(user=usr, month=m.month)
                 mTotal = 0
                 for i in x:
                     dt = dict(month= i.month, total=i.total)
                     mData.append(dt)
-            mxmonth = max(months)
+            mxmonth = max(Months)
             days =[]
             dData = []
             ds = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth)
