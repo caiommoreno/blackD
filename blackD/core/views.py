@@ -7,8 +7,52 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import datetime
 
+
 @login_required
 def home(request):
+    usr = request.user
+    sales = Sale.objects.filter(user=usr)
+    # counting total sales
+    saleTot = 0
+    try:
+        for sale in sales:
+            saleTot = saleTot + sale.total 
+    except:
+        pass
+    # counting sales avg
+    saleAvg = 0
+    try:    
+        saleAvg = saleTot/sales.count()
+    except:
+        pass
+    # create year labels list
+    # create Data Matrix
+    years=[]
+    data=[]
+    try:  
+        for sale in sales:
+            dt=[]
+            y = sale.year
+            m = sale.month
+            d = sale.day
+            t = sale.total
+            dt.append(y,m,d,t)
+            years.append(y)
+            data.extend(dt)
+    except:
+        pass
+    context = {
+        'sales': sales,
+        'saleTot':saleTot,
+        'saleAvg':saleAvg,
+        'years': years,
+        'data': data,
+    }
+
+    return render(request, 'index.html', context)
+
+@login_required
+def home1(request):
     usr = request.user
     sales = Sale.objects.filter(user=usr)
     products = Product.objects.filter(user=usr)
@@ -106,6 +150,7 @@ def home(request):
         mData = 0
         dData = 0
         yTotals = mTotals = dTotals = 0
+
     context = {
         'sales':sales,
         'products':products,
