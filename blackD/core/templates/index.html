@@ -91,10 +91,10 @@
 {% endblock %}
 {% block corejs %}
   <script type="text/javascript">
-    var years = {{years}};
-    var yTotals = {{yTotals}};
-    var mTotals = {{mTotals}};
-    var dTotals = {{dTotals}};
+    var years = {{years|safe}};
+    var yTotals = {{yTotals|safe}};
+    var mTotals = {{mTotals|safe}};
+    var dTotals = {{dTotals|safe}};
 
   </script>
 {% endblock corejs %}
