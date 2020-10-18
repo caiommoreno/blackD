@@ -42,29 +42,51 @@ def home(request):
         for x in range(11):        
             y = y - 1
             years.append(y)
+        yData = []
+        for y in years:
+                x = Sale.objects.filter(user=usr, year=y)
+                for i in x:
+                    yData.append(i)
         if sales.count() > 1:
             ms = Sale.objects.filter(user=usr, year=mxyear)
             months=[]
             for m in ms:
                 month = m.month
                 months.append(month)
+            mData = []
+            for m in months:
+                x = Sale.objects.filter(user=usr, month=x)
+                for i in x:
+                    mData.append(i)
+
             mxmonth = max(months)
             days =[]
             ds = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth)
             for d in ds:
                 day = d.day
                 days.append(day)
+            dData = []
+            for d in days:
+                x = Sale.objects.filter(user=usr, day=x)
+                for i in x:
+                    dData.append(i)
         else:
             ms = Sale.objects.get(user=usr)
             ms = ms.month
             months=[ms]
             ds = Sale.objects.get(user=usr)
             ds = ds.day
-            days=[ds]            
+            days=[ds]  
+            yData = ms
+            mData = ms
+            dData = ms          
     else:
         years = 0
         months = 0
         days= 0
+        yData = 0
+        mData = 0
+        dData = 0   
     context = {
         'sales':sales,
         'products':products,
@@ -73,6 +95,9 @@ def home(request):
         'years':years,
         'months':months,
         'days':days,
+        'yData': yData,
+        'mData': mData,
+        'dData': dData,  
     }
 
     return render(request, 'index.html', context)
