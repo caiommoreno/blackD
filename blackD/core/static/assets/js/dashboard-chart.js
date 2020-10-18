@@ -89,7 +89,7 @@
       ],
       data: (dData.total),      
     });
-    console.log(data);
+    console.log(dData.total);
   }
 
   var gradientChartOptionsConfigurationWithTooltipPurple = {
