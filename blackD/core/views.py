@@ -75,12 +75,13 @@ def home(request):
     
     for m in xMonth:
         if Sale.objects.filter(user=usr, year=mxyear, month=m):
-            z = Sale.objects.filter(user=usr, year=mxyear, month=m)
-            t = z.total
-            yMonth.append(t)
+            zs = Sale.objects.filter(user=usr, year=mxyear, month=m)
+            t=0
+            for z in zs:
+                t = t + z.total
         else:
             t=0
-            yMonth.append(t) 
+        yMonth.append(t) 
     
 
     try:
