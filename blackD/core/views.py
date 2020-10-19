@@ -83,6 +83,7 @@ def home(request):
                     for s in sale:
                         r = s.total
                         t.append(r)
+                    t = tuple(t)
                     yYear.append(t)
                 else:    
                     t = sale.total
