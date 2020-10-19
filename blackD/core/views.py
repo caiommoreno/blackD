@@ -180,8 +180,7 @@ def home(request):
         'yMonth':yMonth,
         'xMonth':xMonth,
         'yDay':yDay,
-        'xDay':xDay,     
-        'years':years,
+        'xDay':xDay,           
     }
 
     return render(request, 'index.html', context)
