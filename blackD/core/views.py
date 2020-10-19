@@ -413,3 +413,9 @@ def delete_product(request, pk):
         'items': items
     }
     return render(request, 'sales.html', context)
+
+
+
+@login_required
+def under_construct(request):
+    return render(request, 'constructing.html')
