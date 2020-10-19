@@ -72,7 +72,8 @@ def home(request):
             yYear.append(t)
         
     months = []
-    for sale in sales:
+    monthly =Sale.objects.get(user=usr, year=maxyear)
+    for sale in monthly:
         month = sale.month
         months.append(month)
 
