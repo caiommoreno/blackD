@@ -77,7 +77,19 @@ def home(request):
     except:
         sale = Sale.objects.filter(user=usr)
         mxyear= sale.year
-        years = mxyear
+        years = [mxyear]
+        y = mxyear
+        for x in range(11):        
+            y = y - 1
+            years.append(y)
+        for year in years:
+            try:
+                sale = Sale.objects.filter(user=usr, year=year)
+                t = sale.total
+                yYear.append(t)
+            except:
+                t = 0
+                yYear.append(t)
 
     monthly = Sale.objects.filter(user=usr, year=mxyear)
     months=[]
