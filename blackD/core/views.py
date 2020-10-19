@@ -31,18 +31,18 @@ def home(request):
     yYear=[]
     xYear=[]
     yMonth=[]
-    xMonth=['JAN',
-        'FEB',
-        'MAR',
-        'APR',
-        'MAY',
-        'JUN',
-        'JUL',
-        'AUG',
-        'SEP',
-        'OCT',
-        'NOV',
-        'DEC',]   
+    xMonth=['1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        '11',
+        '12',]   
     yDay=[]
     xDay=[]
 
@@ -82,43 +82,18 @@ def home(request):
     monthly = Sale.objects.filter(user=usr, year=mxyear)
     months=[]
     try:    
-        for sale in monthly:
-            try:
-                if sale.month == 1:
-                    month = "JAN"
-                elif sale.month == 2:
-                    month = "FEB"
-                elif sale.month == 3:
-                    month = "MAR"
-                elif sale.month == 4:
-                    month = "APR"
-                elif sale.month == 5:
-                    month = "MAY"
-                elif sale.month == 6:
-                    month = "JUN"
-                elif sale.month == 7:
-                    month = "JUL"
-                elif sale.month == 8:
-                    month = "AUG"
-                elif sale.month == 9:
-                    month = "SEP"
-                elif sale.month == 10:
-                    month = "OCT"
-                elif sale.month == 11:
-                    month = "NOV"
-                elif sale.month == 12:
-                    month = "DEC"
-                months.append(month)
-                for m in xMonth:
-                    try:
-                        z = Sale.objects.filter(user=usr, year=mxyear, month=m)
-                        t = sale.total
-                        yMonth.append(t)
-                    except:
-                        t=0
-                        yMonth.append(t)                
-            except:
-                pass
+        for sale in monthly:             
+            month = sale.month               
+            months.append(month)
+            for m in xMonth:
+                try:
+                    z = Sale.objects.filter(user=usr, year=mxyear, month=m)
+                    t = sale.total
+                    yMonth.append(t)
+                except:
+                    t=0
+                    yMonth.append(t)                
+           
             
     except:
         sale = Sale.objects.filter(user=usr)
@@ -128,7 +103,7 @@ def home(request):
         yMonth.append(t)
 
     try:
-        mxmonth = max(xMonth)
+        mxmonth = max(months)
        
     except:
         sale = Sale.objects.filter(user=usr)
