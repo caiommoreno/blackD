@@ -72,28 +72,16 @@ def home(request):
             yYear.append(t)
         
     
-    monthly = Sale.objects.filter(user=usr, year=mxyear)
-    months=[]
-    try:    
-        for sale in monthly:             
-            month = sale.month               
-            months.append(month)
-            for m in xMonth:
-                try:
-                    z = Sale.objects.filter(user=usr, year=mxyear, month=m)
-                    t = z.total
-                    yMonth.append(t)
-                except:
-                    t=0
-                    yMonth.append(t)                
-           
-            
-    except:
-        sale = Sale.objects.filter(user=usr)
-        m = sale.month          
-        t = sale.total            
-        xMonth.append(m)
-        yMonth.append(t)
+    
+    for m in xMonth:
+        if Sale.objects.filter(user=usr, year=mxyear, month=m):
+            z = Sale.objects.filter(user=usr, year=mxyear, month=m)
+            t = z.total
+            yMonth.append(t)
+        else:
+            t=0
+            yMonth.append(t) 
+    
 
     try:
         mxmonth = max(months)
