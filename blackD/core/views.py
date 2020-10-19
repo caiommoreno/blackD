@@ -28,37 +28,86 @@ def home1(request):
 
     # create year labels list
     # create Data Matrix
-    years=[]
-    data=[]
+    yYear=[]
+    xYear=[]
+    yMonth=[]
+    xMonth=[]   
+    yDay=[]
+    xDay=[]
+
     try:  
         for sale in sales:            
-            y = sale.year
-            m = sale.month
-            d = sale.day
-            t = sale.total
-            dt=dict(year=y,month=m,day=d,total=t)
-            years.append(y)
-            data.append(dt)
+            y = sale.year           
+            t = sale.total            
+            xYear.append(y)
+            yYear.append(t)
     except:
-        pass
+        sale = Sale.objects.filter(user=usr)
+        y = sale.year          
+        t = sale.total            
+        xYear.append(y)
+        yYear.append(t)
 
-    data =dict(data)
     try:
-        mxyear = max(Years)
+        mxyear = max(xYear)
         years = [mxyear]
         y = mxyear
         for x in range(11):        
             y = y - 1
             years.append(y)
     except:
-        mxyear=Years[0]
+        sale = Sale.objects.filter(user=usr)
+        mxyear= sale.year
+
+    monthly = Sale.objects.filter(user=usr, year=mxyear)
+    try:    
+        for sale in monthly:
+            m = sale.month
+            t = sale.total
+            xMonth.append(m)
+            yMonth.append(t)
+    except:
+        sale = Sale.objects.filter(user=usr)
+        m = sale.month          
+        t = sale.total            
+        xMonth.append(m)
+        yMonth.append(t)
+
+    try:
+        mxmonth = max(xMonth)
+       
+    except:
+        sale = Sale.objects.filter(user=usr)
+        mxmonth= sale.month
+    daily = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth)
+    try:    
+        for sale in daily:
+            d = sale.day
+            t = sale.total
+            xDay.append(d)
+            yDay.append(t)
+    except:
+        sale = Sale.objects.filter(user=usr)
+        d = sale.day          
+        t = sale.total            
+        xDay.append(d)
+        yDay.append(t)
+
+
+
+
 
     context = {
         'sales': sales,
         'saleTot':saleTot,
         'saleAvg':saleAvg,
-        'years': years,
-        'data': data,
+        'yYear':yYear,
+        'xYear':xYear,
+        'yMonth':yMonth,
+        'xMonth':xMonth,
+        'yDay':yDay,
+        'xDay':xDay,     
+        
     }
 
     return render(request, 'index.html', context)
