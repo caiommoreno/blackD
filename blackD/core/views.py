@@ -64,7 +64,8 @@ def home(request):
                     r = s.total
                     t= t+r
                 yYear.append(t)
-            else:    
+            else:
+                sale = Sale.objects.get(user=usr, year=year)    
                 t = sale.total
                 yYear.append(t)
         else:
