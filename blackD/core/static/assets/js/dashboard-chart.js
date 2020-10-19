@@ -26,43 +26,15 @@
 
   function getDataAnual() {
     return getData({
-      labels: [
-        (year12),
-        (year11),
-        (year10),
-        (year9),
-        (year8),
-        (year7),
-        (year6),
-        (year5),
-        (year4),
-        (year3),
-        (year2),
-        (year1),
-        (year0),
-        
-      ],
-      data: (yYear)
+      labels: {{xYear}},
+      data: {{yYear}}
     });
   }
 
   function getDataMensal() {
     return getData({
-      labels: [
-        'JAN',
-        'FEB',
-        'MAR',
-        'APR',
-        'MAY',
-        'JUN',
-        'JUL',
-        'AUG',
-        'SEP',
-        'OCT',
-        'NOV',
-        'DEC',
-      ],
-      data: (yMonth),
+      labels: {{xMonth}},
+      data: {{yMonth}}
     });
   }
 
@@ -131,9 +103,8 @@
             color: 'rgba(29,140,248,0.0)',
             zeroLineColor: 'transparent',
           },
-          stacked: true,
+          stacked: false,
           ticks: {
-            beginAtZero:true
             suggestedMin: 60,
             suggestedMax: 125,
             padding: 20,
