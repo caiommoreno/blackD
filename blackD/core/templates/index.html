@@ -92,11 +92,7 @@
 
 {% block corejs %}
   <script type="text/javascript">
-    var years = {{years|safe}};
-    var yData = {{yData|safe}};
-    var mData = {{mData|safe}};
-    var dData = {{dData|safe}};
-    
+    var xYear, yYear, xMonth, yMonth, xDay, yDay = {xYear|safe},{yYear|safe},{xMonth|safe},{yMonth|safe},{xDay|safe},{yDay|safe}
   </script>
 {% endblock corejs %}
 
