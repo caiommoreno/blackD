@@ -91,7 +91,8 @@
 
 {% block corejs %}
   <script type="text/javascript">
-    var xYear = {{xYear|safe}.reverse();
+    var xYear = {{xYear|safe}};
+        xYear = xYear.reverse();
     var yYear = {{yYear|safe}};
     var xMonth = {{xMonth|safe}};
     var yMonth = {{yMonth|safe}};
