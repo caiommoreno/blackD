@@ -45,10 +45,12 @@ def home(request):
         y = sale.year
         xYear.append(y)
 
-    
-    mxyear = max(xYear)
-    years = [mxyear]
-    y = mxyear
+    try:
+        mxyear = max(xYear)
+        years = [mxyear]
+        y = mxyear
+    except:
+        pass
     for x in range(11):        
         y = y - 1
         years.append(y)
