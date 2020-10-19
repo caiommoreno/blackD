@@ -49,29 +49,30 @@ def home(request):
         mxyear = max(xYear)
         years = [mxyear]
         y = mxyear
+        for x in range(11):
+            y = y - 1
+            years.append(y)
+        for year in years:
+            year = int(year)
+
+            if Sale.objects.filter(user=usr, year=year).count() > 0:
+                sale = Sale.objects.filter(user=usr, year=year)
+                if sale.count() > 1:
+                    t = 0
+                    for s in sale:
+                        r = s.total
+                        t = t + r
+                    yYear.append(t)
+                else:
+                    sale = Sale.objects.get(user=usr, year=year)
+                    t = sale.total
+                    yYear.append(t)
+            else:
+                t = 0
+                yYear.append(t)
     except:
         pass
-    for x in range(11):        
-        y = y - 1
-        years.append(y)
-    for year in years:
-        year = int(year)   
-        
-        if Sale.objects.filter(user=usr, year=year).count()>0:
-            sale = Sale.objects.filter(user=usr, year=year)
-            if sale.count()>1:
-                t = 0 
-                for s in sale:
-                    r = s.total
-                    t= t+r
-                yYear.append(t)
-            else:
-                sale = Sale.objects.get(user=usr, year=year)    
-                t = sale.total
-                yYear.append(t)
-        else:
-            t = 0
-            yYear.append(t)
+
         
     months = []
     monthly =Sale.objects.filter(user=usr, year=mxyear)
