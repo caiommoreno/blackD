@@ -118,6 +118,7 @@
             color: 'rgba(29,140,248,0.0)',
             zeroLineColor: 'transparent',
           },
+          stacked: false,
           ticks: {
             suggestedMin: 60,
             suggestedMax: 125,
