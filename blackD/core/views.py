@@ -45,52 +45,29 @@ def home(request):
         y = sale.year
         xYear.append(y)
 
-    try:
-        mxyear = max(xYear)
-        years = [mxyear]
-        y = mxyear
-        for x in range(11):        
-            y = y - 1
-            years.append(y)
-        for year in years:
-            try:
-                sale = Sale.objects.filter(user=usr, year=year)
-                if sale.count()>1:
-                    t = 0 
-                    for s in sale:
-                        r = s.total
-                        t= t+r
-                    yYear.append(t)
-                else:    
-                    t = sale.total
-                    yYear.append(t)
-            except:
-                t = 0
+    
+    mxyear = max(xYear)
+    years = [mxyear]
+    y = mxyear
+    for x in range(11):        
+        y = y - 1
+        years.append(y)
+    for year in years:
+        try:
+            sale = Sale.objects.filter(user=usr, year=year)
+            if sale.count()>1:
+                t = 0 
+                for s in sale:
+                    r = s.total
+                    t= t+r
                 yYear.append(t)
-    except:
-        sale = Sale.objects.filter(user=usr)
-        mxyear= sale.year
-        years = [mxyear]
-        y = mxyear
-        for x in range(11):        
-            y = y - 1
-            years.append(y)
-        for year in years:
-            try:
-                sale = Sale.objects.filter(user=usr, year=year)
-                if sale.count()>1:
-                    t = 0
-                    for s in sale:
-                        r = s.total
-                        t = t + r                    
-                    yYear.append(t)
-                else:    
-                    t = sale.total
-                    yYear.append(t)
-            except:
-                t = 0
+            else:    
+                t = sale.total
                 yYear.append(t)
-
+        except:
+            t = 0
+            yYear.append(t)
+    
     monthly = Sale.objects.filter(user=usr, year=mxyear)
     months=[]
     try:    
