@@ -27,9 +27,9 @@
   function getDataAnual() {
     return getData({
       labels: [
-        (years)
+        (xYear)
       ],
-      data: ('5', '200', '50')
+      data: (yYear)
     });
   }
 
@@ -49,7 +49,7 @@
         'NOV',
         'DEC',
       ],
-      data: (mData.total),
+      data: (yMonth),
     });
   }
 
@@ -87,7 +87,7 @@
         '29',
         '30',
       ],
-      data: object.total(dData),      
+      data: (yDay)      
     });
   };
   }
