@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 @login_required
-def home1(request):
+def home(request):
     usr = request.user
     sales = Sale.objects.filter(user=usr)
     # counting total sales
@@ -113,7 +113,7 @@ def home1(request):
     return render(request, 'index.html', context)
 
 @login_required
-def home(request):
+def home1(request):
     usr = request.user
     sales = Sale.objects.filter(user=usr)
     products = Product.objects.filter(user=usr)
