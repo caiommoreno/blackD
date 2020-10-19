@@ -105,7 +105,7 @@ def home(request):
             t=0
         yDay.append(t) 
     
-    
+    xYear = years
     context = {
         'sales': sales,
         'saleTot':saleTot,
