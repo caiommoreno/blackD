@@ -88,7 +88,7 @@ def home(request):
             for m in xMonth:
                 try:
                     z = Sale.objects.filter(user=usr, year=mxyear, month=m)
-                    t = sale.total
+                    t = z.total
                     yMonth.append(t)
                 except:
                     t=0
