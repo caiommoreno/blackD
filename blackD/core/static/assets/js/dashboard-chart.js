@@ -138,6 +138,8 @@
           ticks: {
             padding: 20,
             fontColor: '#9a9a9a',
+            maxRotation: 90,
+            minRotation: 90,
           },
         },
       ],
