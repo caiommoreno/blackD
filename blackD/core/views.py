@@ -53,8 +53,7 @@ def home(request):
         y = y - 1
         years.append(y)
     for year in years:
-        year = int(year)
-        
+        year = int(year)   
         
         if Sale.objects.filter(user=usr, year=year).count()>0:
             sale = Sale.objects.filter(user=usr, year=year)
@@ -69,7 +68,8 @@ def home(request):
                 t = sale.total
                 yYear.append(t)
         else:
-            pass
+            t = 0
+            yYear.append(t)
         
     
     monthly = Sale.objects.filter(user=usr, year=mxyear)
