@@ -91,7 +91,12 @@
 
 {% block corejs %}
   <script type="text/javascript">
-    var xYear, yYear, xMonth, yMonth, xDay, yDay = {{xYear|safe}},{{yYear|safe}},{{xMonth|safe}},{{yMonth|safe}},{{xDay|safe}},{{yDay|safe}}
+    var xYear = {{xYear|safe}};
+    var yYear = {{yYear|safe}};
+    var xMonth = {{xMonth|safe}};
+    var yMonth = {{yMonth|safe}};
+    var xDay = {{xDay|safe}};
+    var yDay = {{yDay|safe}};
   </script>
 {% endblock corejs %}
 
