@@ -26,15 +26,15 @@
 
   function getDataAnual() {
     return getData({
-      labels: {{xYear}},
-      data: {{yYear}}
+      labels: (xYear),
+      data: (yYear)
     });
   }
 
   function getDataMensal() {
     return getData({
-      labels: {{xMonth}},
-      data: {{yMonth}}
+      labels: (xMonth),
+      data: (yMonth)
     });
   }
 
