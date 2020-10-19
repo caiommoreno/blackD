@@ -22,7 +22,7 @@ def home(request):
     # counting sales avg
     saleAvg = 0
     try:    
-        saleAvg = saleTot/sales.count()
+        saleAvg = round(saleTot/sales.count(), 2)
     except:
         pass
 
@@ -135,7 +135,7 @@ def home1(request):
 
     saleAvg = 0
     try:    
-        saleAvg = saleTot/sales.count()
+        saleAvg = round(saleTot/sales.count(),2)
     except:
         pass
 
