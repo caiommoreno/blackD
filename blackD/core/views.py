@@ -31,15 +31,26 @@ def home(request):
     yYear=[]
     xYear=[]
     yMonth=[]
-    xMonth=[]   
+    xMonth=['JAN',
+        'FEB',
+        'MAR',
+        'APR',
+        'MAY',
+        'JUN',
+        'JUL',
+        'AUG',
+        'SEP',
+        'OCT',
+        'NOV',
+        'DEC',]   
     yDay=[]
     xDay=[]
 
     try:  
         for sale in sales:            
-            y = sale.year           
-            t = sale.total            
-            xYear.append(y)
+            y = sale.year             
+            xYear.append(y)          
+            t = sale.total
             yYear.append(t)
     except:
         sale = Sale.objects.filter(user=usr)
@@ -55,18 +66,60 @@ def home(request):
         for x in range(11):        
             y = y - 1
             years.append(y)
+        for year in years:
+            try:
+                sale = Sale.objects.filter(user=usr, year=year)
+                t = sale.total
+                yYear.append(t)
+            except:
+                t = 0
+                yYear.append(t)
     except:
         sale = Sale.objects.filter(user=usr)
         mxyear= sale.year
         years = mxyear
 
     monthly = Sale.objects.filter(user=usr, year=mxyear)
+    months=[]
     try:    
         for sale in monthly:
-            m = sale.month
-            t = sale.total
-            xMonth.append(m)
-            yMonth.append(t)
+            try:
+                if sale.month == 1:
+                    month = "JAN"
+                elif sale.month == 2:
+                    month = "FEB"
+                elif sale.month == 3:
+                    month = "MAR"
+                elif sale.month == 4:
+                    month = "APR"
+                elif sale.month == 5:
+                    month = "MAY"
+                elif sale.month == 6:
+                    month = "JUN"
+                elif sale.month == 7:
+                    month = "JUL"
+                elif sale.month == 8:
+                    month = "AUG"
+                elif sale.month == 9:
+                    month = "SEP"
+                elif sale.month == 10:
+                    month = "OCT"
+                elif sale.month == 11:
+                    month = "NOV"
+                elif sale.month == 12:
+                    month = "DEC"
+                months.append(month)
+                for m in xMonth:
+                    try:
+                        z = Sale.objects.filter(user=usr, year=mxyear, month=m)
+                        t = sale.total
+                        yMonth.append(t)
+                    except:
+                        t=0
+                        yMonth.append(t)                
+            except:
+                pass
+            
     except:
         sale = Sale.objects.filter(user=usr)
         m = sale.month          
@@ -96,7 +149,40 @@ def home(request):
 
 
 
-
+        xYear = years
+        
+        xDay=[
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        '11',
+        '12',
+        '13',
+        '14',
+        '15',
+        '16',
+        '17',
+        '18',
+        '19',
+        '20',
+        '21',
+        '22',
+        '23',
+        '24',
+        '25',
+        '26',
+        '27',
+        '28',
+        '29',
+        '30',
+      ]
 
     context = {
         'sales': sales,
