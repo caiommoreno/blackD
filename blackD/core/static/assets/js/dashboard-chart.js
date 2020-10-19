@@ -27,7 +27,7 @@
   function getDataAnual() {
     return getData({
       labels: [
-        (years)
+        (year12),(year11),(year10),(year9),(year8),(year7),(year6),(year5),(year4),(year3),(year2),(year1),(year0),
       ],
       data: (yYear)
     });
@@ -120,6 +120,7 @@
           },
           stacked: true,
           ticks: {
+            beginAtZero:true
             suggestedMin: 60,
             suggestedMax: 125,
             padding: 20,
