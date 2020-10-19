@@ -79,11 +79,10 @@ def home(request):
             try:
                 sale = Sale.objects.filter(user=usr, year=year)
                 if sale.count()>1:
-                    t = [] 
+                    t = 0
                     for s in sale:
                         r = s.total
-                        t.append(r)
-                    t = tuple(t)
+                        t = t + r                    
                     yYear.append(t)
                 else:    
                     t = sale.total
