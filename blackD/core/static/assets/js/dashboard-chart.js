@@ -27,7 +27,7 @@
   function getDataAnual() {
     return getData({
       labels: [
-        (xYear)
+        (years)
       ],
       data: (yYear)
     });
