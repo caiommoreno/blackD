@@ -53,6 +53,7 @@ def home(request):
         y = y - 1
         years.append(y)
     for year in years:
+        year = int(year)
         try:
             sale = Sale.objects.filter(user=usr, year=year)
             if sale.count()>1:
