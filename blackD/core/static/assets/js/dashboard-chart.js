@@ -144,6 +144,7 @@
     },
   };
 
+
   var ctx = document.getElementById('chartLinePurple').getContext('2d');
 
   var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
