@@ -90,7 +90,7 @@
       data: (yDay)      
     });
   };
-  }
+};
 
   var gradientChartOptionsConfigurationWithTooltipPurple = {
     maintainAspectRatio: false,
