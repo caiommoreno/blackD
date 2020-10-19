@@ -39,14 +39,11 @@ def home(request):
         for sale in sales:            
             y = sale.year             
             xYear.append(y)          
-            t = sale.total
-            yYear.append(t)
+            
     except:
         sale = Sale.objects.filter(user=usr)
-        y = sale.year          
-        t = sale.total            
+        y = sale.year
         xYear.append(y)
-        yYear.append(t)
 
     try:
         mxyear = max(xYear)
@@ -58,8 +55,15 @@ def home(request):
         for year in years:
             try:
                 sale = Sale.objects.filter(user=usr, year=year)
-                t = sale.total
-                yYear.append(t)
+                if sale.count()>1:
+                    t = [] 
+                    for s in sale:
+                        r = s.total
+                        t.append(r)
+                    yYear.append(t)
+                else:    
+                    t = sale.total
+                    yYear.append(t)
             except:
                 t = 0
                 yYear.append(t)
@@ -74,8 +78,15 @@ def home(request):
         for year in years:
             try:
                 sale = Sale.objects.filter(user=usr, year=year)
-                t = sale.total
-                yYear.append(t)
+                if sale.count()>1:
+                    t = [] 
+                    for s in sale:
+                        r = s.total
+                        t.append(r)
+                    yYear.append(t)
+                else:    
+                    t = sale.total
+                    yYear.append(t)
             except:
                 t = 0
                 yYear.append(t)
