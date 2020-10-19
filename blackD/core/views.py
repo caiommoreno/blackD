@@ -58,6 +58,7 @@ def home(request):
     except:
         sale = Sale.objects.filter(user=usr)
         mxyear= sale.year
+        years = mxyear
 
     monthly = Sale.objects.filter(user=usr, year=mxyear)
     try:    
@@ -107,7 +108,7 @@ def home(request):
         'xMonth':xMonth,
         'yDay':yDay,
         'xDay':xDay,     
-        
+        'years':years,
     }
 
     return render(request, 'index.html', context)
