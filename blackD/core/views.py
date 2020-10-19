@@ -96,7 +96,7 @@ def home(request):
 
 
     for d in xDay:
-           if Sale.objects.filter(user=usr, year=mxyear, month=mxmonth, day=d):
+        if Sale.objects.filter(user=usr, year=mxyear, month=mxmonth, day=d):
             zs = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth, day=d)
             t=0
             for z in zs:
