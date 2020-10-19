@@ -27,7 +27,20 @@
   function getDataAnual() {
     return getData({
       labels: [
-        (year12),(year11),(year10),(year9),(year8),(year7),(year6),(year5),(year4),(year3),(year2),(year1),(year0),
+        (year12),
+        (year11),
+        (year10),
+        (year9),
+        (year8),
+        (year7),
+        (year6),
+        (year5),
+        (year4),
+        (year3),
+        (year2),
+        (year1),
+        (year0),
+        
       ],
       data: (yYear)
     });
