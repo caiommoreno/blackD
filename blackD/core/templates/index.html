@@ -42,7 +42,7 @@
                   type="radio"
                   name="period"
                   value="semanal"
-
+                  
                 />
                 Semanal
                 <span class="form-check-sign"></span>
@@ -81,7 +81,7 @@
         <section class="card card-chart">
           <div class="card-body">
             <div class="chart-area">
-              <canvas id="chartLinePurple1"></canvas>
+              <canvas id="chartLinePurple"></canvas>
             </div>
           </div>
         </section>
@@ -89,15 +89,18 @@
     </div>
 {% endblock %}
 
-
 {% block corejs %}
-<script type="text/javascript">
+  <script type="text/javascript">
+    var xYear = {{xYear|safe}};
+    var yYear = {{yYear|safe}};
+    var xMonth = {{xMonth|safe}};
+    var yMonth = {{yMonth|safe}};
     var xDay = {{xDay|safe}};
     var yDay = {{yDay|safe}};
     
 
   </script>
-
 {% endblock corejs %}
 
 
+    
