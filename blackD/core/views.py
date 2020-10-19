@@ -33,7 +33,7 @@ def home(request):
     yMonth=[]
     xMonth=[1,2,3,4,5,6,7,8,9,10,11,12]   
     yDay=[]
-    xDay=[]
+    xDay=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
 
     try:  
         for sale in sales:            
@@ -89,62 +89,23 @@ def home(request):
     
 
     try:
-        mxmonth = max(months)
-       
+        mxmonth = max(months)       
     except:
         sale = Sale.objects.get(user=usr)
         mxmonth= sale.month
-    daily = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth)
-    try:    
-        for sale in daily:
-            d = sale.day
-            t = sale.total
-            xDay.append(d)
-            yDay.append(t)
-    except:
-        sale = Sale.objects.get(user=usr)
-        d = sale.day          
-        t = sale.total            
-        xDay.append(d)
-        yDay.append(t)
 
 
-
-    xYear = years
+    for d in xDay:
+           if Sale.objects.filter(user=usr, year=mxyear, month=mxmonth, day=d):
+            zs = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth, day=d)
+            t=0
+            for z in zs:
+                t = t + z.total
+        else:
+            t=0
+        yDay.append(t) 
     
-    xDay=[
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-    '13',
-    '14',
-    '15',
-    '16',
-    '17',
-    '18',
-    '19',
-    '20',
-    '21',
-    '22',
-    '23',
-    '24',
-    '25',
-    '26',
-    '27',
-    '28',
-    '29',
-    '30',
-  ]
-
+    
     context = {
         'sales': sales,
         'saleTot':saleTot,
