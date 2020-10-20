@@ -253,6 +253,7 @@ def edit_sales(request, pk):
             total = request.POST.get('total')
 
             form = Sale(user=user, data=data, cliente=cliente, total=total, year=year, month=month, day=day)
+            form.delete()
             form.save()
             return redirect('display_sales')
 
