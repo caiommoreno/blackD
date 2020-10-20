@@ -244,7 +244,7 @@ def edit_sales(request, pk):
     if item.user == usr:
         if request.method == 'POST':
             user = request.user
-            pk = request.POST.get['pk']
+            pk = item.pk
             data = request.POST.get('data')
             data = datetime.strptime(data, "%Y-%m-%d").date()
             year = data.year
