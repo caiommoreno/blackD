@@ -12,7 +12,7 @@ from datetime import datetime
 def home(request):
     usr = request.user
     sales = Sale.objects.filter(user=usr)
-   
+
 
 
     if sales.count()>0:
@@ -131,130 +131,6 @@ def home(request):
 
 
 
-
-@login_required
-def home1(request):
-    usr = request.user
-    sales = Sale.objects.filter(user=usr)
-    products = Product.objects.filter(user=usr)
-    saleTot = 0
-    try:
-        for sale in sales:
-            saleTot = saleTot + sale.total 
-    except:
-        pass
-
-    saleAvg = 0
-    try:    
-        saleAvg = round(saleTot/sales.count(),2)
-    except:
-        pass
-
-    Years = []
-    
-
-    try:
-        for sale in sales:
-            year = sale.year           
-            Years.append(year)
-    except:
-        pass
-    
-    if sales.count() > 0:
-        mxyear = max(Years)
-        years = [mxyear]
-        y = mxyear
-        for x in range(11):        
-            y = y - 1
-            years.append(y)
-        yData = []        
-        for y in years:
-                try:
-                    x = Sale.objects.filter(user=usr, year=y)
-                    for i in x:
-                        dt = dict(year= i.year, total=i.total)
-                        yData.append(dt)
-                except:
-                    pass
-        
-        ms = Sale.objects.filter(user=usr, year=mxyear)
-        months=[]
-        Months = []
-        mData = []
-        for m in ms:
-            try:
-                if m.month == 1:
-                    month = "JAN"
-                elif m.month == 2:
-                    month = "FEB"
-                elif m.month == 3:
-                    month = "MAR"
-                elif m.month == 4:
-                    month = "APR"
-                elif m.month == 5:
-                    month = "MAY"
-                elif m.month == 6:
-                    month = "JUN"
-                elif m.month == 7:
-                    month = "JUL"
-                elif m.month == 8:
-                    month = "AUG"
-                elif m.month == 9:
-                    month = "SEP"
-                elif m.month == 10:
-                    month = "OCT"
-                elif m.month == 11:
-                    month = "NOV"
-                elif m.month == 12:
-                    month = "DEC"
-                sr = month
-                months.append(month)
-                Months.append(m.month)           
-                x = Sale.objects.filter(user=usr, month=m.month)
-                mTotal = 0
-                for i in x:
-                    dr = dict(month=sr, total=i.total)
-                    mData.append(dr)
-            except:
-                pass
-        mxmonth = max(Months)
-        days =[]
-        dData = []
-        ds = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth)
-        for d in ds:
-            try:
-                day = d.day
-                days.append(day)
-                dTotal =0
-                x = Sale.objects.filter(user=usr, day=d.day)
-                dTotal = 0
-                for i in x:
-                    dl = dict(day= i.day, total=i.total)
-                    dData.append(dl)
-            except:
-                pass
-    else:
-        messages.warning(request, f"You didn't add any sales yet, please add sales to access the dashboard")
-        return redirect('display_sales')
-        
-
-    context = {
-        'sales':sales,
-        'products':products,
-        'saleTot':saleTot,
-        'saleAvg': saleAvg,
-        'years':years,
-        'months':months,
-        'days':days,
-        'yData': yData,
-        'mData': mData,
-        'dData': dData,
-         
-    }
-
-    return render(request, 'index.html', context)
-
-
 @login_required
 def display_products(request):
     usr = request.user
@@ -367,19 +243,18 @@ def edit_sales(request, pk):
     usr = request.user
     if item.user == usr:
         if request.method == 'POST':
-            form = SaleForm(request.POST, instance=item)
-            if form.is_valid():
+            user = request.user
+            data = request.POST.get('data')
+            data = datetime.strptime(data, "%Y-%m-%d").date()
+            year = data.year
+            month = data.month
+            day = data.day
+            cliente = request.POST.get('cliente')
+            total = request.POST.get('total')
 
-                try:
-                    form.save()
-                    return redirect('display_sales')
-                except:
-                    messages.warning(request, f"something is wrong")
-            else:
-                return render(request, 'edit_item.html', {'form': form, 'header': 'Editando Vendas'})
-
-                form.save()
-                return redirect('display_sales')
+            form = Sale(user=user, data=data, cliente=cliente, total=total, year=year, month=month, day=day)
+            form.save()
+            return redirect('display_sales')
 
         else:
             form = SaleForm(instance=item)
