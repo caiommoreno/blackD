@@ -4,7 +4,7 @@
       labels,
       datasets: [
         {
-          label: 'Data',
+          label: 'Total',
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#d048b6',
