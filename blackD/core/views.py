@@ -244,7 +244,6 @@ def edit_sales(request, pk):
     if item.user == usr:
         if request.method == 'POST':
             user = request.user
-            pk = item.pk
             data = request.POST.get('data')
             data = datetime.strptime(data, "%Y-%m-%d").date()
             year = data.year
@@ -252,9 +251,8 @@ def edit_sales(request, pk):
             day = data.day
             cliente = request.POST.get('cliente')
             total = request.POST.get('total')
-            form = Sale.objects.get(pk=self.kwargs['pk'])
-            form = form(user=user, data=data, cliente=cliente, total=total, year=year, month=month, day=day)            
-            form.save()
+            item = item(user=user, data=data, cliente=cliente, total=total, year=year, month=month, day=day)            
+            item.save()
             return redirect('display_sales')
 
         else:
