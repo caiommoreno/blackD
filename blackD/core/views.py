@@ -126,7 +126,7 @@ def home(request):
 
         return render(request, 'index.html', context)
     else:
-        messages.warning(request, f"We're sorry, you need to add sales to use the dashboard!")
+        messages.warning(request, f"Desculpe, você precisa adicionar items na aba de 'Vendas' para usar o gráfico.")
         return redirect('display_sales')
 
 
