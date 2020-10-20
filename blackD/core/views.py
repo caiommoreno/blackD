@@ -251,8 +251,9 @@ def edit_sales(request, pk):
             day = data.day
             cliente = request.POST.get('cliente')
             total = request.POST.get('total')
-            item = item(user=user, data=data, cliente=cliente, total=total, year=year, month=month, day=day)            
-            item.save()
+
+            form = Sale(pk=pk, user=user, data=data, cliente=cliente, total=total, year=year, month=month, day=day)
+            form.save()
             return redirect('display_sales')
 
         else:
