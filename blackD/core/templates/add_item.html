@@ -13,7 +13,7 @@
                 {% csrf_token %}
                   <div class="form-row">
                     <div class="col-6">
-                      <input type="text" name="pk" value="{{item.pk}}" hidden>
+                      <input type="text" name="pk" value="{{pk}}" hidden>
                     {% for field in form %}
                       <div class="form-group has-label">
                         <div>
