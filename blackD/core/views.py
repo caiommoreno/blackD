@@ -12,114 +12,125 @@ from datetime import datetime
 def home(request):
     usr = request.user
     sales = Sale.objects.filter(user=usr)
-    # counting total sales
-    saleTot = 0
-    try:
-        for sale in sales:
-            saleTot = saleTot + sale.total 
-    except:
-        pass
-    # counting sales avg
-    saleAvg = 0
-    try:    
-        saleAvg = round(saleTot/sales.count(), 2)
-    except:
-        pass
+   
 
-    # create year labels list
-    # create Data Matrix
-    yYear=[]
-    xYear=[]
-    yMonth=[]
-    xMonth=[1,2,3,4,5,6,7,8,9,10,11,12]   
-    yDay=[]
-    xDay=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
 
-    try:  
-        for sale in sales:            
-            y = sale.year             
+    if sales.count()>0:
+        # counting total sales
+        saleTot = 0
+        try:
+            for sale in sales:
+                saleTot = saleTot + sale.total 
+        except:
+            pass
+        # counting sales avg
+        saleAvg = 0
+        try:    
+            saleAvg = saleTot/sales.count()
+        except:
+            pass
+
+        # create year labels list
+        # create Data Matrix
+        yYear=[]
+        xYear=[]
+        yMonth=[]
+        xMonth=[1,2,3,4,5,6,7,8,9,10,11,12]   
+        yDay=[]
+        xDay=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+
+        try:  
+            for sale in sales:            
+                y = sale.year             
+                xYear.append(y)          
+                
+        except:
+            sale = Sale.objects.filter(user=usr)
+            y = sale.year
             xYear.append(y)
 
-    except:
-        sale = Sale.objects.filter(user=usr)
-        y = sale.year
-        xYear.append(y)
-
-
-    mxyear = max(xYear)
-    years = [mxyear]
-    y = mxyear
-    for x in range(11):
-        y = y - 1
-        years.append(y)
-    for year in years:
-        year = int(year)
-
-        if Sale.objects.filter(user=usr, year=year).count()>0:
-            sale = Sale.objects.filter(user=usr, year=year)
-            if sale.count()>1:
-                t = 0
-                for s in sale:
-                    r = s.total
-                    t= t+r
-                yYear.append(t)
+        
+        mxyear = max(xYear)
+        years = [mxyear]
+        y = mxyear
+        for x in range(11):        
+            y = y - 1
+            years.append(y)
+        for year in years:
+            year = int(year)   
+            
+            if Sale.objects.filter(user=usr, year=year).count()>0:
+                sale = Sale.objects.filter(user=usr, year=year)
+                if sale.count()>1:
+                    t = 0 
+                    for s in sale:
+                        r = s.total
+                        t= t+r
+                    yYear.append(t)
+                else:
+                    sale = Sale.objects.get(user=usr, year=year)    
+                    t = sale.total
+                    yYear.append(t)
             else:
-                sale = Sale.objects.get(user=usr, year=year)
-                t = sale.total
+                t = 0
                 yYear.append(t)
-        else:
-            t = 0
-            yYear.append(t)
+            
+        months = []
+        monthly =Sale.objects.filter(user=usr, year=mxyear)
+        for sale in monthly:
+            month = sale.month
+            months.append(month)
 
-    months = []
-    monthly =Sale.objects.filter(user=usr, year=mxyear)
-    for sale in monthly:
-        month = sale.month
-        months.append(month)
+        
+        for m in xMonth:
+            if Sale.objects.filter(user=usr, year=mxyear, month=m):
+                zs = Sale.objects.filter(user=usr, year=mxyear, month=m)
+                t=0
+                for z in zs:
+                    t = t + z.total
+            else:
+                t=0
+            yMonth.append(t) 
+        
 
-
-    for m in xMonth:
-        if Sale.objects.filter(user=usr, year=mxyear, month=m):
-            zs = Sale.objects.filter(user=usr, year=mxyear, month=m)
-            t=0
-            for z in zs:
-                t = t + z.total
-        else:
-            t=0
-        yMonth.append(t)
-
-
-    try:
-        mxmonth = max(months)       
-    except:
-        sale = Sale.objects.get(user=usr)
-        mxmonth= sale.month
+        try:
+            mxmonth = max(months)       
+        except:
+            sale = Sale.objects.get(user=usr)
+            mxmonth= sale.month
 
 
-    for d in xDay:
-        if Sale.objects.filter(user=usr, year=mxyear, month=mxmonth, day=d):
-            zs = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth, day=d)
-            t=0
-            for z in zs:
-                t = t + z.total
-        else:
-            t=0
-        yDay.append(t) 
-    
-    xYear = years
-    context = {
-        'sales': sales,
-        'saleTot':saleTot,
-        'saleAvg':saleAvg,
-        'yYear':yYear,
-        'xYear':xYear,
-        'yMonth':yMonth,
-        'xMonth':xMonth,
-        'yDay':yDay,
-        'xDay':xDay,           
-    }
 
-    return render(request, 'index.html', context)
+        for d in xDay:
+            if Sale.objects.filter(user=usr, year=mxyear, month=mxmonth, day=d):
+                zs = Sale.objects.filter(user=usr, year=mxyear, month=mxmonth, day=d)
+                t=0
+                for z in zs:
+                    t = t + z.total
+            else:
+                t=0
+            yDay.append(t) 
+        
+        xYear = years
+        context = {
+            'sales': sales,
+            'saleTot':saleTot,
+            'saleAvg':saleAvg,
+            'yYear':yYear,
+            'xYear':xYear,
+            'yMonth':yMonth,
+            'xMonth':xMonth,
+            'yDay':yDay,
+            'xDay':xDay,           
+        }
+
+        return render(request, 'index.html', context)
+    else:
+        messages.warning(request, f"We're sorry, you need to add sales to use the dashboard!")
+        return redirect('display_sales')
+
+
+
 
 @login_required
 def home1(request):
@@ -406,8 +417,8 @@ def delete_product(request, pk):
         Product.objects.filter(id=pk).delete()
     else:
         messages.warning(request, f"You are not autharized to delete this item")
-
     items = Sale.objects.all()
+
 
     context = {
         'items': items
