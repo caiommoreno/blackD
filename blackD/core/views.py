@@ -5,7 +5,7 @@ from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale
 from django.contrib.auth.models import User
 from django.contrib import messages
-from datetime import datetime
+import datetime
 
 
 @login_required
@@ -128,7 +128,7 @@ def home(request):
     else:
         # messages.warning(request, f"Desculpe, você precisa adicionar items na aba de 'Vendas' para usar o gráfico.")
         # return redirect('display_sales')
-        year = datetime.now()
+        year = datetime.datetime.now()
         year = year.year
         yYear = [year,]
         y = year
