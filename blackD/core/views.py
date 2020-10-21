@@ -128,7 +128,7 @@ def home(request):
     else:
         # messages.warning(request, f"Desculpe, você precisa adicionar items na aba de 'Vendas' para usar o gráfico.")
         # return redirect('display_sales')
-        year = datetime.datetime.now()
+        year = datetime.now()
         year = year.year
         yYear = [year,]
         y = year
