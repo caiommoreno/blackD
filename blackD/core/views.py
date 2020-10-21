@@ -144,9 +144,9 @@ def home(request):
             'saleAvg':0,
             'xYear':xYear,
             'yYear':0,
-            'xMonth':yMonth,
+            'xMonth':xMonth,
             'yMonth':0,
-            'xDay':yDay,
+            'xDay':xDay,
             'yDay':0,           
         }
 
