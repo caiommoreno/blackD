@@ -5,13 +5,13 @@
 -->
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="active">
+        <li class="active" name ="visãogeral">
           <a href="{% url 'home' %}">
             <i class="tim-icons icon-chart-pie-36"></i>
             <p>Visão Geral</p>
           </a>
         </li>
-        <li>
+        <li name="cadastros">
           <a data-toggle="collapse" href="#submenu" aria-expanded="false">
             <i class="tim-icons icon-bullet-list-67"></i>
             <p>Cadastros <b class="caret"></b></p>
@@ -19,18 +19,18 @@
 
           <div id="submenu" class="collapse">
             <ul class="list-unstyled">
-              <li><a href="{% url 'display_products' %}">Produtos</a></li>
-              <li><a href="#">Clientes/Fornecedores</a></li>
+              <li name="produtos"><a href="{% url 'display_products' %}">Produtos</a></li>
+              <li name="clientes"><a href="#">Clientes/Fornecedores</a></li>
             </ul>
           </div>
         </li>
-        <li>
+        <li name="vendas">
           <a href="{% url 'display_sales' %}">
             <i class="tim-icons icon-wallet-43"></i>
             <p>Vendas</p>
           </a>
         </li>
-        <li>
+        <li name="agenda">
           <a href="{% url 'constructing' %}">
             <i class="tim-icons icon-single-02"></i>
             <p>Agenda</p>
