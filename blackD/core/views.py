@@ -137,17 +137,21 @@ def home(request):
             xYear.append(y)
         xMonth=[1,2,3,4,5,6,7,8,9,10,11,12]   
         xDay=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
-
+        saleTot=0
+        saleAvg=0
+        yYear=[0,0,0,0,0,0,0,0,0,0,0,0]
+        yMonth=[0,0,0,0,0,0,0,0,0,0,0,0]
+        yDay= [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         context = {
-            'sales': 0,
-            'saleTot':0,
-            'saleAvg':0,
+            'sales': sales,
+            'saleTot':saleTot,
+            'saleAvg':saleAvg,
+            'yYear':yYear,
             'xYear':xYear,
-            'yYear':0,
+            'yMonth':yMonth,
             'xMonth':xMonth,
-            'yMonth':0,
-            'xDay':xDay,
-            'yDay':0,           
+            'yDay':yDay,
+            'xDay':xDay,           
         }
 
         return render(request, 'index.html', context)
