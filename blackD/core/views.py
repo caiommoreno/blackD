@@ -130,11 +130,11 @@ def home(request):
         # return redirect('display_sales')
         year = datetime.datetime.now()
         year = year.year
-        yYear = [year,]
+        xYear = [year,]
         y = year
         for x in range(11):        
             y = y - 1
-            yYear.append(y)
+            xYear.append(y)
         xMonth=[1,2,3,4,5,6,7,8,9,10,11,12]   
         xDay=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
 
@@ -142,12 +142,12 @@ def home(request):
             'sales': 0,
             'saleTot':0,
             'saleAvg':0,
-            'yYear':yYear,
-            'xYear':0,
-            'yMonth':yMonth,
-            'xMonth':0,
-            'yDay':yDay,
-            'xDay':0,           
+            'xYear':xYear,
+            'yYear':0,
+            'xMonth':yMonth,
+            'yMonth':0,
+            'xDay':yDay,
+            'yDay':0,           
         }
 
         return render(request, 'index.html', context)
