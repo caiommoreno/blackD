@@ -7,7 +7,9 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 import datetime
 
-
+@login_required
+def empty(request):
+    return redirect('home')
 @login_required
 def home(request):
     usr = request.user
