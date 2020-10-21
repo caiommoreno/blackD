@@ -128,15 +128,24 @@ def home(request):
     else:
         # messages.warning(request, f"Desculpe, você precisa adicionar items na aba de 'Vendas' para usar o gráfico.")
         # return redirect('display_sales')
+        year = datetime.datetime.now().year()
+        yYear = [year,]
+        y = year
+        for x in range(11):        
+            y = y - 1
+            yYear.append(y)
+        xMonth=[1,2,3,4,5,6,7,8,9,10,11,12]   
+        xDay=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+
         context = {
             'sales': 0,
             'saleTot':0,
             'saleAvg':0,
-            'yYear':0,
+            'yYear':yYear,
             'xYear':0,
-            'yMonth':0,
+            'yMonth':yMonth,
             'xMonth':0,
-            'yDay':0,
+            'yDay':yDay,
             'xDay':0,           
         }
 
