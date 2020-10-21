@@ -126,8 +126,21 @@ def home(request):
 
         return render(request, 'index.html', context)
     else:
-        messages.warning(request, f"Desculpe, você precisa adicionar items na aba de 'Vendas' para usar o gráfico.")
-        return redirect('display_sales')
+        # messages.warning(request, f"Desculpe, você precisa adicionar items na aba de 'Vendas' para usar o gráfico.")
+        # return redirect('display_sales')
+        context = {
+            'sales': 0,
+            'saleTot':0,
+            'saleAvg':0,
+            'yYear':0,
+            'xYear':0,
+            'yMonth':0,
+            'xMonth':0,
+            'yDay':0,
+            'xDay':0,           
+        }
+
+        return render(request, 'index.html', context)
 
 
 
