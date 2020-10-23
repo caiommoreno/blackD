@@ -201,7 +201,6 @@ def display_sales(request):
 @login_required
 def add_product(request):
     if request.method == 'POST':
-        # form = ProductForm(request.POST)
         user = request.user
 
         nome = request.POST.get('nome')
@@ -221,7 +220,6 @@ def add_product(request):
 @login_required
 def add_sales(request):
     if request.method == 'POST':
-        # form = ProductForm(request.POST)
         user = request.user
 
         data = request.POST.get('data')
