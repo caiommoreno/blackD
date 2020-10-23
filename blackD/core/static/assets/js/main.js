@@ -7,6 +7,9 @@ function setActive() {
 	activePage=activePage.split("/", 20);
 	activePage=activePage[activePage.length -2];
 	activePage =toTitleCase(activePage);
+	if (activePage=="Visaogeral"){
+		activePage= "Visão Geral"
+	}
 	var btn = document.getElementById(activePage);
 	btn.className += ' active'; 
 
