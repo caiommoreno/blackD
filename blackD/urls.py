@@ -24,7 +24,7 @@ from blackD.core.views import home, display_products, display_sales, add_product
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', empty),
-    path('visãogeral', home, name='home'),
+    path('visaogeral', home, name='home'),
     #path('', include("blackD.authentication.urls")),
     path('produtos/', display_products, name='display_products'),
     path('add_products/', add_product, name='add_product'),
