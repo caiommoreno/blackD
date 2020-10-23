@@ -2,14 +2,11 @@ function toTitleCase(string){
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 function setActive() {
-	
+	var pageName = window.location.href;
+	pageName = pageName.split("/", 20);
 	var activePage = window.location.href;
 	activePage=activePage.split("/", 20);
-	activePage=activePage[activePage.length -2];
-	// activePage =toTitleCase(activePage);
-	// if (activePage=="Visaogeral"){
-	// 	activePage= "Visão Geral"
-	// }
+	activePage=activePage[activePage.length -2];	
 	var btn = document.getElementById(activePage);
 	btn.className += ' active'; 
 
