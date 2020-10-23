@@ -3,13 +3,12 @@ function toTitleCase(string){
 }
 function setActive() {
 	var pageName = window.location.href;
-	pageName = pageName.split("/", 20);
 	var activePage = window.location.href;
 	activePage=activePage.split("/", 20);
 	activePage=activePage[activePage.length -2];	
 	var btn = document.getElementById(activePage);
 	btn.className += ' active'; 
 
- 	
+ 	console.log(pageName)
 };
 
