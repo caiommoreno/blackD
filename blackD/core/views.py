@@ -189,28 +189,28 @@ def display_products(request):
         }
         return render(request, 'products.html', context)
 
-    @login_required
-    def display_sales(request):
-        usr = request.user
-        if usr.profile.is_blocked:
-            messages.warning(request, f"You must pay to keep using this app")
-            return redirect("PAYMENT PAGE")
+@login_required
+def display_sales(request):
+    usr = request.user
+    if usr.profile.is_blocked:
+        messages.warning(request, f"You must pay to keep using this app")
+        return redirect("PAYMENT PAGE")
 
-        else:
-            items = Sale.objects.filter(user=usr)
-            if request.method == 'POST':
-                if request.POST.get('delete') == '':
-                    pk = request.POST.get('pk')
-                    sl = Sale.objects.filter(id=pk)
-                    slUser = request.POST.get('slUser')
-                    if usr.username == slUser:
-                        Sale.objects.filter(id=pk).delete()
-                    else:
-                        messages.warning(request, f"You are not autharized to delete this item")
-            context = {
-                'items': items,
-            }
-            return render(request, 'sales.html', context)
+    else:
+        items = Sale.objects.filter(user=usr)
+        if request.method == 'POST':
+            if request.POST.get('delete') == '':
+                pk = request.POST.get('pk')
+                sl = Sale.objects.filter(id=pk)
+                slUser = request.POST.get('slUser')
+                if usr.username == slUser:
+                    Sale.objects.filter(id=pk).delete()
+                else:
+                    messages.warning(request, f"You are not autharized to delete this item")
+        context = {
+            'items': items,
+        }
+        return render(request, 'sales.html', context)
 
 
 @login_required
