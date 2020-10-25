@@ -13,7 +13,6 @@ def empty(request):
 @login_required
 def home(request):    
     usr = request.user
-        saleAvg = 0
     if usr.profile.is_blocked:
         messages.warning(request, f"You must pay to keep using this app")
         return redirect("PAYMENT PAGE")
