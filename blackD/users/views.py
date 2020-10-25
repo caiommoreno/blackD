@@ -27,7 +27,7 @@ class UsersV(View):
                             date_joined= user.date_joined
                             now = datetime.datetime.now()
                             date = now - date_joined
-                            if date < 7:
+                            if date.days < 7:
                                 return redirect("home")
                             else:
                                 user.is_blocked = True
