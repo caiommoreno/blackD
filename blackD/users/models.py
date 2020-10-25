@@ -6,6 +6,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.png', upload_to='profile_pics')
     sex = models.CharField(max_length=6, blank=True, null=True)
+    is_trial = models.Boolean(default=True)
+    is_paid = models.Boolean(default=False)
+    is_blocked = models.Boolean(default=False)
    
 
     def __str__(self):

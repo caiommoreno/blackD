@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, LoginForm
 from django.views import View
 from django.contrib.auth import authenticate, login
-
+import datetime
 
 class UsersV(View):
 
@@ -22,7 +22,17 @@ class UsersV(View):
                 user = authenticate(username=username, password=password)
                 if user is not None:
                     login(request, user)
-                    return redirect("home")
+                    if user.profile.is_trial:
+                        if user.profile.is_paid == False:
+                            date_joined= user.date_joined
+                            now = datetime.datetime.now()
+                            date = now - date_joined
+                            if date < 7:
+                                return redirect("home")
+                            else:
+                                user.is_blocked = True
+                                messages.warning(request, f"You must pay to keep using this app")
+                                return redirect("PAYMENT PAGE")
                 else:
                     msg = 'Dados de usuário ou senha incorretos.'
             else:
