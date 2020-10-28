@@ -22,17 +22,18 @@ class UsersV(View):
                 user = authenticate(username=username, password=password)
                 if user is not None:
                     login(request, user)
-                    if user.profile.is_trial:
-                        if user.profile.is_paid == False:
-                            date_joined= user.date_joined
-                            now = datetime.datetime.now()
-                            date = now - date_joined
-                            if date.days < 7:
-                                return redirect("home")
-                            else:
-                                user.is_blocked = True
-                                messages.warning(request, f"You must pay to keep using this app")
-                                return redirect("PAYMENT PAGE")
+                    return redirect("home")
+                    # if user.profile.is_trial:
+                    #     if user.profile.is_paid == False:
+                    #         date_joined= user.date_joined
+                    #         now = datetime.datetime.now()
+                    #         date = now - date_joined
+                    #         if date.days < 7:
+                    #             return redirect("home")
+                    #         else:
+                    #             user.is_blocked = True
+                    #             messages.warning(request, f"You must pay to keep using this app")
+                    #             return redirect("PAYMENT PAGE")
                 else:
                     msg = 'Dados de usuário ou senha incorretos.'
             else:
