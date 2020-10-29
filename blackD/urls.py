@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_sales, delete_sales, \
     edit_product, delete_product, under_construct, empty
+from pagamento.views import pagseguro_notification, create_subscription_invoice
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,7 +36,9 @@ urlpatterns = [
     path('edit_sales/<int:pk>/', edit_sales, name='edit_sales'),
     path('delete_sales/<int:pk>/', delete_sales, name='delete_sales'),
     path('', include('blackD.users.urls')),
-    path('constructing/', under_construct, name='constructing')
+    path('constructing/', under_construct, name='constructing'),
+    path('pagseguro_notification', pagseguro_notification, name='pagseguro_notification'),
+    path('create_subscription_invoice', create_subscription_invoice, name='create_subscription_invoice')
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
