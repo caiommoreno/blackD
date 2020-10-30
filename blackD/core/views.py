@@ -10,6 +10,11 @@ import datetime
 @login_required
 def empty(request):
     return redirect('home')
+
+@login_required()
+def perfil(request):
+    return render(request, 'page-user.html')
+
 @login_required
 def home(request):    
     usr = request.user

@@ -19,13 +19,14 @@ from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_sales, delete_sales, \
-    edit_product, delete_product, under_construct, empty
-from pagamento.views import pagseguro_notification, create_subscription_invoice
+    edit_product, delete_product, under_construct, empty, perfil
+from blackD.pagamento.views import pagseguro_notification, create_subscription_invoice
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', empty),
     path('visaogeral', home, name='home'),
+    path('perfil/', perfil, name='perfil'),
     #path('', include("blackD.authentication.urls")),
     path('produtos/', display_products, name='display_products'),
     path('add_products/', add_product, name='add_product'),
