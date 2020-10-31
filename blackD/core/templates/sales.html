@@ -60,7 +60,6 @@
 
                           </div>
                         </form>
-                        </div>
                       </td>
                     </tr>
                   {% endfor %}
@@ -69,51 +68,6 @@
               </div>
             </section>
           </div>
-
-{% endblock %}
-
-
-<div>
-    <div class="procuracombutton">
-        <div class="pesquisa">
-            <input class="form-control" size="40" id="myInput" type="text" placeholder="Procure por nome ou categoria.">
-        </div>
-            <a href="{% url 'add_sales' %}"><button class="addprod">Adicionar produto</button></a>
-    </div>
-    <br>
-
-    <table class="table" align="center">
-        <thead>
-            <tr>
-                <th class="text-center">ID</th>
-                <th>Data</th>
-                <th>Cliente</th>
-                <th>Total</th>
-                <th>% Lucro</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="myTable">
-            {% for item in items %}
-            <tr>
-                <td>{{ item.pk }}</td>
-                <td>{{ item.data }}</td>
-                <td>{{ item.cliente }}</td>
-                <td>R$ {{ item.total }}</td>
-                <td></td>
-                <td class="td-actions text-right">
-                    <a href="{% url 'edit_sales' item.pk %}"> <button type="button"  rel="tooltip" class="btn btn-success btn-sm btn-icon">
-                        <i class="fas fa-edit"></i>
-                    </button></a>
-                    <a type="button" href="{% url 'delete_sales' item.pk %}"><button rel="tooltip" class="btn btn-danger btn-sm btn-icon">
-                      <i class="fas fa-trash"></i>
-                    </button></a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
 
 <script>
     $(document).ready(function(){
@@ -125,3 +79,7 @@
       });
     });
 </script>
+
+{% endblock %}
+
+
