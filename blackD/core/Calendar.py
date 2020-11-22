@@ -12,6 +12,6 @@ class clndr():
 		yy = x or datetime.now().year
 		mm = z or datetime.now().month
 		month = calendar.month(yy, mm)
-		return month
+		print(month) 
 clndr = clndr()
 clndr.month(0, 0)
