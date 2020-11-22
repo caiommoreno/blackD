@@ -1,9 +1,13 @@
 # Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from blackD.core.Calendar import clndr
+from blackD.core.Calendar import Calendar
+
+from django.http import HttpResponse
+from django.views import generic
+from django.utils.safestring import mark_safe
 from blackD.core.forms import ProductForm, SaleForm
-from blackD.core.models import Product, Sale
+from blackD.core.models import Product, Sale, Event
 from django.contrib.auth.models import User
 from django.contrib import messages
 import datetime
