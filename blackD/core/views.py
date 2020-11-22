@@ -129,8 +129,8 @@ def home(request):
             xYear = years
 
 
-            cyy = datetime.datetime.now().year
-            cmm = datetime.datetime.now().month
+            cyy = 0
+            cmm = 0
             clndr = clnder()
             clm = clndr.month(cyy, cmm)
 

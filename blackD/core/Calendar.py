@@ -1,5 +1,5 @@
 import calendar
-
+from datetime import datetime
 
 class clndr():
 	def year(self, x):
@@ -8,9 +8,9 @@ class clndr():
 
 
 	def month(self, x, z):
-		yy = x
-		mm = z
+		yy = x or datetime.now().year
+		mm = z or datetime.now().month
 		
 		print(calendar.month(yy, mm))  
 clndr = clndr()
-clndr.year(2010)
+clndr.month(0, 0)
