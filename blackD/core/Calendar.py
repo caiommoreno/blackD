@@ -1,7 +1,8 @@
 import calendar
+from calendar import HTMLCalendar
 from datetime import datetime
 
-class clndr():
+class clndr(HTMLCalendar):
 	def year(self, x):
 		yy = x
 		year = calendar.calendar(yy)
@@ -12,6 +13,6 @@ class clndr():
 		yy = x or datetime.now().year
 		mm = z or datetime.now().month
 		month = calendar.month(yy, mm)
-		print(month) 
+		return month
 clndr = clndr()
 clndr.month(0, 0)
