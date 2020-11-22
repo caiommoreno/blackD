@@ -128,12 +128,6 @@ def home(request):
             
             xYear = years
 
-
-            cyy = 0
-            cmm = 0
-            
-            clm = clndr.month(cyy, cmm)
-
             context = {
                 'sales': sales,
                 'saleTot':saleTot,
@@ -143,8 +137,7 @@ def home(request):
                 'yMonth':yMonth,
                 'xMonth':xMonth,
                 'yDay':yDay,
-                'xDay':xDay,  
-                'clm': clm,         
+                'xDay':xDay,     
             }
 
             return render(request, 'index.html', context)
