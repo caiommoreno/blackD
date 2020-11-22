@@ -131,8 +131,8 @@ def home(request):
 
             cyy = 0
             cmm = 0
-            clndr = clndr()
-            clm = clndr.month(cyy, cmm)
+            cldr = clndr()
+            clm = cldr.month(cyy, cmm)
 
             context = {
                 'sales': sales,
