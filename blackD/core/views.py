@@ -384,7 +384,7 @@ class CalendarView(ListView):
         return context
 
 
-@login_required
+
 def get_date(req_day):
     if req_day:
         year, month = (int(x) for x in req_day.split('-'))
