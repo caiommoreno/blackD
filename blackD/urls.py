@@ -25,7 +25,7 @@ from blackD.pagamento.views import pagseguro_notification, create_subscription_i
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', empty),
-    path('calendar/', calendar, name ='calendar'),
+    path('calendar/', CalendarView.as_view(), name ='calendar'),
     path('visaogeral', home, name='home'),
     path('perfil/', perfil, name='perfil'),
     #path('', include("blackD.authentication.urls")),
