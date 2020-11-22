@@ -1,11 +1,14 @@
 # Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from blackD.core.Calendar import clndr
 from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale
 from django.contrib.auth.models import User
 from django.contrib import messages
 import datetime
+
+
 
 @login_required
 def empty(request):
@@ -124,6 +127,13 @@ def home(request):
                 yDay.append(t) 
             
             xYear = years
+
+
+            cyy = datetime.datetime.now().year
+            cmm = datetime.datetime.now().month
+            clndr = clnder()
+            clm = clndr.month(cyy, cmm)
+
             context = {
                 'sales': sales,
                 'saleTot':saleTot,
@@ -133,7 +143,8 @@ def home(request):
                 'yMonth':yMonth,
                 'xMonth':xMonth,
                 'yDay':yDay,
-                'xDay':xDay,           
+                'xDay':xDay,  
+                'clm': clm,         
             }
 
             return render(request, 'index.html', context)
@@ -147,6 +158,8 @@ def home(request):
             for x in range(11):        
                 y = y - 1
                 xYear.append(y)
+
+
             xMonth=[1,2,3,4,5,6,7,8,9,10,11,12]   
             xDay=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
             saleTot=0
