@@ -364,7 +364,7 @@ def under_construct(request):
     return render(request, 'constructing.html')
 
 
-@login_required
+
 class CalendarView(ListView):
     model = Event
     template_name = 'cal/calendar.html'
