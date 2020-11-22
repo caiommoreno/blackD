@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from blackD.core.models import Product, Sale
+from blackD.core.models import Product, Sale, Event
 
 
 @admin.register(Product)
@@ -11,3 +11,5 @@ class ViewAdmin(admin.ModelAdmin):
 @admin.register(Sale)
 class ViewAdmin(admin.ModelAdmin):
     list_display = ('data', 'cliente', 'total')
+
+admin.site.register(Event)
