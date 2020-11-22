@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from blackD.core.Calendar import Calendar
 
 from django.http import HttpResponse
-from django.views import generic
+from django.views.generic.list import ListView
 from django.utils.safestring import mark_safe
 from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale, Event
@@ -365,7 +365,7 @@ def under_construct(request):
 
 
 @login_required
-class CalendarView(generic.ListView):
+class CalendarView(ListView):
     model = Event
     template_name = 'cal/calendar.html'
 
