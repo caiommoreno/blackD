@@ -18,8 +18,8 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
-from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_sales, delete_sales, \
-    edit_product, delete_product, under_construct, empty, perfil, calendar
+from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_sales, delete_sales,
+    edit_product, delete_product, under_construct, empty, perfil, CalendarView
 from blackD.pagamento.views import pagseguro_notification, create_subscription_invoice
 
 urlpatterns = [
