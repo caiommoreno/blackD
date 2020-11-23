@@ -12,4 +12,6 @@ class ViewAdmin(admin.ModelAdmin):
 class ViewAdmin(admin.ModelAdmin):
     list_display = ('data', 'cliente', 'total')
 
-admin.site.register(Event)
+@admin.register(Event)
+class ViewAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'start_time', 'end_time')
