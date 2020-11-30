@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'blackD.core',
     'blackD.users.apps.UsersConfig',
     'crispy_forms',
+    'schedule',
 ]
 
 MIDDLEWARE = [
