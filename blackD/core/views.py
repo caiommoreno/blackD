@@ -1,17 +1,20 @@
 # Create your views here.
+from datetime import datetime, timezone
+
+from django.utils import timezone as dj_timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from blackD.core.Calendar import Calendar
 
-from django.http import HttpResponse
+from schedule.models import Calendar
+
 from django.views.generic.list import ListView
-from django.utils.safestring import mark_safe
 from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale, Event
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib import messages
-import datetime
 
+
+User = get_user_model()
 
 
 @login_required
@@ -148,7 +151,7 @@ def home(request):
         else:
             # messages.warning(request, f"Desculpe, você precisa adicionar items na aba de 'Vendas' para usar o gráfico.")
             # return redirect('display_sales')
-            year = datetime.datetime.now()
+            year = datetime.now()
             year = year.year
             xYear = [year,]
             y = year
@@ -253,7 +256,7 @@ def add_sales(request):
         user = request.user
 
         data = request.POST.get('data')
-        data = datetime.datetime.strptime(data, "%Y-%m-%d").date()
+        data = datetime.strptime(data, "%Y-%m-%d").date()
         year = data.year
         month = data.month
         day = data.day
@@ -364,29 +367,21 @@ def under_construct(request):
     return render(request, 'constructing.html')
 
 
-
 class CalendarView(ListView):
     model = Event
-    template_name = 'cal/calendar.html'
+    template_name = 'calendar.hml.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        # use today's date for the calendar
-        d = get_date(self.request.GET.get('day', None))
+        start = datetime(2020, 1, 1, tzinfo=timezone.utc)
+        end = datetime(dj_timezone.now().year + 10, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
 
-        # Instantiate our calendar class with today's year and date
-        cal = Calendar(d.year, d.month)
+        calendar = Calendar.objects.get_or_create_calendar_for_object(self.request.user)
+        events = calendar.events.all()
+        occurrences = list()
+        for ev in events:
+            occurrences.extend(ev.get_occurrences(start, end))
 
-        # Call the formatmonth method, which returns our calendar as a table
-        html_cal = cal.formatmonth(withyear=True)
-        context['calendar'] = mark_safe(html_cal)
+        context["occurrences"] = occurrences
         return context
-
-
-
-def get_date(req_day):
-    if req_day:
-        year, month = (int(x) for x in req_day.split('-'))
-        return date(year, month, day=1)
-    return datetime.datetime.today()
