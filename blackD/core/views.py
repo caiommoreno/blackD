@@ -1,13 +1,12 @@
 # Create your views here.
-from datetime import datetime, timezone
+from datetime import datetime
 
-from django.utils import timezone as dj_timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
-from schedule.models import Calendar
 
 from django.views.generic.list import ListView
+from blackD.core.services import get_user_event_occurrences
 from blackD.core.forms import ProductForm, SaleForm
 from blackD.core.models import Product, Sale, Event
 from django.contrib.auth import get_user_model
@@ -373,15 +372,5 @@ class CalendarView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        start = datetime(2020, 1, 1, tzinfo=timezone.utc)
-        end = datetime(dj_timezone.now().year + 10, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
-
-        calendar = Calendar.objects.get_or_create_calendar_for_object(self.request.user)
-        events = calendar.events.all()
-        occurrences = list()
-        for ev in events:
-            occurrences.extend(ev.get_occurrences(start, end))
-
-        context["occurrences"] = occurrences
+        context["occurrences"] = get_user_event_occurrences(self.request.user)
         return context
