@@ -5,6 +5,7 @@
     <link href="{% static 'assets/css/fullcalendar/main.min.css' %}" rel='stylesheet' />
     <script src="{% static 'assets/js/fullcalendar/main.min.js' %}"></script>
     <script> src="{% static 'assets/js/fullcalendar/locales-all.min.js' %}</script>
+    <script> src="{% static 'assets/js/plugins/jquery.form.min.js' %}</script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
@@ -13,17 +14,27 @@
                 locale: 'pt-br',
                 initialView: 'dayGridMonth',
                 initialDate: '2020-11-07',
+                customButtons: {
+                    addEventButton: {
+                        text: 'Adicionar evento...',
+                        click: function() {
+                            $('#addEventModal').modal()
+                        }
+                    }
+                },
                 headerToolbar: {
-                    left: 'prev,next today',
+                    left: 'prev,next today addEventButton',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
                 events: [
-                    {% for occurrence in occurrences %}
+                    {% for event in events %}
                         {
-                            title: "{{ occurrence.title }}",
-                            start: "{{ occurrence.start.isoformat }}",
-                            end: "{{ occurrence.end.isoformat }}",
+                            id: "{{ event.id }}",
+                            event_id: "{{ event.id }}",
+                            title: "{{ event.title }}",
+                            start: "{{ event.start.isoformat }}",
+                            end: "{{ event.end.isoformat }}",
                         },
                     {% endfor %}
 {% comment %}
@@ -79,11 +90,58 @@
             });
 
             calendar.render();
+
+            var addEventOptions = {
+                data: {tzoffset: new Date().getTimezoneOffset()},
+                dataType: 'json',
+                beforeSubmit: showRequest,
+            };
+            $("#addEventForm").ajaxForm(addEventOptions);
         });
+
+        function showRequest(formData, jqForm, options) {
+            console.log(formData);
+        }
     </script>
 {% endblock stylesheets %}
 
 {% block body %}
+    <!-- Add event modal -->
+    <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addEventModalLabel">Adicionar Evento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="addEventForm" action="{% url 'event-list' %}">
+                        <div class="form-group">
+                            <label for="title">Título</label>
+                            <input type="text" class="form-control" id="title" name="title"
+                                   placeholder="Título do evento.">
+                        </div>
+                        <div class="form-group">
+                            <label for="start_date">Dia</label>
+                            <input type="date" class="form-control" id="start_date" name="start_date"
+                                   placeholder="Entre com o dia do evento.">
+                        </div>
+                        <div class="form-group">
+                            <label for="start_time">Horário</label>
+                            <input type="time" class="form-control" id="start_time" name="start_time"
+                                   placeholder="Entre com o horário do evento.">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Criar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id='calendar'></div>
 {% endblock %}
 

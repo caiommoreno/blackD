@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'rest_framework',
     'blackD.core',
     'blackD.users.apps.UsersConfig',
     'crispy_forms',
@@ -74,7 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'blackD.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -119,7 +119,7 @@ USE_TZ = True
 
 DATE_INPUT_FORMATS = (
     '%d.%m.%Y', '%d.%m.%Y', '%d.%m.%y',  # '25.10.2006', '25.10.2006', '25.10.06'
-    '%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y','%d/%M/%Y', '%d/%M/%y',  # '25-10-2006', '25/10/2006', '25/10/06'
+    '%Y-%m-%d', '%d/%m/%Y', '%d/%m/%y','%d/%M/%Y', '%d/%M/%y',  # '25-10-2006', '25/10/2006', '25/10/06'
     '%d %b %Y',  # '25 Oct 2006', 
     '%d %B %Y',  # '25 October 2006', 
     )
@@ -148,3 +148,11 @@ MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework.authentication.SessionAuthentication"],
+    "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],
+}
+
+# Event config
+MAX_OCCURRENCES_PER_EVENT = 1000

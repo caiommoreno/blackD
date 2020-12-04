@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
-from blackD.core.views import home, display_products, display_sales, add_product, add_sales, edit_sales, delete_sales, edit_product, delete_product, under_construct, empty, perfil, CalendarView
+from rest_framework import routers
+from blackD.core.views import (home, display_products, display_sales, add_product, add_sales, edit_sales, delete_sales,
+                               edit_product, delete_product, under_construct, empty, perfil, CalendarView, EventViewSet)
 from blackD.pagamento.views import pagseguro_notification, create_subscription_invoice
+
+router = routers.SimpleRouter()
+router.register(r'api/events', EventViewSet, basename="event")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,7 +43,6 @@ urlpatterns = [
     path('', include('blackD.users.urls')),
     path('constructing/', under_construct, name='constructing'),
     path('pagseguro_notification', pagseguro_notification, name='pagseguro_notification'),
-    path('create_subscription_invoice', create_subscription_invoice, name='create_subscription_invoice')
-
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('create_subscription_invoice', create_subscription_invoice, name='create_subscription_invoice'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + router.urls
 

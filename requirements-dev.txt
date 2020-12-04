@@ -1,2 +1,6 @@
 -r requirements.txt
 jupyter
+freezegun==1.0.0
+pytest==6.1.2
+pytest-django==4.1.0
+pytest-freezegun==0.4.2

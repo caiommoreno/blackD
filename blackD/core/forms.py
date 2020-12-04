@@ -1,9 +1,13 @@
+from datetime import datetime, timedelta, timezone
+
 from django import forms
 from django.contrib.auth.models import User
 from blackD.core.models import Product, Sale
 from blackD.core.validator import validate_preco
 from django.conf import settings
-from datetime import datetime
+from schedule.models import Event, Occurrence
+
+
 class ProductForm(forms.ModelForm):
     nome = forms.CharField(label='Nome',
                            widget=forms.TextInput(attrs={"placeholder": "Digite aqui",
@@ -51,4 +55,3 @@ class SaleForm(forms.ModelForm):
         fields = ('data', 'cliente', 'total')
         verbose_name = 'produto'
         verbose_name_plural = 'produtos'
-    
